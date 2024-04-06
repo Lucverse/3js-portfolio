@@ -1,3 +1,165 @@
 body {
-  background-color: #0f0f0f;
+  background: linear-gradient(45deg, #010158, #6b00b3, #000000);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  user-select: none;
+  cursor: none;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+@media (max-width: 520px) {
+  .main-div {
+    padding: 2%;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-div {
+    padding: 4%;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-div {
+    padding: 5%;
+  }
+}
+
+/* username */
+.username {
+  color: #bfae93;
+  text-decoration: none;
+  text-align: right;
+}
+
+.username-div {
+  padding-right: 1rem;
+}
+
+@media (max-width: 520px) {
+  .username {
+    font-size: 4.5rem;
+    line-height: 0.3;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 768px) {
+  .username {
+    font-size: 4.5rem;
+    line-height: 0.3;
+    font-weight: 700;
+  }
+}
+
+@media (min-width: 768px) {
+  .username {
+    font-size: 6.5rem;
+    line-height: 0.3;
+    font-weight: 700;
+  }
+
+  .username-div {
+    width: 25rem;
+  }
+}
+
+/* basic detials   */
+.basic-details-div {
+  max-width: 40rem;
+}
+
+.basic-details {
+  color: #acacac;
+  font-size: 3rem;
+  line-height: 1.4;
+  animation-duration: 2.2s;
+  animation-delay: .5s;
+  animation-name: fadeIn;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+/* breaker*/
+.breaker-div {
+  width: 100%;
+  height: 15rem;
+}
+
+/* timeline*/
+.timeline-main {
+  padding: 2%;
+  border-radius: calc(5px + 2vw);
+  background: rgba(255, 255, 255, 0.1);
+}
+.timeline-main > div:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.timeline-grid{
+  color: #d1c5ad;
+  width: 100%;
+  display: grid;
+  justify-content: space-evenly;
+}
+.project-title-div{
+  width: max-content;
+}
+.project-title{
+  text-decoration: none;
+  color: #d1c5ad;
+  font-size: 2rem;
+}
+.project-title:hover{
+  color: #bfae93;
+}
+.project-description{
+  display: flex;
+  align-items: center;  
+  color: #d1c5ad;
+  font-size: 1.2rem;
+}
+@media (max-width: 768px) {
+  .timeline-grid{
+    grid-template-columns: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .timeline-grid{
+    grid-template-columns: repeat(2, 45%);
+  }
+  .project-title{
+    font-size: 2.5rem;
+  }
+  .project-duration{
+    font-size: 1.2rem;
+    margin-top: -2rem;
+    text-align: right;
+  }
+
+}
+
+/* animations*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
