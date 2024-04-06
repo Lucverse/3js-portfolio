@@ -3,7 +3,34 @@ body {
   background-size: 400% 400%;
   animation: gradientAnimation 10s ease infinite;
   user-select: none;
-  cursor: none;
+}
+
+/* scrollbar */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgb(95, 3, 95);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgb(56, 1, 56);
+
+}
+
+.first-div {
+  display: grid;
+  position: absolute;
+  grid-template-columns: repeat(2, 1fr);
+  height: 1000px;
+}
+
+.canvas-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
 }
 
 @keyframes gradientAnimation {
@@ -104,48 +131,57 @@ body {
 .timeline-main {
   padding: 2%;
   border-radius: calc(5px + 2vw);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
 }
-.timeline-main > div:not(:last-child) {
+
+.timeline-main>div:not(:last-child) {
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
-.timeline-grid{
+
+.timeline-grid {
   color: #d1c5ad;
   width: 100%;
   display: grid;
   justify-content: space-evenly;
 }
-.project-title-div{
+
+.project-title-div {
   width: max-content;
 }
-.project-title{
+
+.project-title {
   text-decoration: none;
   color: #d1c5ad;
   font-size: 2rem;
 }
-.project-title:hover{
+
+.project-title:hover {
   color: #bfae93;
 }
-.project-description{
+
+.project-description {
   display: flex;
-  align-items: center;  
+  align-items: center;
   color: #d1c5ad;
   font-size: 1.2rem;
 }
+
 @media (max-width: 768px) {
-  .timeline-grid{
+  .timeline-grid {
     grid-template-columns: 100%;
   }
 }
 
 @media (min-width: 768px) {
-  .timeline-grid{
+  .timeline-grid {
     grid-template-columns: repeat(2, 45%);
   }
-  .project-title{
+
+  .project-title {
     font-size: 2.5rem;
   }
-  .project-duration{
+
+  .project-duration {
     font-size: 1.2rem;
     margin-top: -2rem;
     text-align: right;
