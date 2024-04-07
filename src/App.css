@@ -1,7 +1,5 @@
 body {
-  background: linear-gradient(45deg, #010158, #6b00b3, #000000);
-  background-size: 400% 400%;
-  animation: gradientAnimation 10s ease infinite;
+  background-color: #0f0f10;
   user-select: none;
 }
 
@@ -18,7 +16,9 @@ body::-webkit-scrollbar-thumb:hover {
   background: rgb(56, 1, 56);
 
 }
-
+.main-div{
+  overflow: hidden;
+}
 .first-div {
   display: grid;
   position: absolute;
