@@ -1,9 +1,8 @@
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   background-color: #0f0f10;
   user-select: none;
@@ -30,7 +29,23 @@ body::-webkit-scrollbar-thumb:hover {
   height: 50%;
 }
 
+@media (max-width: 520px) {
+  .main-div {
+    padding: 2%;
+  }
+}
 
+@media (max-width: 768px) {
+  .main-div {
+    padding: 4%;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-div {
+    padding: 5%;
+  }
+}
 
 /* username */
 .username {
@@ -43,6 +58,30 @@ body::-webkit-scrollbar-thumb:hover {
   padding-right: 1rem;
 }
 
+@media (max-width: 520px) {
+  .username {
+    font-size: 4.5rem;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 768px) {
+  .username {
+    font-size: 4.5rem;
+    font-weight: 700;
+  }
+}
+
+@media (min-width: 768px) {
+  .username {
+    font-size: 6.5rem;
+    font-weight: 700;
+  }
+
+  .username-div {
+    width: 25rem;
+  }
+}
 
 /* basic detials   */
 .basic-details-div {
@@ -85,13 +124,11 @@ body::-webkit-scrollbar-thumb:hover {
   justify-content: space-evenly;
   min-height: 220px;
 }
-
-.project-title-div {
+.project-title-div{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-
 .project-title {
   text-decoration: none;
   color: #d1c5ad;
@@ -109,10 +146,20 @@ body::-webkit-scrollbar-thumb:hover {
   font-size: 1.2rem;
   line-height: 1.8rem;
 }
-
 .project-duration {
   font-size: 1.2rem;
   opacity: 0.4;
+}
+@media (max-width: 768px) {
+  .timeline-grid {
+    grid-template-columns: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .timeline-grid {
+    grid-template-columns: repeat(2, 45%);
+  }
 }
 
 /* animations*/
