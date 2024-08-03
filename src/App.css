@@ -1,8 +1,9 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: #0f0f10;
   user-select: none;
@@ -25,8 +26,18 @@ body::-webkit-scrollbar-thumb:hover {
   display: grid;
   position: absolute;
   grid-template-columns: repeat(2, 1fr);
+  gap: 5rem;
   width: 90%;
-  height: 50%;
+  height: 80dvh;
+}
+
+.basic-info,
+.canvas-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  gap: 2rem;
 }
 
 @media (max-width: 520px) {
@@ -74,7 +85,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 768px) {
   .username {
-    font-size: 6.5rem;
+    font-size: 7rem;
     font-weight: 700;
   }
 
@@ -124,11 +135,14 @@ body::-webkit-scrollbar-thumb:hover {
   justify-content: space-evenly;
   min-height: 220px;
 }
-.project-title-div{
+
+.project-title-div {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  gap: 1rem;
+  justify-content: center;
 }
+
 .project-title {
   text-decoration: none;
   color: #d1c5ad;
@@ -144,12 +158,14 @@ body::-webkit-scrollbar-thumb:hover {
   align-items: center;
   color: #d1c5ad;
   font-size: 1.2rem;
-  line-height: 1.8rem;
+  line-height: 1.82rem;
 }
+
 .project-duration {
   font-size: 1.2rem;
   opacity: 0.4;
 }
+
 @media (max-width: 768px) {
   .timeline-grid {
     grid-template-columns: 100%;
