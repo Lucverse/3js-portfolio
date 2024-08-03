@@ -5,6 +5,7 @@ import BasicDetails from './components/basicDetail/basicDetail';
 import Breaker from './components/breaker/breaker';
 import Timeline from './components/timeline/timeline';
 import ThreeScene from './components/human/human';
+import Footer from './components/footer/footer';
 function App() {
   return (
     <div className='main-div'>
@@ -21,6 +22,7 @@ function App() {
       <Breaker />
       <Breaker />
       <Timeline projects={data.projects} />
+      <Footer footerInfo={data.footerUrls} />
     </div>
   );
 }

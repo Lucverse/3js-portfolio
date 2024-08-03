@@ -55,5 +55,32 @@
             ],
             "url": "https://www.theyarnbazaar.com/"
         }
+    ],
+    "footerUrls": [
+        {
+            "title": "LinkedIn",
+            "url": "https://www.linkedin.com/in/ujjw4l/",
+            "imageUrl": "https://cdn-icons-png.flaticon.com/512/61/61109.png"
+        },
+        {
+            "title": "GitHub",
+            "url": "https://github.com/Lucverse",
+            "imageUrl": "https://cdn-icons-png.flaticon.com/512/25/25231.png"
+        },
+        {
+            "title": "Twitter",
+            "url": "https://twitter.com/Lucverse",
+            "imageUrl": "https://assets-global.website-files.com/5d66bdc65e51a0d114d15891/64cebe246fdedd41e706d946_X-logo-transparent-black-twitter.png"
+        },
+        {
+            "title": "Stack Overflow",
+            "url": "https://stackoverflow.com/users/21086050/lucverse",
+            "imageUrl": "https://cdn-icons-png.flaticon.com/512/2111/2111690.png"
+        },
+        {
+            "title": "Email",
+            "url": "mailto:ujjw4l.singh@gmail.com",
+            "imageUrl": "https://static.vecteezy.com/system/resources/previews/020/009/614/non_2x/email-and-mail-icon-black-free-png.png"
+        }
     ]
 }
