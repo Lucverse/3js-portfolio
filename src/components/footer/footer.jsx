@@ -5,7 +5,7 @@ const Footer = (footerInfo) => {
             {
                 footerInfo.footerInfo.map((url, index) => {
                     return (
-                        <a href={url.url} target="_blank" key={index}>
+                        <a href={url.url} target="_blank" rel="noreferrer" key={index}>
                             <img src={url.imageUrl} alt={url.alt} />
                         </a>
                     );
