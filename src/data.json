@@ -3,7 +3,7 @@
     "age": 24,
     "email": "Ujjw4l.singh@example.com",
     "phone": "9654736193",
-    "basicDetails": "Full Stack Web Developer at The Yarn Bazaar", 
+    "title": "Full Stack Web Developer",
     "address": {
         "city": "Delhi",
         "state": "Delhi",
@@ -14,22 +14,73 @@
             "title": "The Yarn Bazaar CRM",
             "duration": "Dec 2023 - Present",
             "description": "The Yarn Bazaar CRM is a platform where we manage our customers, orders, and products. It is a Customer Relationship Management system for The Yarn Bazaar.",
-            "techStack": ["TypeScript", "React", "DynamoDB", "AWS Lambda", "AWS API Gateway", "AWS Cognito", "AWS S3", "AWS CloudFront"],
+            "techStack": [
+                "TypeScript",
+                "React",
+                "DynamoDB",
+                "AWS Lambda",
+                "AWS API Gateway",
+                "AWS Cognito",
+                "AWS S3",
+                "AWS CloudFront"
+            ],
             "url": "https://crm-dev.theyarnbazaar.com/"
         },
         {
             "title": "The Yarn Bazaar App",
             "duration": "Sep 2023 - Dec 2023",
             "description": "The Yarn Bazaar App is a platform where you can buy and sell yarns. It is a marketplace for yarns.",
-            "techStack": ["Flutter", "Dart", "Firebase", "AWS Lambda", "AWS S3"],
+            "techStack": [
+                "Flutter",
+                "Dart",
+                "Firebase",
+                "AWS Lambda",
+                "AWS S3"
+            ],
             "url": "https://play.google.com/store/apps/details?id=tyb.com_application_1"
         },
         {
             "title": "The Yarn Bazaar Website",
-            "duration": "Jun 2023 - Sep 2023",
+            "duration": "Sep 2023 - Present",
             "description": "The Yarn Bazaar Website is a platform where you can buy and sell yarns. It is a marketplace for yarns.",
-            "techStack": ["TypeScript", "React", "DynamoDB", "AWS Lambda", "AWS API Gateway", "AWS Cognito", "AWS S3", "AWS CloudFront"],
+            "techStack": [
+                "TypeScript",
+                "React",
+                "DynamoDB",
+                "AWS Lambda",
+                "AWS API Gateway",
+                "AWS Cognito",
+                "AWS S3",
+                "AWS CloudFront"
+            ],
             "url": "https://www.theyarnbazaar.com/"
+        }
+    ],
+    "footerUrls": [
+        {
+            "title": "LinkedIn",
+            "url": "https://www.linkedin.com/in/ujjw4l/",
+            "imageUrl": "https://cdn-icons-png.flaticon.com/512/61/61109.png"
+        },
+        {
+            "title": "GitHub",
+            "url": "https://github.com/Lucverse",
+            "imageUrl": "https://cdn-icons-png.flaticon.com/512/25/25231.png"
+        },
+        {
+            "title": "Twitter",
+            "url": "https://twitter.com/Lucverse",
+            "imageUrl": "https://assets-global.website-files.com/5d66bdc65e51a0d114d15891/64cebe246fdedd41e706d946_X-logo-transparent-black-twitter.png"
+        },
+        {
+            "title": "Stack Overflow",
+            "url": "https://stackoverflow.com/users/21086050/lucverse",
+            "imageUrl": "https://cdn-icons-png.flaticon.com/512/2111/2111690.png"
+        },
+        {
+            "title": "Email",
+            "url": "mailto:ujjw4l.singh@gmail.com",
+            "imageUrl": "https://static.vecteezy.com/system/resources/previews/020/009/614/non_2x/email-and-mail-icon-black-free-png.png"
         }
     ]
 }
