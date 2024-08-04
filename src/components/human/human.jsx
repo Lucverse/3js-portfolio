@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { PCDLoader } from 'three/examples/jsm/loaders/PCDLoader';
@@ -41,7 +41,7 @@ const PCDViewer = () => {
 
 const PCDViewerCanvas = () => {
     return (
-        <Canvas style={{ cursor: 'grab', height:'60dvh' }}>
+        <Canvas style={{ cursor: 'grab', height: '60dvh' }}>
             <PCDViewer />
         </Canvas>
     );
