@@ -7,7 +7,6 @@ import * as THREE from 'three'; // Import THREE
 const PCDViewer = () => {
     const { camera, scene } = useThree();
     const controlsRef = useRef();
-    const [points, setPoints] = useState(null);
 
     useEffect(() => {
         const loader = new PCDLoader();
@@ -29,7 +28,6 @@ const PCDViewer = () => {
             loadedPoints.name = 'human.pcd';
             loadedPoints.material.size = 0.001;
             scene.add(loadedPoints);
-            setPoints(loadedPoints);
         });
         camera.position.set(0, 0, 0.4);
     }, [camera, scene]);
