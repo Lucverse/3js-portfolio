@@ -13,7 +13,7 @@
         {
             "title": "The Yarn Bazaar CRM",
             "duration": "Dec 2023 - Present",
-            "description": "The Yarn Bazaar CRM is a platform where we manage our customers, orders, and products. It is a Customer Relationship Management system for The Yarn Bazaar.",
+            "description": "The Yarn Bazaar CRM is a platform where we manage our customers, orders, and products.",
             "techStack": [
                 "TypeScript",
                 "React",
