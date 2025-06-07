@@ -1,48 +1,62 @@
 {
     "name": "Ujjawal Singh",
-    "age": 24,
-    "email": "Ujjw4l.singh@example.com",
+    "age": 25,
+    "email": "Ujjw4l.singh@gmail.com",
     "phone": "9654736193",
     "title": "Full Stack Web Developer",
     "address": {
-        "city": "Delhi",
-        "state": "Delhi",
-        "pincode": "110001"
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560102"
     },
-    "projects": [
+    "experienceData": [
         {
-            "title": "The Yarn Bazaar CRM",
-            "duration": "Dec 2023 - Present",
-            "description": "The Yarn Bazaar CRM is a platform where we manage our customers, orders, and products.",
-            "techStack": [
-                "TypeScript",
-                "React",
-                "DynamoDB",
-                "AWS Lambda",
-                "AWS API Gateway",
-                "AWS Cognito",
-                "AWS S3",
-                "AWS CloudFront"
-            ],
-            "url": "https://crm-dev.theyarnbazaar.com/"
+            "title": "Full Stack Web Developer",
+            "date": "Jan 2024 - Present",
+            "company": "The Yarn Bazaar",
+            "description": "Led the team in developing core platforms including the CRM, website, mobile app, and WhatsApp-based chatbot—enhancing lead management, user experience, and manufacturer engagement across the organization."
         },
         {
-            "title": "The Yarn Bazaar App",
-            "duration": "Sep 2023 - Dec 2023",
-            "description": "The Yarn Bazaar App is a platform where you can buy and sell yarns. It is a marketplace for yarns.",
+            "title": "Full Stack Web Development Intern",
+            "date": "Sep 2023 - Dec 2023",
+            "company": "The Yarn Bazaar",
+            "description": "Engineered and deployed native mobile applications for both iOS and Android using Flutter, AWS Lambda, and Node.js, achieving 1,000+ downloads."
+        }
+    ],
+    "educationData": [
+        {
+            "title": "Full Stack Web Development",
+            "date": "2022 - 2023",
+            "institution": "Masai School",
+            "description": "Completed a year-long Full-Stack Web Development course, gaining proficiency in HTML, CSS, React, Redux, Node.js, MongoDB, and Java for data structures and algorithms."
+        },
+        {
+            "title": "Bachelor of Technology",
+            "date": "2018 - 2022",
+            "institution": "Lovely Professional University, Punjab",
+            "description": "Bachelor's in Electrical and Electronics Engineering with a strong foundation in circuits, power systems, control systems, and telecommunications."
+        }
+    ],
+    "projects": [
+        {
+            "title": "TYB Chatbot",
+            "duration": "May 2025 - Present",
+            "description": "An internal chatbot system for The Yarn Bazaar that assists employees with queries and automates routine tasks.",
             "techStack": [
-                "Flutter",
-                "Dart",
-                "Firebase",
-                "AWS Lambda",
-                "AWS S3"
-            ],
-            "url": "https://play.google.com/store/apps/details?id=tyb.com_application_1"
+                "FastAPI",
+                "Python",
+                "Cohere",
+                "Qdrant",
+                "Google Cloud Run",
+                "Pydantic",
+                "Uvicorn",
+                "OpenAI"
+            ]
         },
         {
             "title": "The Yarn Bazaar Website",
-            "duration": "Sep 2023 - Present",
-            "description": "The Yarn Bazaar Website is a platform where you can buy and sell yarns. It is a marketplace for yarns.",
+            "duration": "Jan 2025 - Present",
+            "description": "A high-performance website built with Next.js to improve SEO, content management, and overall user experience.",
             "techStack": [
                 "TypeScript",
                 "React",
@@ -54,33 +68,56 @@
                 "AWS CloudFront"
             ],
             "url": "https://www.theyarnbazaar.com/"
+        },
+        {
+            "title": "The Yarn Bazaar CRM",
+            "duration": "Dec 2023 - Jan 2025",
+            "description": "A centralized CRM system streamlining lead management, communication, and order tracking through WhatsApp automation, email integration, and internal tools.",
+            "techStack": [
+                "TypeScript",
+                "React",
+                "DynamoDB",
+                "AWS Lambda",
+                "AWS API Gateway",
+                "AWS Cognito",
+                "AWS S3",
+                "AWS CloudFront"
+            ]
+        },
+        {
+            "title": "The Yarn Bazaar App",
+            "duration": "Sep 2023 - Nov 2023",
+            "description": "A cross-platform app offering industry updates, exhibitions, podcasts, and a textile calculator for better user engagement.",
+            "techStack": [
+                "Flutter",
+                "Dart",
+                "Firebase",
+                "AWS Lambda",
+                "AWS S3"
+            ],
+            "url": "https://play.google.com/store/apps/details?id=tyb.com_application_1"
         }
     ],
-    "footerUrls": [
+    "socialLinks": [
         {
             "title": "LinkedIn",
             "url": "https://www.linkedin.com/in/ujjw4l/",
-            "imageUrl": "https://cdn-icons-png.flaticon.com/512/61/61109.png"
+            "imageUrl": "/icons/linkedin.svg"
         },
         {
             "title": "GitHub",
             "url": "https://github.com/Lucverse",
-            "imageUrl": "https://cdn-icons-png.flaticon.com/512/25/25231.png"
-        },
-        {
-            "title": "Twitter",
-            "url": "https://twitter.com/Lucverse",
-            "imageUrl": "https://assets-global.website-files.com/5d66bdc65e51a0d114d15891/64cebe246fdedd41e706d946_X-logo-transparent-black-twitter.png"
+            "imageUrl": "/icons/github.svg"
         },
         {
             "title": "Stack Overflow",
             "url": "https://stackoverflow.com/users/21086050/lucverse",
-            "imageUrl": "https://cdn-icons-png.flaticon.com/512/2111/2111690.png"
+            "imageUrl": "/icons/stackoverflow.svg"
         },
         {
             "title": "Email",
             "url": "mailto:ujjw4l.singh@gmail.com",
-            "imageUrl": "https://static.vecteezy.com/system/resources/previews/020/009/614/non_2x/email-and-mail-icon-black-free-png.png"
+            "imageUrl": "/icons/email.svg"
         }
     ]
 }
