@@ -255,7 +255,6 @@ p {
   opacity: 0.4;
 }
 
-.footer-div,
 .basic-socials-div {
   display: flex;
   justify-content: center;
@@ -263,6 +262,22 @@ p {
   gap: clamp(2rem, 5vw, 5rem);
   animation: slideUp 1s ease-out both;
 }
+
+.footer-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.footer-div.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 .footer-div {
   border-radius: var(--border-radius) var(--border-radius) 0 0;
@@ -366,7 +381,12 @@ p {
   position: relative;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeUp 0.6s ease-out forwards;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.resume .resume-item.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .resume .resume-item .circle {
@@ -457,7 +477,7 @@ p {
 .navbar {
   padding: 1rem 2rem;
   position: fixed;
-  bottom: 3rem;
+  top: 2rem;
   left: 50%;
   z-index: 999;
   background: rgba(255, 255, 255, 0.1);
@@ -556,8 +576,7 @@ p {
   .navbar {
     top: 3rem;
     left: 5rem;
-    width: 50px;
-    height: 50px;
+    padding: 0.5rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -591,9 +610,9 @@ p {
     padding: 2rem;
     gap: 2rem;
 
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--border-radius);
 
@@ -691,5 +710,60 @@ p {
 
   .close-button:hover {
     transform: rotate(90deg);
+  }
+}
+
+
+/*=====================
+  scroll
+=====================*/
+
+.scroll-hint-wrapper {
+  position: absolute;
+  bottom: 8rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.scroll-hint-icon {
+  width: 24px;
+  height: 40px;
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  position: relative;
+}
+
+.scroll-hint-icon::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: scroll-dot 1.5s infinite ease-in-out;
+}
+
+@keyframes scroll-dot {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
   }
 }
