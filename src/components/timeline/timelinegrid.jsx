@@ -39,6 +39,14 @@ const TimelineGrid = ({ project, index }) => {
                 </div>
                 <div className='project-description'>
                     <p>{project.description}</p>
+                    <div className="project-techstack">
+                        {project.techStack.map((tech, techIndex) => (
+                            (
+                                tech.icon && tech.name &&
+                                <img src={tech.icon} alt={tech.name} key={techIndex} title={tech.name}/>
+                            )
+                        ))}
+                    </div>
                 </div>
             </div>
             <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
