@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const isAutoScrolling = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
+      if (isAutoScrolling.current) return;
+
       const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setShowNavbar(false);
@@ -25,6 +28,19 @@ const Navbar = () => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
 
+  const handleNavClick = (e, section) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    const el = document.getElementById(section);
+    if (el) {
+      isAutoScrolling.current = true;
+      el.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        isAutoScrolling.current = false;
+      }, 700);
+    }
+  };
+
   return (
     <>
       <nav className={`navbar ${showNavbar ? "navbar--visible" : "navbar--hidden"}`}>
@@ -37,9 +53,15 @@ const Navbar = () => {
             ☰
           </button>
           <ul className="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li>
+              <a href="#home" onClick={e => handleNavClick(e, "home")}>Home</a>
+            </li>
+            <li>
+              <a href="#about" onClick={e => handleNavClick(e, "about")}>About</a>
+            </li>
+            <li>
+              <a href="#projects" onClick={e => handleNavClick(e, "projects")}>Projects</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -53,9 +75,15 @@ const Navbar = () => {
             <IoMdClose />
           </button>
           <ul>
-            <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
-            <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
-            <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a></li>
+            <li>
+              <a href="#home" onClick={e => handleNavClick(e, "home")}>Home</a>
+            </li>
+            <li>
+              <a href="#about" onClick={e => handleNavClick(e, "about")}>About</a>
+            </li>
+            <li>
+              <a href="#projects" onClick={e => handleNavClick(e, "projects")}>Projects</a>
+            </li>
           </ul>
         </div>
       )}
