@@ -1,10 +1,9 @@
-
 const TimelineGrid = ({ project, index }) => {
     return (
         <div key={index} className="timeline-grid">
             <div className='project-title-div'>
                 <a href={project.url} className='project-title' target='_blank' rel="noreferrer">
-                    <h3>{project.title}</h3>
+                    <h2>{project.title}</h2>
                 </a>
 
                 <p className='project-duration'>({project.duration})</p>

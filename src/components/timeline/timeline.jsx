@@ -1,9 +1,8 @@
-import React from 'react';
 import TimelineGrid from './timelinegrid';
 
 const Timeline = ({ projects }) => {
     return (
-        <div className="timeline-main">
+        <div className="timeline-main" id='projects'>
             {projects.map((project, index) => (
                 <TimelineGrid project={project} index={index} key={index}/>
             ))}
