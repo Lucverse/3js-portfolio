@@ -8,11 +8,13 @@ import Footer from './components/footer/footer';
 import Socials from './components/socials/Socials';
 import Journey from './components/journey/journey';
 import Navbar from './components/navbar/Navbar';
+import ConsoleCommands from './components/console/ConsoleCommands';
 
 function App() {
   return (
     <div className='main-div'>
       <Navbar />
+      <ConsoleCommands />
       <div className='first-div' id='home'>
         <div className='basic-info'>
           <Username username={data.name} />
