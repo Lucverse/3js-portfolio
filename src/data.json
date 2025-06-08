@@ -83,7 +83,6 @@
         },
         {
             "title": "RGBi",
-            "role": "Full Stack Developer",
             "duration": "May 2025 – Present",
             "description": "A MERN-stack powered tool that recommends PC parts based on performance, aesthetics, budget, and noise preferences.",
             "techStack": [
@@ -112,6 +111,16 @@
                 {
                     "name": "Vercel",
                     "icon": "/icons/vercel.svg"
+                },
+                {
+                    "name": "Cohere"
+                },
+                {
+                    "name": "Qdrant"
+                },
+                {
+                    "name": "Google Cloud Run",
+                    "icon": "/icons/google-cloud.svg"
                 }
             ],
             "detailedDescription": {
@@ -270,12 +279,9 @@
                 {
                     "name": "MongoDB",
                     "icon": "/icons/mongodb.svg"
-                },
-                {
-                    "name": "Vercel",
-                    "icon": "/icons/vercel.svg"
                 }
             ],
+            "url": "https://one-click-download.netlify.app/",
             "detailedDescription": {
                 "desc": "Created a dynamic download portal where users can bookmark or search for commonly-used software, updated in real-time through a backend CMS.",
                 "keyPoints": [
