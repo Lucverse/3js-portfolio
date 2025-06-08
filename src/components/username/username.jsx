@@ -4,7 +4,7 @@ const Username = ({ username }) => {
         <>
             <div className='username-div'>
                 {nameParts.map((part, index) => (
-                    <p className='username' key={index}>{part}</p>
+                    <h1 className='username' key={index}>{part}</h1>
                 ))}
             </div>
 

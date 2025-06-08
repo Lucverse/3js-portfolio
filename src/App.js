@@ -7,10 +7,13 @@ import ThreeScene from './components/human/human';
 import Footer from './components/footer/footer';
 import Socials from './components/socials/Socials';
 import Journey from './components/journey/journey';
+import Navbar from './components/navbar/Navbar';
+
 function App() {
   return (
     <div className='main-div'>
-      <div className='first-div'>
+      <Navbar />
+      <div className='first-div' id='home'>
         <div className='basic-info'>
           <Username username={data.name} />
           <BasicDetails BasicDetails={data.title} />
@@ -20,7 +23,7 @@ function App() {
           <ThreeScene />
         </div>
       </div>
-      <Journey educationData={data.educationData} experienceData={data.experienceData}/>
+      <Journey educationData={data.educationData} experienceData={data.experienceData} />
       <Timeline projects={data.projects} />
       <Footer footerInfo={data.socialLinks} />
     </div>

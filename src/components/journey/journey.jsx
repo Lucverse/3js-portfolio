@@ -1,13 +1,13 @@
-const Journey = ({experienceData, educationData}) => {
+const Journey = ({ experienceData, educationData }) => {
 	return (
-		<section id="resume" className="resume">
+		<section id="about" className="resume">
 			<div className="section-title">
 				<h2>My Journey</h2>
 				<p>My journey as a Full Stack Web Developer</p>
 			</div>
 
 			<div className="row">
-				<div className="col-lg-6">
+				<div>
 					<h3 className="resume-title">Professional Experience</h3>
 					{experienceData.map((experience, index) => (
 						<div className="resume-item" key={index}>
@@ -19,7 +19,7 @@ const Journey = ({experienceData, educationData}) => {
 						</div>
 					))}
 				</div>
-				<div className="col-lg-6">
+				<div>
 					<h3 className="resume-title">Education</h3>
 					{educationData.map((education, index) => (
 						<div className="resume-item" key={index}>
