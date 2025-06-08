@@ -18,9 +18,11 @@ const ProjectModal = ({ project, onClose }) => {
 
                 {project.techStack && project.techStack.length > 0 && (
                     <p>
-                        <strong>Tech Stack:</strong> {project.techStack.join(", ")}
+                        <strong>Tech Stack:</strong>{" "}
+                        {project.techStack.map((tech) => tech.name).join(", ")}
                     </p>
                 )}
+
 
                 {project.detailedDescription?.desc && (
                     <p><strong>Summary:</strong> {project.detailedDescription.desc}</p>
