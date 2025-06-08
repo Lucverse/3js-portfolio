@@ -44,14 +44,34 @@
             "duration": "May 2025 - Present",
             "description": "An internal chatbot system for The Yarn Bazaar that assists employees with queries and automates routine tasks.",
             "techStack": [
-                "FastAPI",
-                "Python",
-                "Cohere",
-                "Qdrant",
-                "Google Cloud Run",
-                "Pydantic",
-                "Uvicorn",
-                "OpenAI"
+                {
+                    "name": "FastAPI",
+                    "icon": "/icons/fastapi.svg"
+                },
+                {
+                    "name": "Python",
+                    "icon": "/icons/python.svg"
+                },
+                {
+                    "name": "Cohere"
+                },
+                {
+                    "name": "Qdrant"
+                },
+                {
+                    "name": "Google Cloud Run",
+                    "icon": "/icons/google-cloud.svg"
+                },
+                {
+                    "name": "Pydantic"
+                },
+                {
+                    "name": "Uvicorn"
+                },
+                {
+                    "name": "OpenAI",
+                    "icon": "/icons/openai.svg"
+                }
             ],
             "detailedDescription": {
                 "desc": "Designed and developed an internal chatbot leveraging FastAPI, Cohere, Qdrant, and OpenAI to streamline query tracking and information retrieval across teams. This reduced manual searching, improved data accessibility, and enhanced communication efficiency.",
@@ -62,19 +82,82 @@
             }
         },
         {
+            "title": "RGBi",
+            "role": "Full Stack Developer",
+            "duration": "May 2025 – Present",
+            "description": "A MERN-stack powered tool that recommends PC parts based on performance, aesthetics, budget, and noise preferences.",
+            "techStack": [
+                {
+                    "name": "React",
+                    "icon": "/icons/react.svg"
+                },
+                {
+                    "name": "TypeScript",
+                    "icon": "/icons/typescript.svg"
+                },
+                {
+                    "name": "Tailwind CSS"
+                },
+                {
+                    "name": "Node.js",
+                    "icon": "/icons/nodejs.svg"
+                },
+                {
+                    "name": "Express.js"
+                },
+                {
+                    "name": "MongoDB",
+                    "icon": "/icons/mongodb.svg"
+                },
+                {
+                    "name": "Vercel",
+                    "icon": "/icons/vercel.svg"
+                }
+            ],
+            "detailedDescription": {
+                "desc": "Built a personalized PC part recommendation engine that ranks hardware based on user-defined parameters like noise levels, performance scores, and budget using semantic vector search with Cohere and Qdrant.",
+                "keyPoints": [
+                    "Smart ranking: Used Cohere’s Rerank API for intelligent sorting of component options.",
+                    "Fast search: Integrated Qdrant vector database for quick and accurate similarity search.",
+                    "Serverless backend: Deployed API endpoints via Google Cloud Functions for cost-efficient scaling."
+                ]
+            }
+        },
+        {
             "title": "The Yarn Bazaar Website",
             "role": "Team Lead",
             "duration": "Jan 2025 - Present",
             "description": "A high-performance website built with Next.js to improve SEO, content management, and overall user experience.",
             "techStack": [
-                "TypeScript",
-                "Next.js",
-                "DynamoDB",
-                "AWS Lambda",
-                "AWS API Gateway",
-                "AWS Cognito",
-                "AWS S3",
-                "AWS CloudFront"
+                {
+                    "name": "TypeScript",
+                    "icon": "/icons/typescript.svg"
+                },
+                {
+                    "name": "Next.js",
+                    "icon": "/icons/next-js.svg"
+                },
+                {
+                    "name": "DynamoDB",
+                    "icon": "/icons/aws-dynamodb.svg"
+                },
+                {
+                    "name": "AWS Lambda",
+                    "icon": "/icons/aws-lambda.svg"
+                },
+                {
+                    "name": "AWS API Gateway"
+                },
+                {
+                    "name": "AWS Cognito"
+                },
+                {
+                    "name": "AWS S3",
+                    "icon": "/icons/aws.svg"
+                },
+                {
+                    "name": "AWS CloudFront"
+                }
             ],
             "url": "https://www.theyarnbazaar.com/",
             "detailedDescription": {
@@ -90,14 +173,35 @@
             "duration": "Dec 2023 - Jan 2025",
             "description": "A centralized CRM system streamlining lead management, communication, and order tracking through WhatsApp automation, email integration, and internal tools.",
             "techStack": [
-                "TypeScript",
-                "React",
-                "DynamoDB",
-                "AWS Lambda",
-                "AWS API Gateway",
-                "AWS Cognito",
-                "AWS S3",
-                "AWS CloudFront"
+                {
+                    "name": "TypeScript",
+                    "icon": "/icons/typescript.svg"
+                },
+                {
+                    "name": "React",
+                    "icon": "/icons/react.svg"
+                },
+                {
+                    "name": "DynamoDB",
+                    "icon": "/icons/aws-dynamodb.svg"
+                },
+                {
+                    "name": "AWS Lambda",
+                    "icon": "/icons/aws-lambda.svg"
+                },
+                {
+                    "name": "AWS API Gateway"
+                },
+                {
+                    "name": "AWS Cognito"
+                },
+                {
+                    "name": "AWS S3",
+                    "icon": "/icons/aws.svg"
+                },
+                {
+                    "name": "AWS CloudFront"
+                }
             ],
             "detailedDescription": {
                 "desc": "Built a full-featured CRM enabling better customer visibility, automated communication, and operational efficiency.",
@@ -113,11 +217,24 @@
             "duration": "Sep 2023 - Nov 2023",
             "description": "A cross-platform app offering industry updates, exhibitions, podcasts, and a textile calculator for better user engagement.",
             "techStack": [
-                "Flutter",
-                "Dart",
-                "Firebase",
-                "AWS Lambda",
-                "AWS S3"
+                {
+                    "name": "Flutter",
+                    "icon": "/icons/flutter.svg"
+                },
+                {
+                    "name": "Dart"
+                },
+                {
+                    "name": "Android Studio",
+                    "icon": "/icons/android-studio.svg"
+                },
+                {
+                    "name": "AWS Lambda",
+                    "icon": "/icons/aws-lambda.svg"
+                },
+                {
+                    "name": "AWS S3"
+                }
             ],
             "url": "https://play.google.com/store/apps/details?id=tyb.com_application_1",
             "detailedDescription": {
@@ -126,6 +243,45 @@
                     "Achieved 1,000+ downloads in the first release cycle.",
                     "Delivered a unified content hub: industry news, podcasts, and event info.",
                     "Included a custom-built textile calculator tailored for industry professionals."
+                ]
+            }
+        },
+        {
+            "title": "One Click Download",
+            "role": "Frontend Developer",
+            "duration": "Apr 2023 – Present",
+            "description": "A lightweight utility web app to quickly access and download frequently-used applications with a single click.",
+            "techStack": [
+                {
+                    "name": "React",
+                    "icon": "/icons/react.svg"
+                },
+                {
+                    "name": "TypeScript",
+                    "icon": "/icons/typescript.svg"
+                },
+                {
+                    "name": "Tailwind CSS"
+                },
+                {
+                    "name": "Node.js",
+                    "icon": "/icons/nodejs.svg"
+                },
+                {
+                    "name": "MongoDB",
+                    "icon": "/icons/mongodb.svg"
+                },
+                {
+                    "name": "Vercel",
+                    "icon": "/icons/vercel.svg"
+                }
+            ],
+            "detailedDescription": {
+                "desc": "Created a dynamic download portal where users can bookmark or search for commonly-used software, updated in real-time through a backend CMS.",
+                "keyPoints": [
+                    "Dynamic linking: Admin backend allows updating and adding download links on the fly.",
+                    "Fast access: Optimized UI for one-click navigation and download start.",
+                    "Lightweight stack: Simple but efficient stack to ensure fast load times and responsiveness."
                 ]
             }
         }
