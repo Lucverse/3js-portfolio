@@ -278,7 +278,6 @@ p {
 
 .project-techstack {
   position: absolute;
-  bottom: -1rem;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row-reverse;
@@ -293,7 +292,17 @@ p {
   transform: translateX(20px);
   animation: slideInFromRight 0.5s ease forwards;
 }
+@media (min-width: 769px) {
+  .project-techstack {
+    bottom: -1rem;
+  }
+}
 
+@media (max-width: 768px) {
+  .project-techstack {
+    top: -3rem;
+  }
+}
 .project-techstack img:nth-child(1) {
   animation-delay: 0.1s;
 }
