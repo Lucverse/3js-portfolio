@@ -1,7 +1,6 @@
 {
   "name": "dark-portfolio",
   "version": "0.1.0",
-  "private": true,
   "homepage": "https://lucverse.github.io",
   "dependencies": {
     "@react-three/drei": "^10.1.2",
