@@ -40,6 +40,7 @@
     "projects": [
         {
             "title": "TYB Chatbot",
+            "role": "Team Lead",
             "duration": "May 2025 - Present",
             "description": "An internal chatbot system for The Yarn Bazaar that assists employees with queries and automates routine tasks.",
             "techStack": [
@@ -51,15 +52,23 @@
                 "Pydantic",
                 "Uvicorn",
                 "OpenAI"
-            ]
+            ],
+            "detailedDescription": {
+                "desc": "Designed and developed an internal chatbot leveraging FastAPI, Cohere, Qdrant, and OpenAI to streamline query tracking and information retrieval across teams. This reduced manual searching, improved data accessibility, and enhanced communication efficiency.",
+                "keyPoints": [
+                    "Query tracking: Enabled users to easily monitor the status and details of their product price queries in real time.",
+                    "Information retrieval: Integrated advanced embedding and vector search to provide fast, accurate responses from large datasets."
+                ]
+            }
         },
         {
             "title": "The Yarn Bazaar Website",
+            "role": "Team Lead",
             "duration": "Jan 2025 - Present",
             "description": "A high-performance website built with Next.js to improve SEO, content management, and overall user experience.",
             "techStack": [
                 "TypeScript",
-                "React",
+                "Next.js",
                 "DynamoDB",
                 "AWS Lambda",
                 "AWS API Gateway",
@@ -67,7 +76,14 @@
                 "AWS S3",
                 "AWS CloudFront"
             ],
-            "url": "https://www.theyarnbazaar.com/"
+            "url": "https://www.theyarnbazaar.com/",
+            "detailedDescription": {
+                "desc": "Directed a team of developers and a designer in transforming a static HTML/CSS/JS site into a performant Next.js architecture, boosting SEO and content agility.",
+                "keyPoints": [
+                    "Content Management: Built a CMS for the marketing team to manage blogs, news, and podcasts without dev intervention—reduced developer dependency by 70%.",
+                    "SEO & Performance: Leveraged Next.js SSR and caching, resulting in a 40% improvement in page load speed and search visibility."
+                ]
+            }
         },
         {
             "title": "The Yarn Bazaar CRM",
@@ -82,7 +98,15 @@
                 "AWS Cognito",
                 "AWS S3",
                 "AWS CloudFront"
-            ]
+            ],
+            "detailedDescription": {
+                "desc": "Built a full-featured CRM enabling better customer visibility, automated communication, and operational efficiency.",
+                "keyPoints": [
+                    "Communication: Integrated WhatsApp bot, email, and call automation for instant alerts and faster lead follow-up.",
+                    "Sales Support: Added Google Maps for location tagging and visit planning, improving sales team efficiency.",
+                    "Document Automation: Used OCR to extract structured data from invoices and forms—cutting manual entry time by 70%."
+                ]
+            }
         },
         {
             "title": "The Yarn Bazaar App",
@@ -95,7 +119,15 @@
                 "AWS Lambda",
                 "AWS S3"
             ],
-            "url": "https://play.google.com/store/apps/details?id=tyb.com_application_1"
+            "url": "https://play.google.com/store/apps/details?id=tyb.com_application_1",
+            "detailedDescription": {
+                "desc": "Engineered and deployed mobile apps for iOS and Android to expand TYB’s digital footprint and audience reach.",
+                "keyPoints": [
+                    "Achieved 1,000+ downloads in the first release cycle.",
+                    "Delivered a unified content hub: industry news, podcasts, and event info.",
+                    "Included a custom-built textile calculator tailored for industry professionals."
+                ]
+            }
         }
     ],
     "socialLinks": [
