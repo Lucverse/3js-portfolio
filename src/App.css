@@ -236,6 +236,7 @@ p {
   text-decoration: none;
   color: var(--secondary-color);
   line-height: 0.5;
+  cursor: pointer;
 }
 
 .project-title:hover {
@@ -681,11 +682,14 @@ p {
     color: var(--text-color);
     cursor: pointer;
     z-index: 10000;
-    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
   }
 
   .close-button:hover {
     transform: rotate(90deg);
   }
-
 }

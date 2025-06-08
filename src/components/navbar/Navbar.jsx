@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IoMdClose } from "react-icons/io";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -42,8 +43,6 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
-
-      {/* Mobile fullscreen overlay nav */}
       {menuOpen && (
         <div className="mobile-fullscreen-nav open">
           <button
@@ -51,7 +50,7 @@ const Navbar = () => {
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
           >
-            ❌
+            <IoMdClose />
           </button>
           <ul>
             <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
