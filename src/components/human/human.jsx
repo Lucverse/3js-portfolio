@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { PCDLoader } from 'three/examples/jsm/loaders/PCDLoader';
-import * as THREE from 'three'; // Import THREE
+import * as THREE from 'three';
 
 const PCDViewer = () => {
     const { camera, scene } = useThree();
@@ -26,22 +26,22 @@ const PCDViewer = () => {
             loadedPoints.geometry.center();
             loadedPoints.geometry.rotateX(Math.PI);
             loadedPoints.name = 'human.pcd';
-            loadedPoints.material.size = 0.001;
+            loadedPoints.material.size = 0.0001;
             scene.add(loadedPoints);
         });
-        camera.position.set(0, 0, 0.4);
+        camera.position.set(0.1, 0.2, 0.5);
     }, [camera, scene]);
 
     return (
         <>
-            <OrbitControls ref={controlsRef} minDistance={0.3} maxDistance={0.5} />
+            <OrbitControls ref={controlsRef} minDistance={0.4} maxDistance={0.6} />
         </>
     );
 };
 
 const PCDViewerCanvas = () => {
     return (
-        <Canvas style={{ cursor: 'grab', height: '60dvh' }}>
+        <Canvas style={{ cursor: 'grab', minHeight: '60dvh' }}>
             <PCDViewer />
         </Canvas>
     );
