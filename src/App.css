@@ -129,6 +129,7 @@ p {
 @media (max-width: 768px) {
   .main-div {
     padding: 4%;
+    padding-bottom: 0;
   }
 
   .basic-info {
@@ -159,6 +160,7 @@ p {
   }
 
   .basic-info {
+    padding: 2rem;
     align-items: end;
     text-align: end;
   }
