@@ -129,6 +129,7 @@ p {
 @media (max-width: 768px) {
   .main-div {
     padding: 4%;
+    padding-bottom: 0;
   }
 
   .basic-info {
@@ -159,6 +160,7 @@ p {
   }
 
   .basic-info {
+    padding: 2rem;
     align-items: end;
     text-align: end;
   }
@@ -203,7 +205,7 @@ p {
   display: grid;
   width: 100%;
   gap: 2rem;
-  padding: 2rem 1rem;
+  padding: 2rem;
   color: var(--secondary-color);
   min-height: 150px;
   opacity: 0;
@@ -276,6 +278,7 @@ p {
   color: var(--muted-color);
 }
 
+
 .project-techstack {
   position: absolute;
   display: flex;
@@ -292,6 +295,7 @@ p {
   transform: translateX(20px);
   animation: slideInFromRight 0.5s ease forwards;
 }
+
 @media (min-width: 769px) {
   .project-techstack {
     bottom: -1rem;
@@ -303,6 +307,7 @@ p {
     top: -3rem;
   }
 }
+
 .project-techstack img:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -351,6 +356,31 @@ p {
   font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   line-height: 0.8;
   opacity: 0.4;
+}
+
+.project-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  line-height: 0.8;
+}
+
+.project-tag {
+  width: fit-content;
+  padding: 0.3rem 0.8rem;
+  color: var(--bg-color);
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.project-tag:hover {
+  box-shadow: 0 2px 8px rgba(221, 213, 201, 0.5);
+  border-color: var(--secondary-color);
 }
 
 .load-more-btn {
@@ -828,11 +858,12 @@ p {
 @media (max-width: 768px) {
   .navbar {
     top: 3rem;
-    left: 5rem;
-    padding: 0.5rem 1rem;
+    left: 4rem;
+    padding: 0.2rem 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 20%;
   }
 
   .navbar-container {

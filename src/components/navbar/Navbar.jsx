@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { IoMdClose } from "react-icons/io";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -72,7 +71,7 @@ const Navbar = () => {
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
           >
-            <IoMdClose />
+            ✕
           </button>
           <ul>
             <li>

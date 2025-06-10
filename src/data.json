@@ -34,7 +34,7 @@
             "title": "Bachelor of Technology",
             "date": "2018 - 2022",
             "institution": "Lovely Professional University, Punjab",
-            "description": "Bachelor's in Electrical and Electronics Engineering with a strong foundation in circuits, power systems, control systems, and telecommunications."
+            "description": "Bachelor's degree in Electrical and Electronics Engineering with a strong foundation in circuits, power systems, control systems, and telecommunications."
         }
     ],
     "projects": [
@@ -42,6 +42,7 @@
             "title": "TYB Chatbot",
             "role": "Team Lead",
             "duration": "May 2025 - Present",
+            "tags":["In Progress", "Internal Tool"],
             "description": "An internal chatbot system for The Yarn Bazaar that assists employees with queries and automates routine tasks.",
             "techStack": [
                 {
@@ -84,6 +85,7 @@
         {
             "title": "RGBi",
             "duration": "May 2025 – Present",
+            "tags":["In Progress"],
             "description": "A MERN-stack powered tool that recommends PC parts based on performance, aesthetics, budget, and noise preferences.",
             "techStack": [
                 {
@@ -124,7 +126,7 @@
                 }
             ],
             "detailedDescription": {
-                "desc": "Built a personalized PC part recommendation engine that ranks hardware based on user-defined parameters like noise levels, performance scores, and budget using semantic vector search with Cohere and Qdrant.",
+                "desc": "Built a personalized PC part recommendation engine that ranks hardware based on user-defined parameters like noise levels, performance scores, and budget, using semantic vector search with Cohere and Qdrant.",
                 "keyPoints": [
                     "Smart ranking: Used Cohere’s Rerank API for intelligent sorting of component options.",
                     "Fast search: Integrated Qdrant vector database for quick and accurate similarity search.",
@@ -135,6 +137,7 @@
         {
             "title": "The Yarn Bazaar Website",
             "role": "Team Lead",
+            "tags":["In Progress"],
             "duration": "Jan 2025 - Present",
             "description": "A high-performance website built with Next.js to improve SEO, content management, and overall user experience.",
             "techStack": [
@@ -179,7 +182,9 @@
         },
         {
             "title": "The Yarn Bazaar CRM",
+            "role": "Frontend Developer",
             "duration": "Dec 2023 - Jan 2025",
+            "tags":["Internal Tool"],
             "description": "A centralized CRM system streamlining lead management, communication, and order tracking through WhatsApp automation, email integration, and internal tools.",
             "techStack": [
                 {
@@ -223,6 +228,8 @@
         },
         {
             "title": "The Yarn Bazaar App",
+            "role": "Frontend Developer",
+            "tags":["Deprecated"],
             "duration": "Sep 2023 - Nov 2023",
             "description": "A cross-platform app offering industry updates, exhibitions, podcasts, and a textile calculator for better user engagement.",
             "techStack": [
@@ -257,9 +264,8 @@
         },
         {
             "title": "One Click Download",
-            "role": "Frontend Developer",
             "duration": "Apr 2023 – Present",
-            "description": "A lightweight utility web app to quickly access and download frequently-used applications with a single click.",
+            "description": "A lightweight utility web app for quickly accessing and downloading frequently used applications with a single click.",
             "techStack": [
                 {
                     "name": "React",

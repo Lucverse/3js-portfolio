@@ -2,111 +2,230 @@ import { useEffect } from 'react';
 import data from '../../data.json';
 
 const ConsoleCommands = () => {
-    useEffect(() => {
-        const { projects, experienceData, educationData, socialLinks, ...basic } = data;
+	useEffect(() => {
+		const { projects, experienceData, educationData, socialLinks, ...basic } = data;
 
-        window.ujjw4l = {
-            help: () => {
-                console.log("%cAvailable Commands:", "color: #00bcd4; font-weight: bold");
-                console.table([
-                    { command: "ujjw4l.about()", description: "Get basic info" },
-                    { command: "ujjw4l.experience()", description: "Show work experience" },
-                    { command: "ujjw4l.education()", description: "Show education background" },
-                    { command: "ujjw4l.projects()", description: "List all project titles" },
-                    { command: "ujjw4l.getProject(title)", description: "Show details of a project by title" },
-                    { command: "ujjw4l.socials()", description: "List social links" },
-                    { command: "ujjw4l.techStack()", description: "Show unique tech stack used across projects" }
-                ]);
-            },
+		window.ujjw4l = {
+			run: (input) => {
+				if (typeof input !== "string") {
+					console.warn("❌ Please enter a valid command string, like 'about' or 'getProject_2'");
+					return;
+				}
 
-            about: () => {
-                console.log({
-                    name: basic.name,
-                    age: basic.age,
-                    email: basic.email,
-                    phone: basic.phone,
-                    title: basic.title,
-                    city: basic.address?.city,
-                    state: basic.address?.state,
-                });
-            },
+				const [command, ...args] = input.trim().split(" ");
+				const validCommands = {
+					about: "about",
+					experience: "experience",
+					education: "education",
+					projects: "projects",
+					getproject: "getProject",
+					socials: "socials",
+					techstack: "techStack",
+					help: "help"
+				};
 
-            experience: () => {
-                console.table(experienceData.map(item => ({
-                    Title: item.title,
-                    Company: item.company,
-                    Date: item.date
-                })));
-            },
+				const funcName = validCommands[command.toLowerCase()];
+				if (!funcName || typeof window.ujjw4l[funcName] !== "function") {
+					console.warn(`❌ Unknown command: '${command}'. Type help for a list of commands.`);
+					return;
+				}
 
-            education: () => {
-                console.table(educationData.map(item => ({
-                    Title: item.title,
-                    Institution: item.institution,
-                    Date: item.date
-                })));
-            },
+				try {
+					const parsedArgs = args.map(arg => {
+						const num = Number(arg);
+						return isNaN(num) ? arg : num;
+					});
 
-            projects: () => {
-                console.table(projects.map(p => ({
-                    Title: p.title,
-                    Role: p.role || "N/A",
-                    Duration: p.duration
-                })));
-            },
+					window.ujjw4l[funcName](...parsedArgs);
+				} catch (err) {
+					console.error("⚠️ Error executing command:", err);
+				}
+			},
 
-            getProject: (index) => {
-                if (typeof index !== "number" || index < 0 || index >= projects.length) {
-                    console.warn("❌ Invalid index. Use a number between 0 and " + (projects.length - 1));
-                    return;
-                }
+			help: () => {
+				console.log(
+					`%cAvailable Commands:
+%c• about         %c- Get basic info
+%c• experience    %c- Show work experience
+%c• education     %c- Show education background
+%c• projects      %c- List all project titles
+%c• getProject_n 	%c- Show details of a project by index
+%c• socials       %c- List social links
+%c• techStack     %c- Show unique tech stack used across projects
+`,
+					"color: #bfae93; font-weight: bold", // primary
+					"color: #d1c5ad", "color: #acacac", // secondary, muted
+					"color: #d1c5ad", "color: #acacac",
+					"color: #d1c5ad", "color: #acacac",
+					"color: #d1c5ad", "color: #acacac",
+					"color: #d1c5ad", "color: #acacac",
+					"color: #d1c5ad", "color: #acacac",
+					"color: #d1c5ad", "color: #acacac"
+				);
+			},
 
-                const project = projects[index];
-                console.group(`📌 Project: ${project.title}`);
-                console.log("🔹 Role:", project.role || "N/A");
-                console.log("🔹 Duration:", project.duration || "N/A");
-                console.log("🔹 Description:", project.description || "N/A");
-                console.log("🔹 Tech Stack:", project.techStack?.map(t => t.name).join(", ") || "N/A");
+			about: () => {
+				console.log(
+					`%c${basic.name}
+%cAge: %c${basic.age}
+%cEmail: %c${basic.email}
+%cPhone: %c${basic.phone}
+%cTitle: %c${basic.title}
+%cLocation: %c${basic.address?.city}, ${basic.address?.state}
+`,
+					"color: #bfae93; font-weight: bold; font-size: 1.2em", // primary
+					"color: #d1c5ad", "color: #ffffff",
+					"color: #d1c5ad", "color: #ffffff",
+					"color: #d1c5ad", "color: #ffffff",
+					"color: #d1c5ad", "color: #ffffff",
+					"color: #d1c5ad", "color: #ffffff"
+				);
+			},
 
-                if (project.detailedDescription) {
-                    console.groupCollapsed("📖 Detailed Description");
-                    console.log(project.detailedDescription.desc);
-                    project.detailedDescription.keyPoints?.forEach((point, i) => {
-                        console.log(`   ${i + 1}. ${point}`);
-                    });
-                    console.groupEnd();
-                }
+			experience: () => {
+				console.log("%cExperience", "color: #bfae93; font-weight: bold; font-size: 1.2em");
+				experienceData.forEach((item, i) => {
+					console.log(
+						`%c${item.title ? item.title : "—"}
+%cCompany: %c${item.company || "N/A"}
+%cDate: %c${item.date || "N/A"}
+%c${item.description || ""}`,
+						"color: #d1c5ad; font-weight: bold", // secondary
+						"color: #bfae93", "color: #ffffff", // primary, text
+						"color: #bfae93", "color: #ffffff",
+						"color: #acacac"
+					);
+				});
+			},
 
-                if (project.url) console.log("🔗 URL:", project.url);
-                if (project.repo) console.log("💻 Repo:", project.repo);
+			education: () => {
+				console.log("%cEducation", "color: #bfae93; font-weight: bold; font-size: 1.2em");
+				educationData.forEach((item, i) => {
+					console.log(
+						`%c${item.title}
+%cInstitution: %c${item.institution}
+%cDate: %c${item.date}
+%c${item.description || ""}`,
+						"color: #d1c5ad; font-weight: bold", // secondary
+						"color: #bfae93", "color: #ffffff", // primary, text
+						"color: #bfae93", "color: #ffffff",
+						"color: #acacac"
+					);
+				});
+			},
 
-                console.groupEnd();
-            },
+			projects: () => {
+				console.log("%cProjects", "color: #bfae93; font-weight: bold; font-size: 1.2em");
+				projects.forEach((p, i) => {
+					console.log(
+						`%c${i}. %c${p.title}
+%cRole: %c${p.role || "N/A"}
+%cDuration: %c${p.duration || "N/A"}`,
+						"color: #d1c5ad; font-weight: bold", "color: #ffffff", // secondary, text
+						"color: #bfae93", "color: #ffffff", // primary, text
+						"color: #bfae93", "color: #ffffff"
+					);
+				});
+			},
 
+			getProject: (index) => {
+				if (typeof index !== "number" || index < 0 || index >= projects.length) {
+					console.warn("❌ Invalid index. Use a number between 0 and " + (projects.length - 1));
+					return;
+				}
+				const project = projects[index];
+				console.log(
+					`%c${project.title}
+%cRole: %c${project.role || "N/A"}
+%cDuration: %c${project.duration || "N/A"}
+%cTech Stack: %c${project.techStack?.map(t => t.name).join(", ") || "N/A"}`,
+					"color: #bfae93; font-weight: bold; font-size: 2em",
+					"color: #d1c5ad", "color: #ffffff",
+					"color: #d1c5ad", "color: #ffffff",
+					"color: #d1c5ad", "color: #ffffff"
+				);
+				if (project.detailedDescription) {
+					console.log(
+						`%cDetailed Description: %c${project.detailedDescription.desc}`,
+						"color: #9e8a75; font-weight: bold", "color: #ffffff"
+					);
+					project.detailedDescription.keyPoints?.forEach((point, i) => {
+						console.log(`%c   ${i + 1}. %c${point}`, "color: #bfae93", "color: #acacac");
+					});
+				}
+				if (project.url) console.log("%c🔗 URL: %c" + project.url, "color: #d1c5ad", "color: #ffffff");
+				if (project.repo) console.log("%c💻 Repo: %c" + project.repo, "color: #d1c5ad", "color: #ffffff");
+			},
 
-            techStack: () => {
-                const stack = new Set();
-                projects.forEach(project => {
-                    project.techStack.forEach(tech => {
-                        const name = typeof tech === "string" ? tech : tech.name;
-                        stack.add(name);
-                    });
-                });
-                console.log("🛠️ Tech Stack Used:", [...stack].sort());
-            },
+			techStack: () => {
+				const stack = new Set();
+				projects.forEach(project => {
+					project.techStack.forEach(tech => {
+						const name = typeof tech === "string" ? tech : tech.name;
+						stack.add(name);
+					});
+				});
+				console.log(
+					`%cTech Stack Used: %c${[...stack].sort().join(", ")}`,
+					"color: #bfae93; font-weight: bold", "color: #ffffff"
+				);
+			},
 
-            socials: () => {
-                console.table(socialLinks.map(link => ({
-                    Platform: link.title,
-                    URL: link.url
-                })));
-            },
-        };
+			socials: () => {
+				console.log("%cSocial Links", "color: #bfae93; font-weight: bold; font-size: 1.2em");
+				socialLinks.forEach(link => {
+					console.log(
+						`%c${link.title}: %c${link.url}`,
+						"color: #d1c5ad; font-weight: bold", "color: #ffffff"
+					);
+				});
+			},
+		};
 
-        console.log("%c💡 Type ujjw4l.help() to get started!", "color: #4caf50; font-size: 16px;");
-    }, []);
+		Object.keys(window.ujjw4l).forEach(key => {
+			Object.defineProperty(window, key, {
+				get: () => {
+					const fn = window.ujjw4l[key];
+					if (typeof fn === "function") {
+						fn();
+						return undefined;
+					}
+					return fn;
+				},
+				configurable: true,
+			});
+			if (key === "getProject") {
+				for (let i = 0; i < projects.length; i++) {
+					const dynamicKey = `${key}_${i}`;
+					Object.defineProperty(window, dynamicKey, {
+						get: () => {
+							const fn = window.ujjw4l[key];
+							if (typeof fn === "function") {
+								fn(i);
+								return undefined;
+							}
+							return fn;
+						},
+						configurable: true,
+					});
+				}
+			}
+		});
 
-    return null;
+		console.log(
+			`%cWelcome to Ujjawal's Interactive Console Portfolio!`,
+			'color: #bfae93; font-size: 2rem; font-weight: bold;'
+		);
+		console.log(
+			`%cTip: Type %chelp%c to see available commands.`,
+			'color: #acacac; font-size: 13px;',
+			'color: #d1c5ad; font-weight: bold;',
+			'color: #acacac;'
+		);
+
+	}, []);
+
+	return null;
 };
 
 export default ConsoleCommands;
