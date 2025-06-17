@@ -146,8 +146,6 @@ p {
 }
 
 .first-div {
-  display: grid;
-  gap: 2rem;
   height: 80dvh;
   border-radius: var(--border-radius);
   border: 1px solid var(--primary-color);
@@ -156,7 +154,9 @@ p {
 
 @media (min-width: 768px) {
   .first-div {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 
   .basic-info {
@@ -168,9 +168,14 @@ p {
 
 @media (max-width: 767px) {
   .first-div {
-    grid-template-columns: 1fr;
-    height: auto;
-    min-height: 80dvh;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 80svh;
+    padding-bottom: 2rem;
+  }
+
+  .canvas-div {
+    height: 100%;
   }
 }
 
