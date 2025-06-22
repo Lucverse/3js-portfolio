@@ -39,10 +39,66 @@
     ],
     "projects": [
         {
+            "title": "Chatbot Builder",
+            "role": "Full Stack Developer",
+            "duration": "June 2025 - Present",
+            "tags": [
+                "In Progress",
+                "Side Project"
+            ],
+            "description": "A full-stack chatbot platform that allows users to upload files, embed knowledge, and chat with context-aware AI assistants.",
+            "techStack": [
+                {
+                    "name": "FastAPI",
+                    "icon": "/icons/fastapi.svg"
+                },
+                {
+                    "name": "Python",
+                    "icon": "/icons/python.svg"
+                },
+                {
+                    "name": "Cohere"
+                },
+                {
+                    "name": "Qdrant"
+                },
+                {
+                    "name": "Google Cloud Run",
+                    "icon": "/icons/google-cloud.svg"
+                },
+                {
+                    "name": "React",
+                    "icon": "/icons/react.svg"
+                },
+                {
+                    "name": "Tailwind CSS"
+                },
+                {
+                    "name": "TypeScript",
+                    "icon": "/icons/typescript.svg"
+                },
+                {
+                    "name": "MongoDB",
+                    "icon": "/icons/mongodb.svg"
+                }
+            ],
+            "detailedDescription": {
+                "desc": "Building a platform where users can register, upload knowledge files (PDF/TXT), and chat with an AI assistant that responds using contextually embedded data. Features include persistent chat history, user authentication, and incremental message loading.",
+                "keyPoints": [
+                    "User-specific knowledge base: Each user’s uploads are embedded and stored in a separate vector collection using Qdrant.",
+                    "Chat history and pagination: Implemented persistent chat storage in MongoDB with lazy loading and scroll-based pagination.",
+                    "Authentication: Secured endpoints and frontend routes with JWT-based auth including token persistence and protected route guards."
+                ]
+            }
+        },
+        {
             "title": "TYB Chatbot",
             "role": "Team Lead",
             "duration": "May 2025 - Present",
-            "tags":["In Progress", "Internal Tool"],
+            "tags": [
+                "In Progress",
+                "Internal Tool"
+            ],
             "description": "An internal chatbot system for The Yarn Bazaar that assists employees with queries and automates routine tasks.",
             "techStack": [
                 {
@@ -85,7 +141,10 @@
         {
             "title": "RGBi",
             "duration": "May 2025 – Present",
-            "tags":["In Progress"],
+            "tags": [
+                "In Progress",
+                "Side Project"
+            ],
             "description": "A MERN-stack powered tool that recommends PC parts based on performance, aesthetics, budget, and noise preferences.",
             "techStack": [
                 {
@@ -137,7 +196,9 @@
         {
             "title": "The Yarn Bazaar Website",
             "role": "Team Lead",
-            "tags":["In Progress"],
+            "tags": [
+                "In Progress"
+            ],
             "duration": "Jan 2025 - Present",
             "description": "A high-performance website built with Next.js to improve SEO, content management, and overall user experience.",
             "techStack": [
@@ -184,7 +245,9 @@
             "title": "The Yarn Bazaar CRM",
             "role": "Frontend Developer",
             "duration": "Dec 2023 - Jan 2025",
-            "tags":["Internal Tool"],
+            "tags": [
+                "Internal Tool"
+            ],
             "description": "A centralized CRM system streamlining lead management, communication, and order tracking through WhatsApp automation, email integration, and internal tools.",
             "techStack": [
                 {
@@ -229,7 +292,9 @@
         {
             "title": "The Yarn Bazaar App",
             "role": "Frontend Developer",
-            "tags":["Deprecated"],
+            "tags": [
+                "Deprecated"
+            ],
             "duration": "Sep 2023 - Nov 2023",
             "description": "A cross-platform app offering industry updates, exhibitions, podcasts, and a textile calculator for better user engagement.",
             "techStack": [
@@ -264,6 +329,9 @@
         },
         {
             "title": "One Click Download",
+            "tags": [
+                "Side Project"
+            ],
             "duration": "Apr 2023 – Present",
             "description": "A lightweight utility web app for quickly accessing and downloading frequently used applications with a single click.",
             "techStack": [
