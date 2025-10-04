@@ -53,7 +53,7 @@ Visit my portfolio at: [https://lucverse.com](https://lucverse.com)
 
 ## Contact
 
-- **Email**: [ujjwalsingh0041@gmail.com](mailto:ujjwalsingh0041@gmail.com)
+- **Email**: [ujjw4l.singh@gmail.com](mailto:ujjw4l.singh@gmail.com)
 - **LinkedIn**: [linkedin.com/in/ujjw4l](https://linkedin.com/in/ujjw4l)
 - **Twitter**: [@Ujjw4lsingh](https://twitter.com/Ujjw4lsingh)
 - **GitHub**: [github.com/Lucverse](https://github.com/Lucverse)
