@@ -1,55 +1,59 @@
-# 3js Dark Portfolio
+# Ujjawal Singh - Portfolio
 
-A simple and modern portfolio template designed to showcase your work, skills, and accomplishments with a dark-themed aesthetic.
+A modern 3D portfolio website built with React.js and Three.js, showcasing my projects, skills, and professional journey as a Software Engineer.
+
+## About
+
+This is my personal portfolio website featuring:
+- **3D Earth Model**: Interactive Three.js canvas with rotating Earth
+- **Responsive Design**: Optimized for desktop and mobile devices
+- **Dark Theme**: Modern dark UI with starfield background
+- **Interactive Elements**: Smooth animations and hover effects
+- **Project Showcase**: Detailed timeline of my development projects
+- **Professional Journey**: Education and work experience sections
+
+## Tech Stack
+
+- **Frontend**: React.js, Three.js, CSS3
+- **3D Graphics**: @react-three/fiber, @react-three/drei
+- **Deployment**: GitHub Pages
+- **Build Tool**: Create React App
 
 ## Features
 
-- Clean and elegant dark UI
-- Responsive design for desktop and mobile
-- Sections for projects, skills, experience, and contact
-- Easy to customize
+- Interactive 3D Earth model with realistic textures
+- Animated starfield background
+- Responsive navigation with smooth scrolling
+- Project timeline with detailed descriptions
+- Social media integration
+- Downloadable resume
+- Professional console-style welcome message
 
-## Getting Started
+## Live Demo
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Lucverse/dark-portfolio.git
-   cd dark-portfolio
-   ```
+Visit my portfolio at: [https://lucverse.com](https://lucverse.com)
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
 
-3. **Run locally**
-   ```bash
-   npm run start
-   ```
-
-4. **Customize your content**
-   - Edit the relevant files (e.g., data files, component files, etc.) to add your own projects, skills, and information.
-
-## Folder Structure
+<!-- ## Project Structure
 
 ```
-dark-portfolio/
-├── public/         # Static assets (images, icons, etc.)
-├── src/            # Source code
-│   ├── components/ # Reusable UI components
-├── package.json    # Project configuration
-└── data.json       # User Data
-└── README.md       # Project documentation
-```
+3js-portfolio/
+├── public/           # Static assets, resume, textures
+├── src/
+│   ├── components/   # React components
+│   │   ├── canvas/   # Three.js 3D components
+│   │   ├── navbar/   # Navigation component
+│   │   ├── timeline/ # Project timeline
+│   │   └── ...       # Other UI components
+│   ├── App.js        # Main application component
+│   ├── App.css       # Global styles
+│   └── data.json     # Portfolio content data
+└── package.json      # Dependencies and scripts
+``` -->
 
-## Deployment
+## Contact
 
-You can deploy this portfolio on platforms like GitHub Pages, Vercel, or Netlify.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-Feel free to contribute or customize this template for your own needs!
+- **Email**: [ujjwalsingh0041@gmail.com](mailto:ujjwalsingh0041@gmail.com)
+- **LinkedIn**: [linkedin.com/in/ujjw4l](https://linkedin.com/in/ujjw4l)
+- **Twitter**: [@Ujjw4lsingh](https://twitter.com/Ujjw4lsingh)
+- **GitHub**: [github.com/Lucverse](https://github.com/Lucverse)
