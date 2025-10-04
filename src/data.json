@@ -3,36 +3,37 @@
     "age": 25,
     "email": "Ujjw4l.singh@gmail.com",
     "phone": "9654736193",
-    "title": "Full Stack Web Developer",
+    "title": "Full Stack Developer",
     "address": {
-        "city": "Bengaluru",
-        "state": "Karnataka",
-        "pincode": "560102"
+        "city": "New Delhi",
+        "state": "Delhi",
+        "pincode": "110030",
+        "country": "India"
     },
     "experienceData": [
         {
-            "title": "Full Stack Web Developer",
-            "date": "Jan 2024 - Present",
-            "company": "The Yarn Bazaar",
-            "description": "Led the team in developing core platforms including the CRM, website, mobile app, and WhatsApp-based chatbot—enhancing lead management, user experience, and manufacturer engagement across the organization."
+            "title": "Team Lead",
+            "date": "Aug 2025 - Present",
+            "company": "Wedease",
+            "description": "Leading cross-functional development teams to build wedding planning solutions and AI-driven tools for sales/operations teams. Overseeing technical architecture, mentoring developers, and driving agile delivery practices."
         },
         {
-            "title": "Full Stack Web Development Intern",
-            "date": "Sep 2023 - Dec 2023",
+            "title": "Full Stack Web Developer",
+            "date": "Sep 2023 - Aug 2025",
             "company": "The Yarn Bazaar",
-            "description": "Engineered and deployed native mobile applications for both iOS and Android using Flutter, AWS Lambda, and Node.js, achieving 1,000+ downloads."
+            "description": "Led the team in developing core platforms including the CRM, website, mobile app, and WhatsApp-based chatbot—enhancing lead management, user experience, and manufacturer engagement across the organization."
         }
     ],
     "educationData": [
         {
             "title": "Full Stack Web Development",
-            "date": "2022 - 2023",
+            "date": "June 2022 - Aug 2023",
             "institution": "Masai School",
             "description": "Completed a year-long Full-Stack Web Development course, gaining proficiency in HTML, CSS, React, Redux, Node.js, MongoDB, and Java for data structures and algorithms."
         },
         {
             "title": "Bachelor of Technology",
-            "date": "2018 - 2022",
+            "date": "Aug 2018 - May 2022",
             "institution": "Lovely Professional University, Punjab",
             "description": "Bachelor's degree in Electrical and Electronics Engineering with a strong foundation in circuits, power systems, control systems, and telecommunications."
         }
@@ -94,7 +95,7 @@
         {
             "title": "TYB Chatbot",
             "role": "Team Lead",
-            "duration": "May 2025 - Present",
+            "duration": "May 2025 - Aug 2025",
             "tags": [
                 "In Progress",
                 "Internal Tool"
@@ -199,7 +200,7 @@
             "tags": [
                 "In Progress"
             ],
-            "duration": "Jan 2025 - Present",
+            "duration": "Jan 2025 - July 2025",
             "description": "A high-performance website built with Next.js to improve SEO, content management, and overall user experience.",
             "techStack": [
                 {
@@ -332,7 +333,7 @@
             "tags": [
                 "Side Project"
             ],
-            "duration": "Apr 2023 – Present",
+            "duration": "Apr 2023 – May 2023",
             "description": "A lightweight utility web app for quickly accessing and downloading frequently used applications with a single click.",
             "techStack": [
                 {
