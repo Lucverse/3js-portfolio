@@ -86,9 +86,18 @@
             "detailedDescription": {
                 "desc": "Building a platform where users can register, upload knowledge files (PDF/TXT), and chat with an AI assistant that responds using contextually embedded data. Features include persistent chat history, user authentication, and incremental message loading.",
                 "keyPoints": [
-                    "User-specific knowledge base: Each user’s uploads are embedded and stored in a separate vector collection using Qdrant.",
-                    "Chat history and pagination: Implemented persistent chat storage in MongoDB with lazy loading and scroll-based pagination.",
-                    "Authentication: Secured endpoints and frontend routes with JWT-based auth including token persistence and protected route guards."
+                    {
+                        "label": "Each user's uploads are embedded and stored in a separate vector collection using Qdrant.",
+                        "image": "/projects/chatbot-builder/embedding.svg"
+                    },
+                    {
+                        "label": "Implemented persistent chat storage in MongoDB with lazy loading and scroll-based pagination.",
+                        "image": "/projects/chatbot-builder/chat.svg"
+                    },
+                    {
+                        "label": "Secured endpoints and frontend routes with JWT-based auth including token persistence and protected route guards.",
+                        "image": "/projects/chatbot-builder/authentication.svg"
+                    }
                 ]
             }
         },
@@ -134,8 +143,14 @@
             "detailedDescription": {
                 "desc": "Designed and developed an internal chatbot leveraging FastAPI, Cohere, Qdrant, and OpenAI to streamline query tracking and information retrieval across teams. This reduced manual searching, improved data accessibility, and enhanced communication efficiency.",
                 "keyPoints": [
-                    "Query tracking: Enabled users to easily monitor the status and details of their product price queries in real time.",
-                    "Information retrieval: Integrated advanced embedding and vector search to provide fast, accurate responses from large datasets."
+                    {
+                        "label": "Query tracking: Enabled users to easily monitor the status and details of their product price queries in real time.",
+                        "image": "/projects/tyb-chatbot/tracking.svg"
+                    },
+                    {
+                        "label": "Information retrieval: Integrated advanced embedding and vector search to provide fast, accurate responses from large datasets.",
+                        "image": "/projects/tyb-chatbot/information.svg"
+                    }
                 ]
             }
         },
@@ -188,9 +203,18 @@
             "detailedDescription": {
                 "desc": "Built a personalized PC part recommendation engine that ranks hardware based on user-defined parameters like noise levels, performance scores, and budget, using semantic vector search with Cohere and Qdrant.",
                 "keyPoints": [
-                    "Smart ranking: Used Cohere’s Rerank API for intelligent sorting of component options.",
-                    "Fast search: Integrated Qdrant vector database for quick and accurate similarity search.",
-                    "Serverless backend: Deployed API endpoints via Google Cloud Functions for cost-efficient scaling."
+                    {
+                        "label": "Smart ranking: Used Cohere's Rerank API for intelligent sorting of component options.",
+                        "image": "/projects/rgbi/ranking.svg"
+                    },
+                    {
+                        "label": "Fast search: Integrated Qdrant vector database for quick and accurate similarity search.",
+                        "image": "/projects/rgbi/search.svg"
+                    },
+                    {
+                        "label": "Serverless backend: Deployed API endpoints via Google Cloud Functions for cost-efficient scaling.",
+                        "image": "/projects/rgbi/api.svg"
+                    }
                 ]
             }
         },
@@ -237,8 +261,14 @@
             "detailedDescription": {
                 "desc": "Directed a team of developers and a designer in transforming a static HTML/CSS/JS site into a performant Next.js architecture, boosting SEO and content agility.",
                 "keyPoints": [
-                    "Content Management: Built a CMS for the marketing team to manage blogs, news, and podcasts without dev intervention—reduced developer dependency by 70%.",
-                    "SEO & Performance: Leveraged Next.js SSR and caching, resulting in a 40% improvement in page load speed and search visibility."
+                    {
+                        "label": "Content Management: Built a CMS for the marketing team to manage blogs, news, and podcasts without dev intervention—reduced developer dependency by 70%.",
+                        "image": "projects/tyb-website/cms.svg"
+                    },
+                    {
+                        "label": "SEO & Performance: Leveraged Next.js SSR and caching, resulting in a 40% improvement in page load speed and search visibility.",
+                        "image": "projects/tyb-website/seo.svg"
+                    }
                 ]
             }
         },
@@ -284,9 +314,18 @@
             "detailedDescription": {
                 "desc": "Built a full-featured CRM enabling better customer visibility, automated communication, and operational efficiency.",
                 "keyPoints": [
-                    "Communication: Integrated WhatsApp bot, email, and call automation for instant alerts and faster lead follow-up.",
-                    "Sales Support: Added Google Maps for location tagging and visit planning, improving sales team efficiency.",
-                    "Document Automation: Used OCR to extract structured data from invoices and forms—cutting manual entry time by 70%."
+                    {
+                        "label": "Communication: Integrated WhatsApp bot, email, and call automation for instant alerts and faster lead follow-up.",
+                        "image": "/projects/tyb-crm/communication.svg"
+                    },
+                    {
+                        "label": "Sales Support: Added Google Maps for location tagging and visit planning, improving sales team efficiency.",
+                        "image": "/projects/tyb-crm/support.svg"
+                    },
+                    {
+                        "label": "Document Automation: Used OCR to extract structured data from invoices and forms—cutting manual entry time by 70%.",
+                        "image": "/projects/tyb-crm/ocr.svg"
+                    }
                 ]
             }
         },
@@ -322,9 +361,18 @@
             "detailedDescription": {
                 "desc": "Engineered and deployed mobile apps for iOS and Android to expand TYB’s digital footprint and audience reach.",
                 "keyPoints": [
-                    "Achieved 1,000+ downloads in the first release cycle.",
-                    "Delivered a unified content hub: industry news, podcasts, and event info.",
-                    "Included a custom-built textile calculator tailored for industry professionals."
+                    {
+                        "label": "Achieved 1,000+ downloads in the first release cycle.",
+                        "image": "projects/tyb-app/downloads.svg"
+                    },
+                    {
+                        "label": "Delivered a unified content hub: industry news, podcasts, and event info.",
+                        "image": "projects/tyb-app/content.svg"
+                    },
+                    {
+                        "label": "Included a custom-built textile calculator tailored for industry professionals.",
+                        "image": "projects/tyb-app/calculator.svg"
+                    }
                 ]
             }
         },
@@ -360,9 +408,18 @@
             "detailedDescription": {
                 "desc": "Created a dynamic download portal where users can bookmark or search for commonly-used software, updated in real-time through a backend CMS.",
                 "keyPoints": [
-                    "Dynamic linking: Admin backend allows updating and adding download links on the fly.",
-                    "Fast access: Optimized UI for one-click navigation and download start.",
-                    "Lightweight stack: Simple but efficient stack to ensure fast load times and responsiveness."
+                    {
+                        "label": "Dynamic linking: Admin backend allows updating and adding download links on the fly.",
+                        "image": "/projects/ocd/dynamic.svg"
+                    },
+                    {
+                        "label": "Fast access: Optimized UI for one-click navigation and download start.",
+                        "image": "/projects/ocd/ui.svg"
+                    },
+                    {
+                        "label": "Lightweight stack: Simple but efficient stack to ensure fast load times and responsiveness.",
+                        "image": "/projects/ocd/lightweight.svg"
+                    }
                 ]
             }
         }
