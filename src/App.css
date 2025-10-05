@@ -363,6 +363,18 @@ p {
   }
 }
 
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .project-duration {
   font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   line-height: 0.8;
@@ -386,6 +398,13 @@ p {
   font-size: 0.9rem;
   transition: all 0.3s ease;
   border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.project-modal-title {
+  font-size: clamp(2.5rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--secondary-color);
 }
 
 .load-more-btn,
@@ -462,14 +481,14 @@ p {
   .modal-content {
     flex-direction: row;
   }
-  
+
   .modal-information-container {
-    flex: 0 0 70%;
+    flex: 0 0 60%;
     min-width: 0;
   }
-  
+
   .modal-image-container {
-    flex: 0 0 30%;
+    flex: 0 0 40%;
     min-width: 0;
   }
 }
@@ -481,12 +500,12 @@ p {
     height: auto;
     max-height: 90dvh;
   }
-  
+
   .modal-information-container {
     flex: none;
     width: 100%;
   }
-  
+
   .modal-image-container {
     flex: none;
     width: 100%;
@@ -505,25 +524,26 @@ p {
 }
 
 .modal-image-container {
+  margin: auto;
   position: relative;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: 70% 30%;
   align-items: center;
   padding: 1rem;
   overflow: hidden;
-  width: 100%;
-  min-height: 400px;
-  max-height: 80dvh;
+  height: 400px;
 }
 
 .modal-image {
   width: 100%;
-  height: 400px;
+  height: 100%;
   object-fit: contain;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   border-radius: 8px;
   display: none;
+  align-self: center;
+  justify-self: center;
 }
 
 .modal-image.active {
@@ -538,8 +558,6 @@ p {
   width: 100%;
   height: 100%;
   background: rgba(191, 174, 147, 0.1);
-  border: 2px dashed var(--primary-color);
-  border-radius: 8px;
   color: var(--primary-color);
   font-size: 1.2rem;
 }
@@ -565,6 +583,49 @@ p {
 
 .modal-close:hover {
   color: var(--bg-color);
+}
+
+/* Key Highlights Section */
+.key-highlights-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  position: relative;
+}
+
+.current-highlight {
+  color: var(--bg-color);
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.highlight-indicators {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(15, 15, 16, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background: var(--bg-color);
+  transform: scale(1.2);
 }
 
 /* Key Points List */
@@ -600,6 +661,37 @@ p {
   background-color: var(--primary-color);
   color: var(--bg-color);
 }
+
+.project-modal-description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 2rem;
+  height: 100%;
+}
+
+.project-modal-description {
+  color: var(--muted-color);
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.project-modal-techstack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+.project-modal-techstack img {
+  width: 2.3rem;
+  aspect-ratio: 1/1;
+  opacity: 0;
+  cursor: pointer;
+  transform: translateX(20px);
+  animation: slideInFromLeft 1s ease forwards;
+}
+
 
 /* Animations */
 @keyframes slideUp {
