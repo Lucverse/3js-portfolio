@@ -23,6 +23,34 @@
   box-sizing: border-box;
 }
 
+/* Text Selection Styles */
+::selection {
+  background: var(--primary-color);
+  color: var(--bg-color);
+}
+
+::-moz-selection {
+  background: var(--primary-color);
+  color: var(--bg-color);
+}
+
+/* Text selection on primary/light backgrounds */
+.modal-content ::selection,
+.modal-image-container ::selection,
+.key-highlights-section ::selection,
+.resume ::selection {
+  background: var(--bg-color);
+  color: var(--primary-color);
+}
+
+.modal-content ::-moz-selection,
+.modal-image-container ::-moz-selection,
+.key-highlights-section ::-moz-selection,
+.resume ::-moz-selection {
+  background: var(--bg-color);
+  color: var(--primary-color);
+}
+
 body {
   font-family: var(--font-base);
   background-color: var(--bg-color);
