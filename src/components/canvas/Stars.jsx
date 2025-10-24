@@ -1,15 +1,28 @@
 import { useState, useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
-import { random } from "maath";
+
+const generateRandomSphere = (array, radius = 1.2) => {
+  for (let i = 0; i < array.length; i += 3) {
+    const u = Math.random();
+    const v = Math.random();
+    const theta = 2 * Math.PI * u;
+    const phi = Math.acos(2 * v - 1);
+    const r = radius * Math.cbrt(Math.random());
+
+    array[i] = r * Math.sin(phi) * Math.cos(theta);
+    array[i + 1] = r * Math.sin(phi) * Math.sin(theta);
+    array[i + 2] = r * Math.cos(phi);
+  }
+  return array;
+};
 
 const Stars = (props) => {
   const ref = useRef();
 
   const [positions] = useState(() => {
     const points = new Float32Array(1500 * 3);
-    random.inSphere(points, { radius: 1.2 });
-    return points;
+    return generateRandomSphere(points, 1.2);
   });
 
   useFrame((_, delta) => {
