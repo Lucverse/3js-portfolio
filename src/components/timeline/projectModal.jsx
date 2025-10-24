@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 
 const ProjectModal = ({ project, onClose }) => {
     const [currentKeyPointIndex, setCurrentKeyPointIndex] = useState(0);
+    const [textFade, setTextFade] = useState(true);
+    const [imageFade, setImageFade] = useState(true);
 
     const keyPointsWithImages = project?.detailedDescription?.keyPoints?.filter(p => p.image) || [];
     const itemsToShow = keyPointsWithImages;
@@ -10,9 +12,16 @@ const ProjectModal = ({ project, onClose }) => {
         if (!project || itemsToShow.length === 0) return;
 
         const interval = setInterval(() => {
-            setCurrentKeyPointIndex((prevIndex) =>
-                (prevIndex + 1) % itemsToShow.length
-            );
+            setTextFade(false);
+            setImageFade(false);
+
+            setTimeout(() => {
+                setCurrentKeyPointIndex((prevIndex) =>
+                    (prevIndex + 1) % itemsToShow.length
+                );
+                setTextFade(true);
+                setImageFade(true);
+            }, 500);
         }, 5000);
 
         return () => clearInterval(interval);
@@ -59,9 +68,17 @@ const ProjectModal = ({ project, onClose }) => {
                                 src={keyPointsWithImages[currentKeyPointIndex].image}
                                 alt={`${project.title} - ${keyPointsWithImages[currentKeyPointIndex].label}`}
                                 className="modal-image active"
+                                style={{
+                                    opacity: imageFade ? 1 : 0
+                                }}
                             />
                             <div className="key-highlights-section">
-                                <div className="current-highlight">
+                                <div
+                                    className="current-highlight"
+                                    style={{
+                                        opacity: textFade ? 1 : 0
+                                    }}
+                                >
                                     {keyPointsWithImages[currentKeyPointIndex].label}
                                 </div>
                                 {keyPointsWithImages.length > 1 && (
