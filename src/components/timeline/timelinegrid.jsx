@@ -29,7 +29,7 @@ const TimelineGrid = ({ project, index }) => {
                 onMouseLeave={handleMouseLeave}
                 style={{
                     background: isHovered
-                        ? `radial-gradient(circle at ${mousePosition.x} ${mousePosition.y}, rgba(191, 174, 147, 0.2) 10%, transparent 35%)`
+                        ? `radial-gradient(circle at ${mousePosition.x} ${mousePosition.y}, rgba(191, 174, 147, 0.2) 10%, transparent 25%)`
                         : "transparent",
                 }}>
                 <div className='project-title-div'>

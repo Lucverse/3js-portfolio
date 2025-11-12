@@ -14,13 +14,13 @@
         {
             "title": "Team Lead",
             "date": "Aug 2025 - Present",
-            "company": "Wedease",
+            "company": "Wedease, Gurugram, India",
             "description": "Leading cross-functional development teams to build wedding planning solutions and AI-driven tools for sales/operations teams. Overseeing technical architecture, mentoring developers, and driving agile delivery practices."
         },
         {
             "title": "Full Stack Web Developer",
             "date": "Sep 2023 - Aug 2025",
-            "company": "The Yarn Bazaar",
+            "company": "The Yarn Bazaar, Bengaluru, India",
             "description": "Led the team in developing core platforms including the CRM, website, mobile app, and WhatsApp-based chatbot—enhancing lead management, user experience, and manufacturer engagement across the organization."
         }
     ],
@@ -28,17 +28,66 @@
         {
             "title": "Full Stack Web Development",
             "date": "June 2022 - Aug 2023",
-            "institution": "Masai School",
+            "institution": "Masai School, Bengaluru, India",
             "description": "Completed a year-long Full-Stack Web Development course, gaining proficiency in HTML, CSS, React, Redux, Node.js, MongoDB, and Java for data structures and algorithms."
         },
         {
             "title": "Bachelor of Technology",
             "date": "Aug 2018 - May 2022",
-            "institution": "Lovely Professional University, Punjab",
+            "institution": "Lovely Professional University, Punjab, India",
             "description": "Bachelor's degree in Electrical and Electronics Engineering with a strong foundation in circuits, power systems, control systems, and telecommunications."
         }
     ],
     "projects": [
+        {
+            "title": "Whatsapp E-Invite",
+            "role": "Team Lead",
+            "duration": "Sep 2025 - Present",
+            "tags": [
+                "Internal Tool",
+                "In Progress",
+                "Live"
+            ],
+            "description": "An internal tool that allows users to create multiple events and manage WhatsApp-based invitations by logging in through different WhatsApp numbers for each event to send e-invites to guests.",
+            "techStack": [
+                {
+                    "name": "TypeScript",
+                    "icon": "/icons/typescript.svg"
+                },
+                {
+                    "name": "AWS Lambda",
+                    "icon": "/icons/aws-lambda.svg"
+                },
+                {
+                    "name": "MongoDB",
+                    "icon": "/icons/mongodb.svg"
+                },
+                {
+                    "name": "WhatsApp Web.js"
+                },
+                {
+                    "name": "Vercel",
+                    "icon": "/icons/vercel.svg"
+                }
+            ],
+            "detailedDescription": {
+                "desc": "Developed an internal platform enabling event managers to create and manage multiple events while authenticating through different WhatsApp numbers to automate guest invitations.",
+                "keyPoints": [
+                    {
+                        "label": "Multi-event management: Users can create and manage multiple events with independent configurations.",
+                        "image": "/projects/rsvp/multi-event.png"
+                    },
+                    {
+                        "label": "WhatsApp authentication: Support for multiple WhatsApp number logins per event, enabling scalable invitation distribution.",
+                        "image": "/projects/rsvp/multi-user.png"
+                    },
+                    {
+                        "label": "Automated e-invites: Streamlined guest invitation process through WhatsApp, reducing manual communication overhead.",
+                        "image": "/projects/rsvp/automate-message.svg"
+                    }
+                ]
+            }
+        },
         {
             "title": "Chatbot Builder",
             "role": "Full Stack Developer",
@@ -47,6 +96,7 @@
                 "In Progress",
                 "Side Project"
             ],
+            "url": "https://chatbot-builder.lucverse.com",
             "description": "A full-stack chatbot platform that allows users to upload files, embed knowledge, and chat with context-aware AI assistants.",
             "techStack": [
                 {
@@ -106,9 +156,10 @@
             "role": "Team Lead",
             "duration": "May 2025 - Aug 2025",
             "tags": [
-                "In Progress",
+                "Live",
                 "Internal Tool"
             ],
+            "url": "https://theyarnbazaar.ai",
             "description": "An internal chatbot system for The Yarn Bazaar that assists employees with queries and automates routine tasks.",
             "techStack": [
                 {
@@ -222,7 +273,8 @@
             "title": "The Yarn Bazaar Website",
             "role": "Team Lead",
             "tags": [
-                "In Progress"
+                "Live",
+                "Open to Public"
             ],
             "duration": "Jan 2025 - July 2025",
             "description": "A high-performance website built with Next.js to improve SEO, content management, and overall user experience.",
@@ -257,7 +309,7 @@
                     "name": "AWS CloudFront"
                 }
             ],
-            "url": "https://www.theyarnbazaar.com/",
+            "url": "https://theyarnbazaar.ai",
             "detailedDescription": {
                 "desc": "Directed a team of developers and a designer in transforming a static HTML/CSS/JS site into a performant Next.js architecture, boosting SEO and content agility.",
                 "keyPoints": [
@@ -277,8 +329,10 @@
             "role": "Frontend Developer",
             "duration": "Dec 2023 - Jan 2025",
             "tags": [
+                "Deprecated",
                 "Internal Tool"
             ],
+            "url": "https://crm.theyarnbazaar.com/",
             "description": "A centralized CRM system streamlining lead management, communication, and order tracking through WhatsApp automation, email integration, and internal tools.",
             "techStack": [
                 {
@@ -379,9 +433,11 @@
         {
             "title": "One Click Download",
             "tags": [
-                "Side Project"
+                "Side Project",
+                "Live"
             ],
             "duration": "Apr 2023 – May 2023",
+            "url": "https://ocd.lucverse.com",
             "description": "A lightweight utility web app for quickly accessing and downloading frequently used applications with a single click.",
             "techStack": [
                 {
@@ -404,7 +460,6 @@
                     "icon": "/icons/mongodb.svg"
                 }
             ],
-            "url": "https://one-click-download.netlify.app/",
             "detailedDescription": {
                 "desc": "Created a dynamic download portal where users can bookmark or search for commonly-used software, updated in real-time through a backend CMS.",
                 "keyPoints": [
