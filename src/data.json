@@ -40,6 +40,55 @@
     ],
     "projects": [
         {
+            "title": "Whatsapp E-Invite",
+            "role": "Team Lead",
+            "duration": "Sep 2025 - Present",
+            "tags": [
+                "Internal Tool",
+                "In Progress",
+                "Live"
+            ],
+            "description": "An internal tool that allows users to create multiple events and manage WhatsApp-based invitations by logging in through different WhatsApp numbers for each event to send e-invites to guests.",
+            "techStack": [
+                {
+                    "name": "TypeScript",
+                    "icon": "/icons/typescript.svg"
+                },
+                {
+                    "name": "AWS Lambda",
+                    "icon": "/icons/aws-lambda.svg"
+                },
+                {
+                    "name": "MongoDB",
+                    "icon": "/icons/mongodb.svg"
+                },
+                {
+                    "name": "WhatsApp Web.js"
+                },
+                {
+                    "name": "Vercel",
+                    "icon": "/icons/vercel.svg"
+                }
+            ],
+            "detailedDescription": {
+                "desc": "Developed an internal platform enabling event managers to create and manage multiple events while authenticating through different WhatsApp numbers to automate guest invitations.",
+                "keyPoints": [
+                    {
+                        "label": "Multi-event management: Users can create and manage multiple events with independent configurations.",
+                        "image": "/projects/rsvp/multi-event.png"
+                    },
+                    {
+                        "label": "WhatsApp authentication: Support for multiple WhatsApp number logins per event, enabling scalable invitation distribution.",
+                        "image": "/projects/rsvp/multi-user.png"
+                    },
+                    {
+                        "label": "Automated e-invites: Streamlined guest invitation process through WhatsApp, reducing manual communication overhead.",
+                        "image": "/projects/rsvp/automate-message.svg"
+                    }
+                ]
+            }
+        },
+        {
             "title": "Chatbot Builder",
             "role": "Full Stack Developer",
             "duration": "June 2025 - Present",
