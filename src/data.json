@@ -40,15 +40,66 @@
     ],
     "projects": [
         {
-            "title": "Whatsapp E-Invite",
+            "title": "Vendor Management System",
             "role": "Team Lead",
-            "duration": "Sep 2025 - Present",
+            "duration": "Nov 2025 - Present",
             "tags": [
                 "Internal Tool",
-                "In Progress",
+                "Operations Platform",
+                "In Progress"
+            ],
+            "description": "An operations platform for managing vendors, venues, events, and clients with real-time public webpage previews of vendor updates.",
+            "techStack": [
+                {
+                    "name": "TypeScript",
+                    "icon": "/icons/typescript.svg"
+                },
+                {
+                    "name": "Node.js"
+                },
+                {
+                    "name": "MongoDB",
+                    "icon": "/icons/mongodb.svg"
+                },
+                {
+                    "name": "WebSockets / Realtime Updates"
+                },
+                {
+                    "name": "AWS",
+                    "icon": "/icons/aws-lambda.svg"
+                },
+                {
+                    "name": "Vercel",
+                    "icon": "/icons/vercel.svg"
+                }
+            ],
+            "detailedDescription": {
+                "desc": "Designed and developed a vendor management platform for operations teams to efficiently coordinate vendors, venues, events, and clients while providing a real-time public-facing webpage preview for live vendor updates.",
+                "keyPoints": [
+                    {
+                        "label": "Unified ops management: Centralized management of vendors, venues, events, and client data with role-based access for operations teams.",
+                        "image": "/projects/vms/ops-dashboard.png"
+                    },
+                    {
+                        "label": "Real-time vendor preview pages: Live webpage previews that instantly reflect vendor updates, ensuring accurate and up-to-date information for stakeholders.",
+                        "image": "/projects/vms/realtime-preview.png"
+                    },
+                    {
+                        "label": "Event-vendor coordination: Map vendors to events and venues with structured workflows to reduce operational overhead and miscommunication.",
+                        "image": "/projects/vms/vendor-mapping.png"
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Event Reach",
+            "role": "Team Lead",
+            "duration": "Sep 2025 - Dec 2025",
+            "tags": [
+                "Internal Tool",
                 "Live"
             ],
-            "description": "An internal tool that allows users to create multiple events and manage WhatsApp-based invitations by logging in through different WhatsApp numbers for each event to send e-invites to guests.",
+            "description": "A multi-channel event invitation platform enabling teams to send and manage automated Email and WhatsApp invites across multiple events.",
             "techStack": [
                 {
                     "name": "TypeScript",
@@ -66,24 +117,75 @@
                     "name": "WhatsApp Web.js"
                 },
                 {
+                    "name": "Email Services (SMTP / SES)"
+                },
+                {
                     "name": "Vercel",
                     "icon": "/icons/vercel.svg"
                 }
             ],
             "detailedDescription": {
-                "desc": "Developed an internal platform enabling event managers to create and manage multiple events while authenticating through different WhatsApp numbers to automate guest invitations.",
+                "desc": "Built an internal e-invitation platform allowing event managers to create and manage multiple events while automating guest communications through both WhatsApp and Email using event-specific sender identities.",
                 "keyPoints": [
                     {
-                        "label": "Multi-event management: Users can create and manage multiple events with independent configurations.",
+                        "label": "Multi-event management: Create and manage multiple events with independent guest lists, templates, and communication settings.",
                         "image": "/projects/rsvp/multi-event.png"
                     },
                     {
-                        "label": "WhatsApp authentication: Support for multiple WhatsApp number logins per event, enabling scalable invitation distribution.",
+                        "label": "Multi-channel communication: Send invitations and updates via both Email and WhatsApp from event-specific sender accounts or numbers.",
                         "image": "/projects/rsvp/multi-user.png"
                     },
                     {
-                        "label": "Automated e-invites: Streamlined guest invitation process through WhatsApp, reducing manual communication overhead.",
+                        "label": "Automated e-invites & follow-ups: Automated invitation delivery, reminders, and status tracking to reduce manual outreach and improve guest response rates.",
                         "image": "/projects/rsvp/automate-message.svg"
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Snippet",
+            "role": "Team Lead",
+            "duration": "Oct 2025 - Nov 2025",
+            "tags": [
+                "Productivity",
+                "Live"
+            ],
+            "description": "A developer productivity tool for organizing, searching, and managing reusable code snippets by language, tags, and custom filters.",
+            "techStack": [
+                {
+                    "name": "TypeScript",
+                    "icon": "/icons/typescript.svg"
+                },
+                {
+                    "name": "Node.js",
+                    "icon": "/icons/nodejs.svg"
+                },
+                {
+                    "name": "MongoDB",
+                    "icon": "/icons/mongodb.svg"
+                },
+                {
+                    "name": "Full-Text Search"
+                },
+                {
+                    "name": "Vercel",
+                    "icon": "/icons/vercel.svg"
+                }
+            ],
+            "detailedDescription": {
+                "desc": "Built an internal code snippet repository to help developers efficiently manage, categorize, and discover reusable code across projects using advanced search, filtering, and sorting mechanisms.",
+                "keyPoints": [
+                    {
+                        "label": "Centralized snippet collection: Store and manage reusable code snippets across multiple languages with rich metadata support.",
+                        "image": "/projects/snippet/collection.png"
+                    },
+                    {
+                        "label": "Advanced search & filtering: Quickly find snippets using full-text search, language, tags, and custom filters.",
+                        "image": "/projects/snippet/search-filter.png"
+                    },
+                    {
+                        "label": "Smart sorting & organization: Sort snippets by language, usage, creation date, or tags to improve discoverability and developer productivity.",
+                        "image": "/projects/snippet/sorting.png"
                     }
                 ]
             }
