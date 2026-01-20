@@ -213,7 +213,7 @@ const ConsoleCommands = () => {
 		});
 
 		console.log(
-			`%cWelcome to Ujjawal's Interactive Console Portfolio!`,
+			`%cInteractive console portfolio!`,
 			'color: #bfae93; font-size: 2rem; font-weight: bold;'
 		);
 		console.log(
