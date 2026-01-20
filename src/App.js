@@ -8,8 +8,9 @@ import Socials from './components/socials/Socials';
 import Journey from './components/journey/journey';
 import Navbar from './components/navbar/Navbar';
 import ConsoleCommands from './components/console/ConsoleCommands';
-import EarthCanvas from './components/canvas/Earth';
+// import EarthCanvas from './components/canvas/Earth';
 import StarsCanvas from './components/canvas/Stars';
+import PCDViewerCanvas from './components/canvas/Human';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             <Socials socialLinks={data.socialLinks} />
           </div>
           <div className='canvas-div'>
-            <EarthCanvas />
+            <PCDViewerCanvas />
           </div>
         </div>
         <Journey educationData={data.educationData} experienceData={data.experienceData} />
