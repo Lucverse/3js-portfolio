@@ -188,8 +188,10 @@ p {
 
   .first-div {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column-reverse;
-    height: 80svh;
+    height: 60svh;
     padding-bottom: 2rem;
   }
 
