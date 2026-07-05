@@ -5,6 +5,7 @@ A modern 3D portfolio website built with React.js (TypeScript) and Three.js, sho
 ## About
 
 This is my personal portfolio website featuring:
+
 - **3D Earth Model**: Interactive Three.js canvas with a rotating Earth
 - **Responsive Design**: Fully optimized for desktop and mobile viewports
 - **Dark Theme**: Premium glassmorphic UI with dynamic starry background
