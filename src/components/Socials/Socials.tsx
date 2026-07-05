@@ -1,0 +1,36 @@
+import React from "react";
+import type { SocialLink } from "../../types/portfolio";
+import Button from "@components/Button/Button";
+import Icon from "@components/Icon/Icon";
+
+interface SocialsProps {
+  socialLinks: SocialLink[];
+}
+
+const Socials: React.FC<SocialsProps> = ({ socialLinks }) => {
+  return (
+    <div className="flex flex-col-reverse xl:flex-row justify-center items-center gap-[clamp(2rem,5vw,5rem)] animate-slide-up">
+      <Button
+        href="/resume.pdf"
+        target="_blank"
+        download="Ujjawal's Resume.pdf"
+        id="download-resume-button"
+        ariaLabel="Download CV"
+        label="Download CV"
+      />
+      <div className="flex justify-center items-center gap-6 md:gap-8">
+        {socialLinks.map((link, index) => (
+          <Icon
+            key={index}
+            src={link.imageUrl}
+            alt={link.alt ?? link.title}
+            tooltip={link.title}
+            href={link.url}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Socials;
