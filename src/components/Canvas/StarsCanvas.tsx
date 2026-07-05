@@ -1,8 +1,11 @@
-import { useState, useRef, Suspense } from "react";
+import React, { useState, useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 
-const generateRandomSphere = (array, radius = 1.2) => {
+const generateRandomSphere = (
+  array: Float32Array,
+  radius = 1.2,
+): Float32Array => {
   for (let i = 0; i < array.length; i += 3) {
     const u = Math.random();
     const v = Math.random();
@@ -17,11 +20,13 @@ const generateRandomSphere = (array, radius = 1.2) => {
   return array;
 };
 
-const Stars = (props) => {
-  const ref = useRef();
+const Stars: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const ref = useRef<any>(null);
 
   const [positions] = useState(() => {
-    const points = new Float32Array(1500 * 3);
+    // Increased from 1500 → 3000 for a richer star field
+    const points = new Float32Array(3000 * 3);
     return generateRandomSphere(points, 1.2);
   });
 
@@ -34,17 +39,11 @@ const Stars = (props) => {
 
   return (
     <group rotation={[0, 0, Math.PI / 4]}>
-      <Points
-        ref={ref}
-        positions={positions}
-        stride={3}
-        frustumCulled
-        {...props}
-      >
+      <Points ref={ref} positions={positions} stride={3} frustumCulled>
         <PointMaterial
           transparent
-          color="#f272c8"
-          size={0.002}
+          color="#e8dcc8" // warm white — matches the beige palette
+          size={0.0018}
           sizeAttenuation
           depthWrite={false}
         />
@@ -53,15 +52,9 @@ const Stars = (props) => {
   );
 };
 
-const StarsCanvas = () => {
+const StarsCanvas: React.FC = () => {
   return (
-    <div style={{
-      width: '100%',
-      height: 'auto',
-      position: 'absolute',
-      inset: 0,
-      zIndex: -1
-    }}>
+    <div className="w-full h-auto absolute inset-0 -z-1">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
           <Stars />
