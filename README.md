@@ -1,55 +1,69 @@
 # Ujjawal Singh - Portfolio
 
-A modern 3D portfolio website built with React.js and Three.js, showcasing my projects, skills, and professional journey as a Software Engineer.
+A modern 3D portfolio website built with React.js (TypeScript) and Three.js, showcasing my projects, skills, and professional journey as a Software Engineer.
 
 ## About
 
 This is my personal portfolio website featuring:
-- **3D Earth Model**: Interactive Three.js canvas with rotating Earth
-- **Responsive Design**: Optimized for desktop and mobile devices
-- **Dark Theme**: Modern dark UI with starfield background
-- **Interactive Elements**: Smooth animations and hover effects
-- **Project Showcase**: Detailed timeline of my development projects
-- **Professional Journey**: Education and work experience sections
+- **3D Earth Model**: Interactive Three.js canvas with a rotating Earth
+- **Responsive Design**: Fully optimized for desktop and mobile viewports
+- **Dark Theme**: Premium glassmorphic UI with dynamic starry background
+- **Terminal Emulator**: Built-in interactive Bash terminal widget
+- **Custom Tooltips**: Pure CSS-based directional tooltip system
+- **Project Showcase**: Detailed project timeline with keypoint slide previews
+- **Professional Journey**: Interactive career and education logs
 
 ## Tech Stack
 
-- **Frontend**: React.js, Three.js, CSS3
-- **3D Graphics**: @react-three/fiber, @react-three/drei
+- **Framework**: React.js 19 (TypeScript)
+- **3D Graphics**: Three.js, `@react-three/fiber`, `@react-three/drei`
+- **Styling**: Vanilla CSS, TailwindCSS (for utility layout structure)
+- **Build Tool**: Vite (migrated from Create React App)
 - **Deployment**: GitHub Pages
-- **Build Tool**: Create React App
+
+## Project Structure
+
+```
+3js-portfolio/
+├── public/           # Static assets, resume, planet textures
+├── src/
+│   ├── components/   # React components (PascalCase)
+│   │   ├── Button/   # Custom reusable glassmorphic buttons
+│   │   ├── Canvas/   # 3D fiber canvases (Earth, PCD head, Stars)
+│   │   ├── Console/  # Developer console utilities and notification alerts
+│   │   ├── Footer/   # Footer component with custom contact tooltips
+│   │   ├── HeroDetails/# Title, address metadata renderer
+│   │   ├── HeroName/ # Headline name renderer
+│   │   ├── Icon/     # Image wrappers supporting CSS tooltips
+│   │   ├── Journey/  # Professional & academic timeline
+│   │   ├── Loader/   # 3D canvas loader spinners
+│   │   ├── Navbar/   # Header scroll spy navigation
+│   │   ├── Socials/  # CV resume buttons & links
+│   │   ├── Spacer/   # Card spacing layout divider
+│   │   ├── Terminal/ # Command line bash shell emulator
+│   │   └── Timeline/ # Grid timeline and modal cards for projects
+│   ├── hooks/        # Custom react hooks (event listeners, scroll lock, reveal)
+│   ├── lib/          # Constants, coordinates, and math utilities
+│   ├── types/        # TypeScript interfaces
+│   ├── App.tsx       # Main component container and grid layouts
+│   ├── index.tsx     # App mount entrypoint
+│   └── data.json     # Profile details local database
+├── tsconfig.json     # TypeScript configuration with path aliases
+└── vite.config.mts   # Vite build settings & folder alias resolutions
+```
 
 ## Features
 
 - Interactive 3D Earth model with realistic textures
-- Animated starfield background
-- Responsive navigation with smooth scrolling
-- Project timeline with detailed descriptions
-- Social media integration
-- Downloadable resume
-- Professional console-style welcome message
+- Dynamic mouse-reactive starfield background
+- Mobile-responsive navigation menu with active-section scroll-spy
+- Project timeline with custom grid layouts and modular previews
+- Interactive developer console tools & keyboard-navigable terminal emulator
+- High-performance page load times with asset decimation
 
 ## Live Demo
 
 Visit my portfolio at: [https://lucverse.com](https://lucverse.com)
-
-
-<!-- ## Project Structure
-
-```
-3js-portfolio/
-├── public/           # Static assets, resume, textures
-├── src/
-│   ├── components/   # React components
-│   │   ├── canvas/   # Three.js 3D components
-│   │   ├── navbar/   # Navigation component
-│   │   ├── timeline/ # Project timeline
-│   │   └── ...       # Other UI components
-│   ├── App.js        # Main application component
-│   ├── App.css       # Global styles
-│   └── data.json     # Portfolio content data
-└── package.json      # Dependencies and scripts
-``` -->
 
 ## Contact
 
