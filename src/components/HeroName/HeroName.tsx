@@ -7,7 +7,7 @@ interface HeroNameProps {
 const HeroName: React.FC<HeroNameProps> = ({ username }) => {
   const nameParts = username.split(" ");
   return (
-    <div className="flex flex-col gap-0 select-none">
+    <div className="flex flex-col gap-0">
       {nameParts.map((part, index) => (
         <h1
           className="text-primary font-extrabold text-[clamp(3.5rem,14vw,4.5rem)] md:text-[clamp(4.5rem,10vw,5.5rem)] lg:text-[clamp(5rem,12vw,7rem)] leading-none"

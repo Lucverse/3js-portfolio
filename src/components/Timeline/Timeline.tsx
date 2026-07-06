@@ -45,7 +45,7 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
   return (
     <div className="flex flex-col gap-4 items-center w-full">
       <div
-        className="timeline-main overflow-hidden rounded-custom bg-linear-to-b from-primary/7 to-transparent backdrop-blur-[0.5px] max-md:p-2 w-full"
+        className="timeline-main overflow-hidden rounded-custom bg-linear-to-r from-primary/7 to-transparent backdrop-blur-[0.5px] max-md:p-2 w-full"
         id="projects"
       >
         {listedProjects.map((project, index) => (

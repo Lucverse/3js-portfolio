@@ -39,18 +39,16 @@ const Journey: React.FC<JourneyProps> = ({ experienceData, educationData }) => {
               }}
             >
               <span className="absolute w-4 aspect-square rounded-full -left-2 top-0 border-2 border-bg-dark bg-primary shadow-[0_0_10px_rgba(0,0,0,0.15)]"></span>
-              <h4 className="text-[18px] font-semibold text-bg-dark">
+              <h4 className="text-[1.125rem] md:text-[1.25rem] font-bold text-bg-dark leading-tight">
                 {experience.title}
               </h4>
-              <h5 className="text-[16px] font-medium px-3 py-1 bg-bg-dark color-primary inline-block mb-1.5 w-fit rounded-sm border border-bg-dark/15 text-primary">
+              <h5 className="text-[0.75rem] md:text-[0.8rem] font-medium px-2.5 py-0.5 bg-bg-dark text-primary inline-block mb-1 w-fit rounded-md border border-bg-dark/15">
                 {experience.date}
               </h5>
-              <p className="text-[1rem] leading-[1.4] text-bg-dark/85">
-                <em className="not-italic font-semibold text-bg-dark">
-                  {experience.company}
-                </em>
+              <p className="text-[0.875rem] md:text-[0.95rem] text-bg-dark/70 font-semibold">
+                {experience.company}
               </p>
-              <p className="text-[1rem] leading-[1.4] text-bg-dark/85">
+              <p className="text-[0.875rem] md:text-[0.95rem] leading-normal text-bg-dark/80 mt-1">
                 {experience.description}
               </p>
             </div>
@@ -69,18 +67,16 @@ const Journey: React.FC<JourneyProps> = ({ experienceData, educationData }) => {
               }}
             >
               <span className="absolute w-4 aspect-square rounded-full -left-2 top-0 border-2 border-bg-dark bg-primary shadow-[0_0_10px_rgba(0,0,0,0.15)]"></span>
-              <h4 className="text-[18px] font-semibold text-bg-dark">
+              <h4 className="text-[1.125rem] md:text-[1.25rem] font-bold text-bg-dark leading-tight">
                 {education.title}
               </h4>
-              <h5 className="text-[16px] font-medium px-3 py-1 bg-bg-dark color-primary inline-block mb-1.5 w-fit rounded-sm border border-bg-dark/15 text-primary">
+              <h5 className="text-[0.75rem] md:text-[0.8rem] font-medium px-2.5 py-0.5 bg-bg-dark text-primary inline-block mb-1 w-fit rounded-md border border-bg-dark/15">
                 {education.date}
               </h5>
-              <p className="text-[1rem] leading-[1.4] text-bg-dark/85">
-                <em className="not-italic font-semibold text-bg-dark">
-                  {education.institution}
-                </em>
+              <p className="text-[0.875rem] md:text-[0.95rem] text-bg-dark/70 font-semibold">
+                {education.institution}
               </p>
-              <p className="text-[1rem] leading-[1.4] text-bg-dark/85">
+              <p className="text-[0.875rem] md:text-[0.95rem] leading-normal text-bg-dark/80 mt-1">
                 {education.description}
               </p>
             </div>
