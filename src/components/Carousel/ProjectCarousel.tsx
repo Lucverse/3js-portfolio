@@ -46,9 +46,9 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
       {/* Image area */}
       <div className="relative h-72 mx-auto flex items-center justify-center p-6">
         {/* Subtle gradient overlay at top */}
-        <div className="absolute inset-x-0 top-0 h-16 pointer-events-none z-10 bg-gradient-to-b from-bg-dark/50 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-16 pointer-events-none z-10 bg-linear-to-b from-bg-dark/50 to-transparent" />
         {/* Subtle gradient overlay at bottom */}
-        <div className="absolute inset-x-0 bottom-0 h-24 pointer-events-none z-10 bg-gradient-to-t from-bg-dark/95 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-24 pointer-events-none z-10 bg-linear-to-t from-bg-dark/95 to-transparent" />
         {/* Image */}
         <img
           key={currentIndex}

@@ -1,25 +1,21 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import Tooltip from "../Tooltip/Tooltip";
 import useKeyDown from "@hooks/useKeyDown";
-import rawData from "../../data.json";
+import rawData from "../../data";
 import type { PortfolioData } from "../../types/portfolio";
+import {
+  TerminalLineType,
+  TerminalCommand,
+  INITIAL_TERMINAL_LINES,
+} from "../../lib/constants";
+import type { TerminalLine } from "../../lib/constants";
 
 const data = rawData as PortfolioData;
-
-interface TerminalLine {
-  type: "input" | "output" | "error" | "title" | "info";
-  content: string;
-}
-
-const INITIAL_LINES: TerminalLine[] = [
-  { type: "title", content: "Portfolio Terminal v1.0" },
-  { type: "info", content: `Welcome! Type "help" to see available commands.` },
-  { type: "info", content: "" },
-];
 
 const Terminal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [lines, setLines] = useState<TerminalLine[]>(INITIAL_LINES);
+  const [lines, setLines] = useState<TerminalLine[]>(INITIAL_TERMINAL_LINES);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [showTip, setShowTip] = useState(() => {
@@ -62,6 +58,7 @@ const Terminal: React.FC = () => {
 
   const { projects, experienceData, educationData, socialLinks, ...basic } =
     data;
+  const age = new Date().getFullYear() - (basic as any).birthYear;
 
   const processCommand = (input: string) => {
     const trimmed = input.trim();
@@ -69,151 +66,212 @@ const Terminal: React.FC = () => {
     const cmd = command.toLowerCase();
 
     const newLines: TerminalLine[] = [
-      { type: "input", content: `❯ ${trimmed}` },
+      { type: TerminalLineType.Input, content: `❯ ${trimmed}` },
     ];
 
     switch (cmd) {
-      case "help":
+      case TerminalCommand.Help:
         newLines.push(
-          { type: "title", content: "Available Commands" },
-          { type: "info", content: "  about          — Basic info" },
-          { type: "info", content: "  experience      — Work experience" },
-          { type: "info", content: "  education       — Education background" },
-          { type: "info", content: "  projects        — List all projects" },
+          { type: TerminalLineType.Title, content: "Available Commands" },
           {
-            type: "info",
-            content: "  getproject <n>  — Project details by index",
+            type: TerminalLineType.Info,
+            content: "  about          - Brief information about me",
           },
-          { type: "info", content: "  socials         — Social links" },
-          { type: "info", content: "  techstack       — Full tech stack" },
-          { type: "info", content: "  clear           — Clear terminal" },
-          { type: "info", content: "" },
+          {
+            type: TerminalLineType.Info,
+            content: "  experience     - Show my work experience",
+          },
+          {
+            type: TerminalLineType.Info,
+            content: "  education      - Show my academic background",
+          },
+          {
+            type: TerminalLineType.Info,
+            content: "  projects       - Show list of project titles",
+          },
+          {
+            type: TerminalLineType.Info,
+            content: "  getProject [idx]- Get project details by index",
+          },
+          {
+            type: TerminalLineType.Info,
+            content: "  socials        - List of my social media handles",
+          },
+          {
+            type: TerminalLineType.Info,
+            content: "  techStack      - Display core technologies used",
+          },
+          {
+            type: TerminalLineType.Info,
+            content: "  clear          - Clear terminal interface",
+          },
         );
         break;
 
-      case "about":
+      case TerminalCommand.About:
         newLines.push(
-          { type: "title", content: basic.name },
-          { type: "output", content: `  Title     : ${basic.title}` },
-          { type: "output", content: `  Age       : ${basic.age}` },
-          { type: "output", content: `  Email     : ${basic.email}` },
+          { type: TerminalLineType.Title, content: basic.name },
           {
-            type: "output",
-            content: `  Location  : ${basic.address?.city}, ${basic.address?.state}`,
+            type: TerminalLineType.Output,
+            content: `  Title     : ${basic.title.join(" • ")}`,
           },
-          { type: "info", content: "" },
+          {
+            type: TerminalLineType.Output,
+            content: `  Age       : ${age}`,
+          },
+          {
+            type: TerminalLineType.Output,
+            content: `  Mobile    : ${basic.phone}`,
+          },
+          {
+            type: TerminalLineType.Output,
+            content: `  Email     : ${basic.email}`,
+          },
+          {
+            type: TerminalLineType.Output,
+            content: `  Location  : ${basic.address?.city}, ${basic.address?.country}`,
+          },
+          { type: TerminalLineType.Info, content: "" },
         );
         break;
 
-      case "experience":
-        newLines.push({ type: "title", content: "Professional Experience" });
+      case TerminalCommand.Experience:
+        newLines.push({
+          type: TerminalLineType.Title,
+          content: "Professional Experience",
+        });
         experienceData.forEach((exp, i) => {
           newLines.push(
-            { type: "output", content: `  [${i}] ${exp.title}` },
-            { type: "info", content: `      ${exp.company}` },
-            { type: "info", content: `      ${exp.date}` },
-            { type: "output", content: `      ${exp.description}` },
-            { type: "info", content: "" },
+            { type: TerminalLineType.Output, content: `  [${i}] ${exp.title}` },
+            { type: TerminalLineType.Info, content: `      ${exp.company}` },
+            { type: TerminalLineType.Info, content: `      ${exp.date}` },
+            {
+              type: TerminalLineType.Output,
+              content: `      ${exp.description}`,
+            },
+            { type: TerminalLineType.Info, content: "" },
           );
         });
         break;
 
-      case "education":
-        newLines.push({ type: "title", content: "Education" });
+      case TerminalCommand.Education:
+        newLines.push({ type: TerminalLineType.Title, content: "Education" });
         educationData.forEach((edu, i) => {
           newLines.push(
-            { type: "output", content: `  [${i}] ${edu.title}` },
-            { type: "info", content: `      ${edu.institution}` },
-            { type: "info", content: `      ${edu.date}` },
-            { type: "output", content: `      ${edu.description}` },
-            { type: "info", content: "" },
+            { type: TerminalLineType.Output, content: `  [${i}] ${edu.title}` },
+            {
+              type: TerminalLineType.Info,
+              content: `      ${edu.institution}`,
+            },
+            { type: TerminalLineType.Info, content: `      ${edu.date}` },
+            {
+              type: TerminalLineType.Output,
+              content: `      ${edu.description}`,
+            },
+            { type: TerminalLineType.Info, content: "" },
           );
         });
         break;
 
-      case "projects":
+      case TerminalCommand.Projects:
         newLines.push({
-          type: "title",
+          type: TerminalLineType.Title,
           content: `Projects (${projects.length} total)`,
         });
         projects.forEach((p, i) => {
           newLines.push(
-            { type: "output", content: `  [${i}] ${p.title}` },
+            { type: TerminalLineType.Output, content: `  [${i}] ${p.title}` },
             {
-              type: "info",
+              type: TerminalLineType.Info,
               content: `      ${p.role ?? "Developer"} · ${p.duration ?? ""}`,
             },
           );
         });
         newLines.push(
           {
-            type: "info",
+            type: TerminalLineType.Info,
             content: '\n  Use "getproject <index>" for details.',
           },
-          { type: "info", content: "" },
+          { type: TerminalLineType.Info, content: "" },
         );
         break;
 
-      case "getproject": {
+      case TerminalCommand.GetProject: {
         const index = parseInt(args[0], 10);
         if (isNaN(index) || index < 0 || index >= projects.length) {
           newLines.push({
-            type: "error",
+            type: TerminalLineType.Error,
             content: `  ✗ Invalid index. Use a number between 0 and ${projects.length - 1}.`,
           });
         } else {
           const p = projects[index];
           newLines.push(
-            { type: "title", content: p.title },
-            { type: "output", content: `  Role      : ${p.role ?? "N/A"}` },
-            { type: "output", content: `  Duration  : ${p.duration ?? "N/A"}` },
+            { type: TerminalLineType.Title, content: p.title },
             {
-              type: "output",
+              type: TerminalLineType.Output,
+              content: `  Role      : ${p.role ?? "N/A"}`,
+            },
+            {
+              type: TerminalLineType.Output,
+              content: `  Duration  : ${p.duration ?? "N/A"}`,
+            },
+            {
+              type: TerminalLineType.Output,
               content: `  Tech      : ${p.techStack.map((t) => t.name).join(", ")}`,
             },
           );
           if (p.detailedDescription?.desc) {
             newLines.push({
-              type: "info",
+              type: TerminalLineType.Info,
               content: `  ${p.detailedDescription.desc}`,
             });
           }
-          if (p.url) newLines.push({ type: "info", content: `  🔗 ${p.url}` });
+          if (p.url)
+            newLines.push({
+              type: TerminalLineType.Info,
+              content: `  🔗 ${p.url}`,
+            });
           if (p.repo)
-            newLines.push({ type: "info", content: `  💻 ${p.repo}` });
-          newLines.push({ type: "info", content: "" });
+            newLines.push({
+              type: TerminalLineType.Info,
+              content: `  💻 ${p.repo}`,
+            });
+          newLines.push({ type: TerminalLineType.Info, content: "" });
         }
         break;
       }
 
-      case "socials":
-        newLines.push({ type: "title", content: "Social Links" });
+      case TerminalCommand.Socials:
+        newLines.push({
+          type: TerminalLineType.Title,
+          content: "Social Links",
+        });
         socialLinks.forEach((link) => {
           newLines.push({
-            type: "output",
+            type: TerminalLineType.Output,
             content: `  ${link.title.padEnd(16)}: ${link.url}`,
           });
         });
-        newLines.push({ type: "info", content: "" });
+        newLines.push({ type: TerminalLineType.Info, content: "" });
         break;
 
-      case "techstack": {
+      case TerminalCommand.TechStack: {
         const stack = new Set<string>();
         projects.forEach((p) => p.techStack.forEach((t) => stack.add(t.name)));
         const sorted = [...stack].sort();
         newLines.push(
           {
-            type: "title",
+            type: TerminalLineType.Title,
             content: `Tech Stack (${sorted.length} technologies)`,
           },
-          { type: "output", content: `  ${sorted.join(", ")}` },
-          { type: "info", content: "" },
+          { type: TerminalLineType.Output, content: `  ${sorted.join(", ")}` },
+          { type: TerminalLineType.Info, content: "" },
         );
         break;
       }
 
-      case "clear":
-        setLines(INITIAL_LINES);
+      case TerminalCommand.Clear:
+        setLines(INITIAL_TERMINAL_LINES);
         return;
 
       case "":
@@ -221,9 +279,15 @@ const Terminal: React.FC = () => {
 
       default:
         newLines.push(
-          { type: "error", content: `  ✗ Unknown command: "${command}"` },
-          { type: "info", content: '  Type "help" to see available commands.' },
-          { type: "info", content: "" },
+          {
+            type: TerminalLineType.Error,
+            content: `  ✗ Unknown command: "${command}"`,
+          },
+          {
+            type: TerminalLineType.Info,
+            content: '  Type "help" to see available commands.',
+          },
+          { type: TerminalLineType.Info, content: "" },
         );
     }
 
@@ -255,19 +319,19 @@ const Terminal: React.FC = () => {
 
   return (
     <>
-      <button
-        className={`fixed bottom-8 left-8 max-[600px]:hidden z-10001 bg-[rgba(15,15,16,0.92)] border border-[rgba(191,174,147,0.45)] text-primary font-mono text-[1rem] font-bold w-10 h-10 flex items-center justify-center rounded-[10px] cursor-pointer transition-all duration-250 ease-out backdrop-blur-md select-none hover:bg-[rgba(191,174,147,0.12)] hover:border-primary hover:shadow-[0_0_18px_rgba(191,174,147,0.25),0_4px_16px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 ${
-          isOpen
-            ? "border-[rgba(191,174,147,0.7)] bg-[rgba(191,174,147,0.1)]"
-            : ""
-        }`}
-        onClick={() => setIsOpen((prev) => !prev)}
-        data-tooltip="Terminal (Ctrl+`)"
-        data-tooltip-dir="right"
-        aria-label={isOpen ? "Close terminal" : "Open terminal"}
-      >
-        {isOpen ? "✕" : ">_"}
-      </button>
+      <Tooltip content="Terminal (Ctrl+`)" direction="right">
+        <button
+          className={`fixed bottom-8 left-8 max-[600px]:hidden z-10001 bg-[rgba(15,15,16,0.92)] border border-[rgba(191,174,147,0.45)] text-primary font-mono text-[1rem] font-bold w-10 h-10 flex items-center justify-center rounded-[10px] cursor-pointer transition-all duration-250 ease-out backdrop-blur-md select-none hover:bg-[rgba(191,174,147,0.12)] hover:border-primary hover:shadow-[0_0_18px_rgba(191,174,147,0.25),0_4px_16px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 ${
+            isOpen
+              ? "border-[rgba(191,174,147,0.7)] bg-[rgba(191,174,147,0.1)]"
+              : ""
+          }`}
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-label={isOpen ? "Close terminal" : "Open terminal"}
+        >
+          {isOpen ? "✕" : ">_"}
+        </button>
+      </Tooltip>
 
       {showTip && !isOpen && (
         <div className="fixed bottom-8.5 left-19.5 z-10000 bg-[rgba(15,15,16,0.95)] border border-[rgba(191,174,147,0.35)] text-secondary px-3 py-1.5 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] font-base text-[0.8rem] tracking-[0.3px] flex items-center gap-2.5 animate-bounce-horizontal terminal-prompt-bubble max-[600px]:hidden select-none">

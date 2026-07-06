@@ -1,4 +1,4 @@
-import rawData from "./data.json";
+import rawData from "./data";
 import type { PortfolioData } from "./types/portfolio";
 import HeroName from "@components/HeroName/HeroName";
 import HeroDetails from "@components/HeroDetails/HeroDetails";
@@ -11,19 +11,21 @@ import ConsoleCommands from "@components/Console/ConsoleCommands";
 import StarsCanvas from "@components/Canvas/StarsCanvas";
 import EarthCanvas from "@components/Canvas/EarthCanvas";
 import Terminal from "@components/Terminal/Terminal";
+import CustomCursor from "@components/CustomCursor/CustomCursor";
 
 const data = rawData as PortfolioData;
 
 function App() {
   return (
     <div className="relative overflow-hidden">
+      <CustomCursor />
+      <ConsoleCommands />
       <div className="fixed top-0 left-0 w-full h-dvh -z-1">
         <StarsCanvas />
       </div>
       <div className="flex flex-col gap-20 max-md:gap-12 max-[520px]:gap-8 w-full p-[4%] md:p-[5%] pb-0 md:pb-0 max-[520px]:p-[2%] max-[520px]:pb-0">
         <Navbar />
-        <ConsoleCommands />
-        <Terminal />
+        {/* <Terminal /> */}
         <div
           className="min-h-[80dvh] rounded-custom border border-primary shadow-[0_0_30px_rgba(191,174,147,0.1),inset_0_0_80px_rgba(191,174,147,0.03)] overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-8 bg-transparent backdrop-blur-[0.5px] max-md:flex max-md:flex-col-reverse max-md:justify-center max-md:items-center max-md:min-h-[75dvh] max-md:h-auto max-md:py-10 max-md:pb-12"
           id="home"

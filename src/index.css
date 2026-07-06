@@ -40,7 +40,8 @@
   .modal-content ::selection,
   .modal-image-container ::selection,
   .key-highlights-section ::selection,
-  .resume ::selection {
+  .resume ::selection,
+  .bg-primary ::selection {
     background: var(--color-bg-dark);
     color: var(--color-primary);
   }
@@ -57,7 +58,6 @@
       var(--color-primary),
       var(--color-primary-hover)
     );
-    border-radius: 4px;
   }
   body::-webkit-scrollbar-thumb:hover {
     background: var(--color-primary);
@@ -143,50 +143,6 @@
     transform: translateY(0);
   }
 
-  /* Custom Tooltip Styling */
-  [data-tooltip] {
-    position: relative;
-  }
-
-  [data-tooltip]::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 125%;
-    left: 50%;
-    transform: translate(-50%, 4px) scale(0.9);
-    background-color: rgba(15, 15, 16, 0.95);
-    color: var(--color-primary);
-    border: 1px solid rgba(191, 174, 147, 0.3);
-    padding: 0.35rem 0.7rem;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    font-family: var(--font-base);
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
-    z-index: 10000;
-  }
-
-  [data-tooltip]:hover::after {
-    opacity: 1;
-    transform: translate(-50%, 0) scale(1);
-  }
-
-  /* Tooltip - Right Direction Override */
-  [data-tooltip][data-tooltip-dir="right"]::after {
-    top: 50%;
-    bottom: auto;
-    left: 125%;
-    transform: translate(-8px, -50%) scale(0.9);
-  }
-
-  [data-tooltip][data-tooltip-dir="right"]:hover::after {
-    opacity: 1;
-    transform: translate(0, -50%) scale(1);
-  }
-
   @keyframes gradient-shift {
     0% {
       background-position: 0% 50%;
@@ -263,6 +219,88 @@
     margin-right: -1px;
     border-width: 6px;
     border-style: solid;
-    border-color: transparent rgba(15, 15, 16, 0.95) transparent transparent;
+    border-color: transparent rgba(20, 20, 37, 0.95) transparent transparent;
+  }
+
+  /* About section floating stacked cards */
+  @keyframes float-layer-slow-0 {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-2px) scale(1.001);
+    }
+  }
+  @keyframes float-layer-slow-1 {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-5px) scale(1.002);
+    }
+  }
+  @keyframes float-layer-slow-2 {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-8px) scale(1.003);
+    }
+  }
+  @keyframes float-layer-slow-3 {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-11px) scale(1.004);
+    }
+  }
+  @keyframes float-layer-slow-4 {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-14px) scale(1.005);
+    }
+  }
+
+  .about-layer-0 {
+    animation: float-layer-slow-0 8s ease-in-out infinite;
+  }
+  .about-layer-1 {
+    animation: float-layer-slow-1 10s ease-in-out infinite;
+  }
+  .about-layer-2 {
+    animation: float-layer-slow-2 12s ease-in-out infinite;
+  }
+  .about-layer-3 {
+    animation: float-layer-slow-3 14s ease-in-out infinite;
+  }
+  .about-layer-4 {
+    animation: float-layer-slow-4 16s ease-in-out infinite;
+  }
+
+  /* Pulsing Ambient Glow behind About Section */
+  @keyframes ambient-glow-pulse {
+    0%,
+    100% {
+      opacity: 0.12;
+      transform: translate(-50%, -50%) scale(0.92);
+      filter: blur(100px);
+    }
+    50% {
+      opacity: 0.28;
+      transform: translate(-50%, -50%) scale(1.1);
+      filter: blur(140px);
+    }
+  }
+
+  .animate-glow-pulse {
+    animation: ambient-glow-pulse 9s ease-in-out infinite;
   }
 }
