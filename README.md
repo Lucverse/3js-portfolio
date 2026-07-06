@@ -16,11 +16,11 @@ This is my personal portfolio website featuring:
 
 ## Tech Stack
 
-- **Framework**: React.js 19 (TypeScript)
+- **Framework**: Next.js 15 (App Router) & React 19 (TypeScript)
 - **3D Graphics**: Three.js, `@react-three/fiber`, `@react-three/drei`
 - **Styling**: Vanilla CSS, TailwindCSS (for utility layout structure)
-- **Build Tool**: Vite (migrated from Create React App)
-- **Deployment**: GitHub Pages
+- **Build Tool**: Next.js Compiler / PostCSS
+- **Deployment**: Vercel / GitHub Pages
 
 ## Project Structure
 
@@ -28,6 +28,10 @@ This is my personal portfolio website featuring:
 3js-portfolio/
 ├── public/           # Static assets, resume, planet textures
 ├── src/
+│   ├── app/          # Next.js App Router components & entrypoints
+│   │   ├── globals.css # Global stylesheet entrypoint
+│   │   ├── layout.tsx # Core HTML skeleton & metadata configuration
+│   │   └── page.tsx   # Main landing page (formerly App.tsx)
 │   ├── components/   # React components (PascalCase)
 │   │   ├── Button/   # Custom reusable glassmorphic buttons
 │   │   ├── Canvas/   # 3D fiber canvases (Earth, PCD head, Stars)
@@ -46,11 +50,10 @@ This is my personal portfolio website featuring:
 │   ├── hooks/        # Custom react hooks (event listeners, scroll lock, reveal)
 │   ├── lib/          # Constants, coordinates, and math utilities
 │   ├── types/        # TypeScript interfaces
-│   ├── App.tsx       # Main component container and grid layouts
-│   ├── index.tsx     # App mount entrypoint
-│   └── data.json     # Profile details local database
+│   └── data.ts       # Profile details local database (TS format)
 ├── tsconfig.json     # TypeScript configuration with path aliases
-└── vite.config.mts   # Vite build settings & folder alias resolutions
+├── next.config.ts    # Next.js compiler settings & transpile packages
+└── postcss.config.mjs # PostCSS configuration for TailwindCSS v4
 ```
 
 ## Features
