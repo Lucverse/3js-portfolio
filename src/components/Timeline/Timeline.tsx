@@ -1,8 +1,10 @@
 import React from "react";
-import type { Project } from "../../types/portfolio";
+import type { Project } from "@/types/portfolio";
 import TimelineGrid from "./TimelineGrid";
 import { PROJECTS_PAGE_SIZE } from "../../lib/constants";
 import Button from "@components/Button/Button";
+import ProjectModal from "./ProjectModal";
+import useBodyScrollLock from "@hooks/useBodyScrollLock";
 
 interface TimelineProps {
   projects: Project[];
@@ -12,6 +14,11 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
   const [listedProjects, setListedProjects] = React.useState<Project[]>(
     projects.slice(0, PROJECTS_PAGE_SIZE),
   );
+  const [selectedProject, setSelectedProject] = React.useState<Project | null>(
+    null,
+  );
+
+  useBodyScrollLock(!!selectedProject);
 
   const loadMore = () => {
     const next = projects.slice(
@@ -36,7 +43,7 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 items-center">
+    <div className="flex flex-col gap-4 items-center w-full">
       <div
         className="timeline-main overflow-hidden rounded-custom bg-linear-to-b from-primary/7 to-transparent backdrop-blur-[0.5px] max-md:p-2 w-full"
         id="projects"
@@ -47,6 +54,7 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
             index={index}
             project={project}
             animate={index >= PROJECTS_PAGE_SIZE}
+            onSelect={() => setSelectedProject(project)}
           />
         ))}
       </div>
@@ -56,6 +64,11 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
       ) : (
         <Button onClick={showLess} label="Show Less ↑" />
       )}
+
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </div>
   );
 };
