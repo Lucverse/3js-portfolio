@@ -24,7 +24,7 @@ const Footer: React.FC<FooterProps> = ({ footerInfo }) => {
 
   return (
     <footer
-      className="reveal-item flex justify-center items-center gap-[clamp(2rem,5vw,5rem)] rounded-t-custom border border-primary/20 border-b-0 h-[clamp(4rem,5vw,5rem)] animated-footer-bg backdrop-blur-[0.5px]"
+      className="reveal-item flex justify-center items-center gap-[clamp(2rem,5vw,5rem)] rounded-t-custom border border-primary/20 border-b-0 h-[clamp(4rem,5vw,5rem)]"
       ref={footerRef}
     >
       {footerInfo.map((url, index) => (

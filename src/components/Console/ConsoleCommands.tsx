@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import rawData from "@/data.json";
+import rawData from "@/data";
 import type { PortfolioData } from "@/types/portfolio";
+import { VALID_CONSOLE_COMMANDS } from "@/lib/constants";
 
 const data = rawData as PortfolioData;
 
@@ -8,54 +9,13 @@ const ConsoleCommands: React.FC = () => {
   useEffect(() => {
     const { projects, experienceData, educationData, socialLinks, ...basic } =
       data;
+    const age = new Date().getFullYear() - (basic as any).birthYear;
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).ujjw4l = {
-      run: (input: string) => {
-        if (typeof input !== "string") {
-          console.warn(
-            "❌ Please enter a valid command string, like 'about' or 'getProject_2'",
-          );
-          return;
-        }
-        const [command, ...args] = input.trim().split(" ");
-        const validCommands: Record<string, string> = {
-          about: "about",
-          experience: "experience",
-          education: "education",
-          projects: "projects",
-          getproject: "getProject",
-          socials: "socials",
-          techstack: "techStack",
-          help: "help",
-        };
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const funcName = validCommands[command.toLowerCase()];
-        if (
-          !funcName ||
-          typeof (window as any).ujjw4l[funcName] !== "function"
-        ) {
-          console.warn(
-            `❌ Unknown command: '${command}'. Type help for a list of commands.`,
-          );
-          return;
-        }
-        try {
-          const parsedArgs = args.map((arg) => {
-            const num = Number(arg);
-            return isNaN(num) ? arg : num;
-          });
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (window as any).ujjw4l[funcName](...parsedArgs);
-        } catch (err) {
-          console.error("⚠️ Error executing command:", err);
-        }
-      },
-
+    const commands: Record<string, Function> = {
       help: () => {
         console.log(
           `%cAvailable Commands:\n%c• about         %c- Get basic info\n%c• experience    %c- Show work experience\n%c• education     %c- Show education background\n%c• projects      %c- List all project titles\n%c• getProject_n \t%c- Show details of a project by index\n%c• socials       %c- List social links\n%c• techStack     %c- Show unique tech stack used across projects\n`,
-          "color: #bfae93; font-weight: bold",
+          "color: #bfae93; font-weight: bold; font-size: 1.2em",
           "color: #d1c5ad",
           "color: #acacac",
           "color: #d1c5ad",
@@ -75,7 +35,7 @@ const ConsoleCommands: React.FC = () => {
 
       about: () => {
         console.log(
-          `%c${basic.name}\n%cAge: %c${basic.age}\n%cEmail: %c${basic.email}\n%cPhone: %c${basic.phone}\n%cTitle: %c${basic.title}\n%cLocation: %c${basic.address?.city}, ${basic.address?.state}\n`,
+          `%c${basic.name}\n%cAge: %c${age}\n%cEmail: %c${basic.email}\n%cPhone: %c${basic.phone}\n%cTitle: %c${basic.title.join(" • ")}\n%cLocation: %c${basic.address?.city}, ${basic.address?.country}\n`,
           "color: #bfae93; font-weight: bold; font-size: 1.2em",
           "color: #d1c5ad",
           "color: #ffffff",
@@ -213,6 +173,38 @@ const ConsoleCommands: React.FC = () => {
           );
         });
       },
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).ujjw4l = {
+      run: (input: string) => {
+        if (typeof input !== "string") {
+          console.warn(
+            "❌ Please enter a valid command string, like 'about' or 'getProject_2'",
+          );
+          return;
+        }
+
+        const trimmed = input.trim();
+        const normalized = trimmed.toLowerCase();
+        const cmdKey = Object.keys(commands).find(
+          (k) => k.toLowerCase() === normalized,
+        );
+
+        if (cmdKey) {
+          commands[cmdKey]();
+        } else if (normalized.startsWith("getproject_")) {
+          const index = parseInt(normalized.split("_")[1]);
+          if (!isNaN(index)) {
+            commands.getProject(index);
+          }
+        } else {
+          console.warn(
+            `❌ Unknown command: "${trimmed}". Available commands: about, experience, education, projects, getProject_[index], socials, techStack`,
+          );
+        }
+      },
+      ...commands,
     };
 
     // Register window shortcuts for each command

@@ -1,65 +1,157 @@
 import React from "react";
 
-export type TextVariant =
-  | "title"
-  | "h1"
-  | "h2"
-  | "h3"
-  | "body"
+type TextSize =
+  | "xs"
+  | "sm"
+  | "base"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "6xl";
+
+type TextWeight =
+  | "light"
+  | "normal"
+  | "medium"
+  | "semibold"
+  | "bold"
+  | "extrabold";
+
+type TextColor =
+  | "default"
+  | "none"
+  | "white"
+  | "primary"
+  | "secondary"
   | "muted"
-  | "code";
-export type TextWeight = "light" | "normal" | "medium" | "semibold" | "bold";
+  | "success"
+  | "danger";
+
+type TextAlign = "left" | "center" | "right";
+
+type TextVariant = "default" | "hero" | "pageTitle" | "gradient";
 
 interface TextProps {
-  variant?: TextVariant;
-  as?: React.ElementType;
-  weight?: TextWeight;
-  className?: string;
   children: React.ReactNode;
+
+  as?: React.ElementType;
+
+  variant?: TextVariant;
+  size?: TextSize;
+  weight?: TextWeight;
+  color?: TextColor;
+  align?: TextAlign;
+
+  italic?: boolean;
+  underline?: boolean;
+  uppercase?: boolean;
+  truncate?: boolean;
+
+  className?: string;
 }
 
-const DEFAULT_ELEMENT: Record<TextVariant, React.ElementType> = {
-  title: "h1",
-  h1: "h1",
-  h2: "h2",
-  h3: "h3",
-  body: "p",
-  muted: "p",
-  code: "code",
+const SIZE: Record<TextSize, string> = {
+  xs: "text-xs",
+  sm: "text-sm",
+  base: "text-base",
+  lg: "text-lg",
+  xl: "text-xl",
+  "2xl": "text-2xl",
+  "3xl": "text-3xl",
+  "4xl": "text-4xl",
+  "5xl": "text-5xl",
+  "6xl": "text-6xl",
 };
 
-const VARIANT_CLASSES: Record<TextVariant, string> = {
-  title:
-    "text-[clamp(2rem,6vw,3.5rem)] font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-white leading-[1.1]",
-  h1: "text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-white tracking-wide leading-tight",
-  h2: "text-[clamp(1.35rem,3vw,1.85rem)] font-semibold text-secondary leading-snug",
-  h3: "text-[1.15rem] md:text-[1.25rem] font-medium text-primary leading-normal",
-  body: "text-[0.875rem] md:text-[1rem] text-white/90 leading-relaxed",
-  muted: "text-[0.75rem] md:text-[0.875rem] text-muted-color leading-normal",
-  code: "font-mono text-[0.85em] bg-white/5 border border-white/10 px-1.5 py-0.5 rounded-md text-primary inline",
-};
-
-const WEIGHT_CLASSES: Record<TextWeight, string> = {
+const WEIGHT: Record<TextWeight, string> = {
   light: "font-light",
   normal: "font-normal",
   medium: "font-medium",
   semibold: "font-semibold",
   bold: "font-bold",
+  extrabold: "font-extrabold",
+};
+
+const COLOR: Record<TextColor, string> = {
+  default: "text-white",
+  none: "",
+  white: "text-white",
+  primary: "text-primary",
+  secondary: "text-secondary",
+  muted: "text-muted-color",
+  success: "text-green-500",
+  danger: "text-red-500",
+};
+
+const ALIGN: Record<TextAlign, string> = {
+  left: "text-left",
+  center: "text-center",
+  right: "text-right",
+};
+
+const VARIANT: Record<TextVariant, string> = {
+  default: "",
+
+  hero: `
+    text-[clamp(3.5rem,14vw,7rem)]
+    leading-none
+    tracking-tight
+  `,
+
+  pageTitle: `
+    text-[clamp(2rem,6vw,4rem)]
+    leading-tight
+    tracking-tight
+  `,
+
+  gradient: `
+    text-transparent
+    bg-clip-text
+    bg-gradient-to-r
+    from-primary
+    via-secondary
+    to-white
+  `,
 };
 
 const Text: React.FC<TextProps> = ({
-  variant = "body",
-  as,
-  weight,
-  className = "",
   children,
-}) => {
-  const Component = (as ?? DEFAULT_ELEMENT[variant]) as any;
 
+  as: Tag = "p",
+
+  variant = "default",
+  size = "base",
+  weight = "normal",
+  color = "default",
+  align,
+
+  italic = false,
+  underline = false,
+  uppercase = false,
+  truncate = false,
+
+  className = "",
+}) => {
+  const Component = Tag as any;
   const classes = [
     "font-[var(--font-base)]",
-    VARIANT_CLASSES[variant],
-    weight ? WEIGHT_CLASSES[weight] : "",
+
+    VARIANT[variant],
+
+    variant === "default" || variant === "gradient" ? SIZE[size] : "",
+
+    WEIGHT[weight],
+    COLOR[color],
+    align && ALIGN[align],
+
+    italic && "italic",
+    underline && "underline",
+    uppercase && "uppercase",
+    truncate && "truncate",
+
     className,
   ]
     .filter(Boolean)

@@ -9,7 +9,7 @@ interface SocialsProps {
 
 const Socials: React.FC<SocialsProps> = ({ socialLinks }) => {
   return (
-    <div className="flex flex-col-reverse xl:flex-row justify-center items-center gap-[clamp(2rem,5vw,5rem)] animate-slide-up">
+    <div className="flex flex-row flex-wrap justify-center items-center md:justify-end gap-6 md:gap-8 animate-slide-up w-full">
       <Button
         href="/resume.pdf"
         target="_blank"
@@ -18,7 +18,7 @@ const Socials: React.FC<SocialsProps> = ({ socialLinks }) => {
         ariaLabel="Download CV"
         label="Download CV"
       />
-      <div className="flex justify-center items-center gap-6 md:gap-8">
+      <div className="flex justify-end items-center gap-6 md:gap-8">
         {socialLinks.map((link, index) => (
           <Icon
             key={index}

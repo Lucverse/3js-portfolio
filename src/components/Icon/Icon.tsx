@@ -1,4 +1,5 @@
 import React from "react";
+import Tooltip from "../Tooltip/Tooltip";
 
 interface IconProps {
   src: string;
@@ -21,7 +22,7 @@ const Icon: React.FC<IconProps> = ({
 }) => {
   const hoverClasses = disableHover
     ? ""
-    : "hover:-translate-y-1 hover:scale-110 hover:grayscale-0 hover:opacity-100 hover:filter-[drop-shadow(0_0_10px_rgba(191,174,147,0.6))]";
+    : "hover:grayscale-0 hover:opacity-100";
 
   const baseClasses =
     `${size} aspect-square transition-all duration-300 ease-out grayscale-20 opacity-85 ${hoverClasses}`.trim();
@@ -34,26 +35,33 @@ const Icon: React.FC<IconProps> = ({
     />
   );
 
-  if (href) {
+  const renderIcon = () => {
+    if (href) {
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={alt}
+          className="inline-block"
+        >
+          {imgElement}
+        </a>
+      );
+    }
+
+    return <span className="inline-flex">{imgElement}</span>;
+  };
+
+  if (tooltip) {
     return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={alt}
-        data-tooltip={tooltip}
-        className="inline-block"
-      >
-        {imgElement}
-      </a>
+      <Tooltip content={tooltip}>
+        {renderIcon()}
+      </Tooltip>
     );
   }
 
-  return (
-    <span data-tooltip={tooltip} className="inline-flex">
-      {imgElement}
-    </span>
-  );
+  return renderIcon();
 };
 
 export default Icon;

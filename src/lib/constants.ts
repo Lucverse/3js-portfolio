@@ -5,9 +5,7 @@ export const COLORS = {
   secondary: "#d1c5ad",
   muted: "#acacac",
   bgDark: "#0f0f10",
-  /** Terminal error text */
   error: "#ff8080",
-  /** macOS-style traffic-light dots */
   terminalDotRed: "#ff5f56",
   terminalDotYellow: "#ffbd2e",
   terminalDotGreen: "#27c93f",
@@ -15,43 +13,78 @@ export const COLORS = {
 
 // ─── Z-index scale ────────────────────────────────────────────────────────────
 export const Z = {
-  /** Stars background canvas */
   stars: -1,
-  /** Floating nav pill */
   navbar: 999,
-  /** Full-screen mobile menu overlay */
   mobileMenu: 9999,
-  /** Project / modal backdrop */
   modal: 9999,
-  /** Terminal floating panel */
   terminal: 10000,
-  /** Close buttons that sit above modal/terminal panels */
   closeBtn: 10001,
 } as const;
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
-export const NAV_LINKS: { id: string; label: string }[] = [
+export const NAV_LINKS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "projects", label: "Projects" },
-];
+] as const;
 
 // ─── Scroll behaviour ─────────────────────────────────────────────────────────
-/** Minimum scroll-Y in px before navbar hide kicks in */
 export const SCROLL_HIDE_THRESHOLD = 100;
-/** ms to wait before clearing the auto-scroll flag after smooth-scroll */
 export const AUTO_SCROLL_RESET_MS = 700;
 
 // ─── Tech-stack icon animation ────────────────────────────────────────────────
-/** Seconds per icon in the staggered slide-in animation */
 export const TECH_ICON_ANIM_STEP_S = 0.1;
 
 // ─── Project modal slideshow ──────────────────────────────────────────────────
-/** ms between automatic key-point transitions */
 export const KEYPOINT_INTERVAL_MS = 5000;
-/** ms for the cross-fade between key-points */
 export const KEYPOINT_FADE_MS = 500;
 
 // ─── Timeline / project list ──────────────────────────────────────────────────
-/** How many projects to show per "Load More" page */
 export const PROJECTS_PAGE_SIZE = 3;
+
+// ─── Terminal Enums & Constants ───────────────────────────────────────────────
+export enum TerminalLineType {
+  Input = "input",
+  Output = "output",
+  Error = "error",
+  Title = "title",
+  Info = "info",
+}
+
+export enum TerminalCommand {
+  Help = "help",
+  About = "about",
+  Experience = "experience",
+  Education = "education",
+  Projects = "projects",
+  GetProject = "getproject",
+  Socials = "socials",
+  TechStack = "techstack",
+  Clear = "clear",
+}
+
+export interface TerminalLine {
+  type: TerminalLineType;
+  content: string;
+}
+
+export const INITIAL_TERMINAL_LINES: TerminalLine[] = [
+  { type: TerminalLineType.Title, content: "Portfolio Terminal v1.0" },
+  {
+    type: TerminalLineType.Info,
+    content: `Welcome! Type "help" to see available commands.`,
+  },
+  { type: TerminalLineType.Info, content: "" },
+];
+
+// ─── Console Commands Configuration ───────────────────────────────────────────
+export const VALID_CONSOLE_COMMANDS: Record<string, string> = {
+  about: "about",
+  experience: "experience",
+  education: "education",
+  projects: "projects",
+  getproject: "getProject",
+  socials: "socials",
+  techstack: "techStack",
+  help: "help",
+} as const;

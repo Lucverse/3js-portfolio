@@ -6,15 +6,9 @@ import Text from "@components/Text/Text";
 
 interface TechStackProps {
   items: TechItem[];
-  /** Shown above the icons. Defaults to "Tech Stack". Pass false to hide. */
   label?: string | false;
   className?: string;
 }
-
-/**
- * Renders a labelled row of technology icons with a staggered slide-in animation.
- * Extracted from ProjectModal so it can be reused anywhere a tech list is needed.
- */
 const TechStack: React.FC<TechStackProps> = ({
   items,
   label = "Tech Stack",
@@ -27,9 +21,12 @@ const TechStack: React.FC<TechStackProps> = ({
     <div className={["flex flex-col gap-3", className].filter(Boolean).join(" ")}>
       {label !== false && (
         <Text
-          variant="muted"
           as="span"
-          className="uppercase tracking-[0.12em] font-semibold"
+          size="xs"
+          weight="semibold"
+          color="muted"
+          uppercase
+          className="tracking-[0.12em]"
         >
           {label}
         </Text>

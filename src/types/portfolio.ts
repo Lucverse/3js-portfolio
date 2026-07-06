@@ -57,10 +57,10 @@ export interface SocialLink {
 
 export interface PortfolioData {
   name: string;
-  age: number;
+  birthYear: number;
   email: string;
   phone: string;
-  title: string;
+  title: string[];
   address: Address;
   experienceData: ExperienceItem[];
   educationData: EducationItem[];
