@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import rawData from "@/data.json";
 import type { PortfolioData } from "@/types/portfolio";
-import MatrixAlert from "./Alert";
 
 const data = rawData as PortfolioData;
 
 const ConsoleCommands: React.FC = () => {
-  const [showAlert, setShowAlert] = useState(true);
-
   useEffect(() => {
     const { projects, experienceData, educationData, socialLinks, ...basic } =
       data;
@@ -266,13 +263,7 @@ const ConsoleCommands: React.FC = () => {
     );
   }, []);
 
-  if (!showAlert) return null;
-  return (
-    <MatrixAlert
-      message="Open console (F12) or click >_ for interactive portfolio"
-      onClose={() => setShowAlert(false)}
-    />
-  );
+  return null;
 };
 
 export default ConsoleCommands;

@@ -33,7 +33,7 @@ function App() {
             <HeroDetails heroDetails={data} />
             <Socials socialLinks={data.socialLinks} />
           </div>
-          <div className="flex flex-col justify-center gap-8 max-md:hidden">
+          <div className="flex flex-col justify-center gap-8 max-md:h-80 max-md:w-full">
             <EarthCanvas />
           </div>
         </div>

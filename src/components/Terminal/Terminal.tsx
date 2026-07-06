@@ -22,9 +22,19 @@ const Terminal: React.FC = () => {
   const [lines, setLines] = useState<TerminalLine[]>(INITIAL_LINES);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const [showTip, setShowTip] = useState(() => {
+    return localStorage.getItem("terminal-tip-closed") !== "true";
+  });
 
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen && showTip) {
+      setShowTip(false);
+      localStorage.setItem("terminal-tip-closed", "true");
+    }
+  }, [isOpen, showTip]);
 
   // Auto-scroll to bottom on new output
   useEffect(() => {
@@ -258,6 +268,23 @@ const Terminal: React.FC = () => {
       >
         {isOpen ? "✕" : ">_"}
       </button>
+
+      {showTip && !isOpen && (
+        <div className="fixed bottom-8.5 left-19.5 z-10000 bg-[rgba(15,15,16,0.95)] border border-[rgba(191,174,147,0.35)] text-secondary px-3 py-1.5 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] font-base text-[0.8rem] tracking-[0.3px] flex items-center gap-2.5 animate-bounce-horizontal terminal-prompt-bubble max-[600px]:hidden select-none">
+          <span>Click here for interactive terminal!</span>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowTip(false);
+              localStorage.setItem("terminal-tip-closed", "true");
+            }}
+            className="bg-transparent border-none text-muted-color cursor-pointer text-[0.75rem] hover:text-primary transition-colors duration-200"
+            aria-label="Dismiss tip"
+          >
+            ✕
+          </button>
+        </div>
+      )}
 
       {/* Terminal panel */}
       {isOpen && (
