@@ -28,11 +28,7 @@ const Icon: React.FC<IconProps> = ({
     `${size} aspect-square transition-all duration-300 ease-out grayscale-20 opacity-85 ${hoverClasses}`.trim();
 
   const imgElement = (
-    <img
-      src={src}
-      alt={alt}
-      className={`${baseClasses} ${className}`.trim()}
-    />
+    <img src={src} alt={alt} className={`${baseClasses} ${className}`.trim()} />
   );
 
   const renderIcon = () => {
@@ -44,21 +40,22 @@ const Icon: React.FC<IconProps> = ({
           rel="noopener noreferrer"
           aria-label={alt}
           className="inline-block"
+          data-cursor="icon"
         >
           {imgElement}
         </a>
       );
     }
 
-    return <span className="inline-flex">{imgElement}</span>;
+    return (
+      <span className="inline-flex" data-cursor="icon">
+        {imgElement}
+      </span>
+    );
   };
 
   if (tooltip) {
-    return (
-      <Tooltip content={tooltip}>
-        {renderIcon()}
-      </Tooltip>
-    );
+    return <Tooltip content={tooltip}>{renderIcon()}</Tooltip>;
   }
 
   return renderIcon();

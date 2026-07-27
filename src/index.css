@@ -25,10 +25,17 @@
     font-family: var(--font-base);
     background-color: var(--color-bg-dark);
     color: #ffffff;
-    margin: 0;
+    margin: 0;F
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    cursor: none;
+  }
+
+  html *,
+  html *::before,
+  html *::after {
+    cursor: none !important;
   }
 
   ::selection {
@@ -302,5 +309,25 @@
 
   .animate-glow-pulse {
     animation: ambient-glow-pulse 9s ease-in-out infinite;
+  }
+
+  @keyframes cursor-orbit {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes cursor-crosshair-spin {
+    from {
+      transform: translate3d(var(--cx, 0px), var(--cy, 0px), 0)
+        translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate3d(var(--cx, 0px), var(--cy, 0px), 0)
+        translate(-50%, -50%) rotate(360deg);
+    }
   }
 }

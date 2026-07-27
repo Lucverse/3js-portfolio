@@ -81,11 +81,13 @@ const PCDViewer: React.FC = () => {
 
 const PCDCanvas: React.FC = () => {
   return (
-    <Canvas className="cursor-grab min-h-[60dvh]">
-      <Suspense fallback={<CanvasLoader />}>
-        <PCDViewer />
-      </Suspense>
-    </Canvas>
+    <div data-cursor="canvas" className="w-full min-h-[60dvh]">
+      <Canvas className="cursor-grab min-h-[60dvh]">
+        <Suspense fallback={<CanvasLoader />}>
+          <PCDViewer />
+        </Suspense>
+      </Canvas>
+    </div>
   );
 };
 

@@ -18,7 +18,9 @@ const TechStack: React.FC<TechStackProps> = ({
   if (withIcons.length === 0) return null;
 
   return (
-    <div className={["flex flex-col gap-3", className].filter(Boolean).join(" ")}>
+    <div
+      className={["flex flex-col gap-3", className].filter(Boolean).join(" ")}
+    >
       {label !== false && (
         <Text
           as="span"
@@ -46,7 +48,6 @@ const TechStack: React.FC<TechStackProps> = ({
               alt={tech.name}
               tooltip={tech.name}
               size="w-5 md:w-6"
-              className="hover:-translate-y-1 transition-transform duration-200"
             />
           </span>
         ))}

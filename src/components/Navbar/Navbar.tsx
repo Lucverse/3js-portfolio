@@ -1,5 +1,9 @@
 import { useState, useCallback } from "react";
-import { NAV_LINKS, SCROLL_HIDE_THRESHOLD, AUTO_SCROLL_RESET_MS } from "@lib/constants";
+import {
+  NAV_LINKS,
+  SCROLL_HIDE_THRESHOLD,
+  AUTO_SCROLL_RESET_MS,
+} from "@lib/constants";
 import { scrollToSection } from "@lib/utils";
 import useBodyScrollLock from "@hooks/useBodyScrollLock";
 import useKeyDown from "@hooks/useKeyDown";
@@ -20,7 +24,10 @@ const Navbar: React.FC<NavbarProps> = () => {
     const handleScroll = () => {
       if (isAutoScrolling.current) return;
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > SCROLL_HIDE_THRESHOLD) {
+      if (
+        currentScrollY > lastScrollY &&
+        currentScrollY > SCROLL_HIDE_THRESHOLD
+      ) {
         setShowNavbar(false);
       } else {
         setShowNavbar(true);
@@ -60,8 +67,12 @@ const Navbar: React.FC<NavbarProps> = () => {
     setMenuOpen(false);
     scrollToSection(
       section,
-      () => { isAutoScrolling.current = true; },
-      () => { isAutoScrolling.current = false; },
+      () => {
+        isAutoScrolling.current = true;
+      },
+      () => {
+        isAutoScrolling.current = false;
+      },
       AUTO_SCROLL_RESET_MS,
     );
   };
@@ -98,6 +109,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     activeSection === id ? "text-primary after:w-full" : ""
                   }`}
                   onClick={(e) => handleNavClick(e, id)}
+                  data-cursor="nav"
                 >
                   {label}
                 </a>
