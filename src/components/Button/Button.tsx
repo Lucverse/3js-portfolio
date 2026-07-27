@@ -48,6 +48,7 @@ const Button: React.FC<ButtonProps> = ({
         aria-label={resolvedAriaLabel}
         className={combinedClasses}
         onClick={onClick}
+        data-cursor="button"
       >
         {content}
       </a>
@@ -61,6 +62,7 @@ const Button: React.FC<ButtonProps> = ({
       aria-label={resolvedAriaLabel}
       className={combinedClasses}
       onClick={onClick}
+      data-cursor="button"
     >
       {content}
     </button>

@@ -68,6 +68,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
     <div
       className="reveal-item flex flex-col gap-1.5 pl-6 sm:pl-8 pb-6 last:pb-2 border-l-2 border-bg-dark/30 last:border-transparent relative animate-fade-in"
       ref={itemRef}
+      data-cursor="card"
     >
       <span className="absolute w-4 h-4 rounded-full -left-2.25 top-1 border-2 border-bg-dark bg-primary shadow-[0_0_10px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-125"></span>
 
