@@ -311,7 +311,7 @@ const CustomCursor: React.FC = () => {
   const isCard = mode === "card" && !inProjectsGrid;
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[9999999]">
+    <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-9999999">
       {/* ╔══════════════════════════════════════════════════════════════════╗
           ║  DOT — always visible, follows mouse instantly                  ║
           ╚══════════════════════════════════════════════════════════════════╝ */}
@@ -615,7 +615,7 @@ const CustomCursor: React.FC = () => {
           ╚══════════════════════════════════════════════════════════════════╝ */}
       {tooltipRect && (
         <div
-          className="fixed pointer-events-none z-[9999999]"
+          className="fixed pointer-events-none z-9999999"
           style={getTooltipStyles()}
         >
           <div
