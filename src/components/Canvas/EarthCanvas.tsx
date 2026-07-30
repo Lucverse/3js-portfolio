@@ -16,10 +16,10 @@ const Earth = () => {
 
 const EarthCanvas = () => {
   return (
-    <div data-cursor="canvas" className="w-full h-full">
+    <div className="w-full h-full">
       <Canvas
         shadows
-        frameloop="always"
+        frameloop="demand"
         dpr={[1, 2]}
         gl={{ preserveDrawingBuffer: true }}
         camera={{
@@ -33,6 +33,7 @@ const EarthCanvas = () => {
           <OrbitControls
             autoRotate
             enableZoom={false}
+            enableRotate={false}
             maxPolarAngle={Math.PI / 2}
             minPolarAngle={Math.PI / 2}
           />

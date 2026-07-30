@@ -54,6 +54,9 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
           key={currentIndex}
           src={current.image}
           alt={current.label}
+          width={600}
+          height={340}
+          decoding="async"
           className={`w-full h-full object-contain rounded-xl max-h-full transition-opacity duration-500 ease-in-out ${
             fade ? "opacity-100" : "opacity-0"
           }`}
