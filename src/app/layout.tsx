@@ -1,23 +1,37 @@
 import type { Metadata, Viewport } from "next";
+import { Outfit } from "next/font/google";
+import rawData from "../data";
 import "./globals.css";
 
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-base",
+});
+
+const siteMeta = rawData.siteMetadata;
+
 export const metadata: Metadata = {
-  title: "Ujjawal Singh | Full Stack Developer & Tech Leader",
-  description: "Explore the portfolio of Ujjawal Singh - Full Stack Developer and Tech Leader. Specializing in high-performance web systems, interactive 3D WebGL experiences, and scalable cloud solutions.",
+  title: siteMeta.title,
+  description: siteMeta.description,
+  alternates: {
+    canonical: `${siteMeta.siteUrl}/`,
+  },
   icons: {
-    icon: "/pageicon.png",
+    icon: siteMeta.favicon,
   },
   openGraph: {
-    title: "Ujjawal Singh | Full Stack Developer & Tech Leader",
-    description: "Building high-performance web systems and developer tools. Explore projects, terminal configurations, and WebGL experiences.",
-    url: "https://lucverse.com",
-    siteName: "Lucverse Portfolio",
+    title: siteMeta.title,
+    description: siteMeta.ogDescription,
+    url: siteMeta.siteUrl,
+    siteName: siteMeta.siteName,
     images: [
       {
-        url: "/meta-data-image.png",
+        url: siteMeta.ogImage,
         width: 732,
         height: 732,
-        alt: "Ujjawal Singh Portfolio Preview",
+        alt: `${rawData.name} Portfolio Preview`,
       },
     ],
     locale: "en_US",
@@ -25,16 +39,28 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ujjawal Singh | Full Stack Developer & Tech Leader",
-    description: "Building high-performance web systems and developer tools. Explore projects, terminal configurations, and WebGL experiences.",
-    images: ["/meta-data-image.png"],
+    title: siteMeta.title,
+    description: siteMeta.ogDescription,
+    images: [siteMeta.ogImage],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f0f10",
+  themeColor: siteMeta.themeColor,
   width: "device-width",
   initialScale: 1,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: rawData.name,
+  url: siteMeta.siteUrl,
+  jobTitle: rawData.title.join(" & "),
+  description: siteMeta.description,
+  sameAs: rawData.socialLinks
+    .map((s) => s.url)
+    .filter((url) => !url.startsWith("mailto:")),
 };
 
 export default function RootLayout({
@@ -43,7 +69,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={outfit.variable}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased">
         <noscript>You need to enable JavaScript to run this app.</noscript>
         {children}
@@ -51,3 +83,4 @@ export default function RootLayout({
     </html>
   );
 }
+

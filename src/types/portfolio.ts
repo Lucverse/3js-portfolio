@@ -55,6 +55,17 @@ export interface SocialLink {
   alt?: string;
 }
 
+export interface SiteMetadata {
+  siteUrl: string;
+  siteName: string;
+  title: string;
+  description: string;
+  ogDescription: string;
+  ogImage: string;
+  favicon: string;
+  themeColor: string;
+}
+
 export interface PortfolioData {
   name: string;
   birthYear: number;
@@ -66,4 +77,5 @@ export interface PortfolioData {
   educationData: EducationItem[];
   projects: Project[];
   socialLinks: SocialLink[];
+  siteMetadata?: SiteMetadata;
 }
