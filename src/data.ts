@@ -620,6 +620,18 @@ export const rawData = {
       imageUrl: "/icons/email.svg",
     },
   ],
+  siteMetadata: {
+    siteUrl: "https://www.lucverse.com",
+    siteName: "Lucverse Portfolio",
+    title: "Ujjawal Singh | Full Stack Developer & Tech Leader",
+    description:
+      "Explore the portfolio of Ujjawal Singh - Full Stack Developer and Tech Leader. Specializing in high-performance web systems, interactive 3D WebGL experiences, and scalable cloud solutions.",
+    ogDescription:
+      "Building high-performance web systems and developer tools. Explore projects, terminal configurations, and WebGL experiences.",
+    ogImage: "/meta-data-image.png",
+    favicon: "/pageicon.svg",
+    themeColor: "#0f0f10",
+  },
 };
 
 export default rawData;

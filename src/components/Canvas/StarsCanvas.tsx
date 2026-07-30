@@ -27,8 +27,9 @@ const Stars: React.FC = () => {
   const ref = useRef<any>(null);
 
   const [positions] = useState(() => {
-    // Increased from 1500 → 3000 for a richer star field
-    const points = new Float32Array(3000 * 3);
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const count = isMobile ? 1000 : 3000;
+    const points = new Float32Array(count * 3);
     return generateRandomSphere(points, 1.2);
   });
 

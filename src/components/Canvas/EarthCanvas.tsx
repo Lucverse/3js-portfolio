@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
@@ -15,11 +15,23 @@ const Earth = () => {
 };
 
 const EarthCanvas = () => {
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    // Defer WebGL compilation slightly so DOM text elements paint instantly first
+    const timer = setTimeout(() => setShouldRender(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!shouldRender) {
+    return <div className="w-full h-full min-h-62.5" />;
+  }
+
   return (
-    <div data-cursor="canvas" className="w-full h-full">
+    <div className="w-full h-full">
       <Canvas
         shadows
-        frameloop="always"
+        frameloop="demand"
         dpr={[1, 2]}
         gl={{ preserveDrawingBuffer: true }}
         camera={{
@@ -33,6 +45,7 @@ const EarthCanvas = () => {
           <OrbitControls
             autoRotate
             enableZoom={false}
+            enableRotate={false}
             maxPolarAngle={Math.PI / 2}
             minPolarAngle={Math.PI / 2}
           />

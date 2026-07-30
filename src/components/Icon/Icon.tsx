@@ -28,7 +28,14 @@ const Icon: React.FC<IconProps> = ({
     `${size} aspect-square transition-all duration-300 ease-out grayscale-20 opacity-85 ${hoverClasses}`.trim();
 
   const imgElement = (
-    <img src={src} alt={alt} className={`${baseClasses} ${className}`.trim()} />
+    <img
+      src={src}
+      alt={alt}
+      width={24}
+      height={24}
+      decoding="async"
+      className={`${baseClasses} ${className}`.trim()}
+    />
   );
 
   const renderIcon = () => {
@@ -39,7 +46,7 @@ const Icon: React.FC<IconProps> = ({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={alt}
-          className="inline-block"
+          className="inline-flex items-center justify-center p-1.5 min-w-11 min-h-11"
           data-cursor="icon"
         >
           {imgElement}
