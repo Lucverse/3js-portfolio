@@ -1,43 +1,18 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 
-// Supported cursor modes (title merged into text)
+// Supported cursor modes
 type CursorMode =
   | "default"
   | "button"
-  | "text"
   | "icon"
-  | "canvas"
   | "nav"
   | "card";
-
-// Tags that auto-trigger the text (I-beam) cursor
-const TEXT_TAGS = new Set([
-  "P",
-  "H1",
-  "H2",
-  "H3",
-  "H4",
-  "H5",
-  "H6",
-  "SPAN",
-  "LI",
-  "LABEL",
-  "STRONG",
-  "EM",
-  "BLOCKQUOTE",
-  "DT",
-  "DD",
-]);
 
 const CustomCursor: React.FC = () => {
   // ─── Element refs ─────────────────────────────────────────────────────────
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const ringRef = useRef<HTMLDivElement | null>(null);
   const orbitRef = useRef<HTMLDivElement | null>(null);
-  const crosshairHRef = useRef<HTMLDivElement | null>(null);
-  const crosshairVRef = useRef<HTMLDivElement | null>(null);
-  const crosshairRingRef = useRef<HTMLDivElement | null>(null);
-  const ibeamRef = useRef<HTMLDivElement | null>(null);
 
   // ─── Position refs (mutated in RAF, never trigger re-renders) ─────────────
   const mousePos = useRef({ x: -200, y: -200 });
@@ -71,8 +46,6 @@ const CustomCursor: React.FC = () => {
   // ─── Randomise orbit start when entering icon mode ─────────────────────────
   useEffect(() => {
     if (mode === "icon") {
-      // Negative delay makes the animation start mid-cycle → random starting
-      // position on the orbit ring each time the user hovers a new icon.
       setOrbitDelay(`-${(Math.random() * 1.4).toFixed(3)}s`);
     }
   }, [mode]);
@@ -87,12 +60,6 @@ const CustomCursor: React.FC = () => {
       return (cursorEl.getAttribute("data-cursor") as CursorMode) || "default";
     }
 
-    // Auto-detect text elements by tag name (only the element itself, not its
-    // container div – this is why we check target.tagName directly).
-    if (TEXT_TAGS.has(target.tagName)) {
-      return "text";
-    }
-
     return "default";
   }, []);
 
@@ -101,6 +68,7 @@ const CustomCursor: React.FC = () => {
     const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
     if (isTouchDevice) return;
 
+    document.body.classList.add("custom-cursor-active");
     setIsHidden(false);
 
     const onMouseMove = (e: MouseEvent) => {
@@ -199,9 +167,8 @@ const CustomCursor: React.FC = () => {
       if (ringRef.current) {
         const nr = navRectRef.current;
         if (modeRef.current === "nav" && nr) {
-          // Centre the ring horizontally on the link, anchor it vertically
           const cx = nr.left + nr.width / 2;
-          const cy = nr.bottom + 2; // Align vertically with the bottom of the link element
+          const cy = nr.bottom + 2;
           ringRef.current.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
         } else {
           ringRef.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%)`;
@@ -211,20 +178,6 @@ const CustomCursor: React.FC = () => {
       if (orbitRef.current) {
         orbitRef.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0)`;
       }
-      // I-beam: instant
-      if (ibeamRef.current) {
-        ibeamRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0)`;
-      }
-      // Crosshair arms + scope ring: instant
-      if (crosshairHRef.current) {
-        crosshairHRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0)`;
-      }
-      if (crosshairVRef.current) {
-        crosshairVRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0)`;
-      }
-      if (crosshairRingRef.current) {
-        crosshairRingRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0) translate(-50%, -50%)`;
-      }
 
       rafId = requestAnimationFrame(render);
     };
@@ -232,6 +185,7 @@ const CustomCursor: React.FC = () => {
     rafId = requestAnimationFrame(render);
 
     return () => {
+      document.body.classList.remove("custom-cursor-active");
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseover", onMouseOver);
       document.removeEventListener("mouseleave", onMouseLeave);
@@ -304,17 +258,13 @@ const CustomCursor: React.FC = () => {
 
   // ─── Derived booleans ─────────────────────────────────────────────────────
   const isButton = mode === "button" && !inProjectsGrid;
-  const isText = mode === "text" && !inProjectsGrid;
   const isIcon = mode === "icon" && !inProjectsGrid;
-  const isCanvas = mode === "canvas" && !inProjectsGrid;
   const isNav = mode === "nav" && !inProjectsGrid;
   const isCard = mode === "card" && !inProjectsGrid;
 
   return (
     <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-9999999">
-      {/* ╔══════════════════════════════════════════════════════════════════╗
-          ║  DOT — always visible, follows mouse instantly                  ║
-          ╚══════════════════════════════════════════════════════════════════╝ */}
+      {/* DOT */}
       <div
         ref={cursorRef}
         className="fixed top-0 left-0 rounded-full pointer-events-none"
@@ -323,7 +273,6 @@ const CustomCursor: React.FC = () => {
           zIndex: 9999999,
           width: isButton ? "9px" : isIcon ? "5px" : "6px",
           height: isButton ? "9px" : isIcon ? "5px" : "6px",
-          // Always opacity:1 (except on icon hover, where we hide it)
           opacity: isIcon ? 0 : 1,
           backgroundColor: inLightBg
             ? "rgba(15,15,16,1)"
@@ -335,9 +284,7 @@ const CustomCursor: React.FC = () => {
         }}
       />
 
-      {/* ╔══════════════════════════════════════════════════════════════════╗
-          ║  RING — lagged, mode-driven appearance                          ║
-          ╚══════════════════════════════════════════════════════════════════╝ */}
+      {/* RING */}
       <div
         ref={ringRef}
         className="fixed top-0 left-0 pointer-events-none"
@@ -356,7 +303,6 @@ const CustomCursor: React.FC = () => {
             "opacity 0.3s ease",
           ].join(", "),
 
-          // Nav: pill width matches the link text width with padding for a clean look
           width: isNav
             ? `${(navRect?.width ?? 40) + 4}px`
             : isCard
@@ -413,80 +359,11 @@ const CustomCursor: React.FC = () => {
                     : "0 0 12px rgba(191,174,147,0.25)"
                   : "none",
 
-          // Button + projects grid: hide ring (dot-only)
-          // Canvas / text: ring hidden too (special indicator takes over)
-          opacity: inProjectsGrid || isButton || isCanvas || isText ? 0 : 1,
+          opacity: inProjectsGrid || isButton ? 0 : 1,
         }}
       />
 
-      {/* ╔══════════════════════════════════════════════════════════════════╗
-          ║  I-BEAM — instant, text elements only                           ║
-          ╚══════════════════════════════════════════════════════════════════╝ */}
-      <div
-        ref={ibeamRef}
-        className="fixed top-0 left-0 pointer-events-none"
-        style={{
-          opacity: isText ? 1 : 0,
-          transition: "opacity 0.2s ease",
-          willChange: "transform",
-          zIndex: 9999999,
-        }}
-      >
-        {/* Stem */}
-        <div
-          style={{
-            position: "absolute",
-            width: "2px",
-            height: "22px",
-            marginLeft: "-1px",
-            marginTop: "-11px",
-            borderRadius: "2px",
-            background: inLightBg
-              ? "rgba(15,15,16,0.8)"
-              : "rgba(191,174,147,0.9)",
-            boxShadow: inLightBg
-              ? "0 0 8px 2px rgba(15,15,16,0.3)"
-              : "0 0 8px 2px rgba(191,174,147,0.45)",
-          }}
-        />
-        {/* Top serif */}
-        <div
-          style={{
-            position: "absolute",
-            width: "9px",
-            height: "2px",
-            marginLeft: "-4.5px",
-            marginTop: "-11px",
-            borderRadius: "2px",
-            background: inLightBg
-              ? "rgba(15,15,16,0.7)"
-              : "rgba(191,174,147,0.8)",
-          }}
-        />
-        {/* Bottom serif */}
-        <div
-          style={{
-            position: "absolute",
-            width: "9px",
-            height: "2px",
-            marginLeft: "-4.5px",
-            marginTop: "9px",
-            borderRadius: "2px",
-            background: inLightBg
-              ? "rgba(15,15,16,0.7)"
-              : "rgba(191,174,147,0.8)",
-          }}
-        />
-      </div>
-
-      {/* ╔══════════════════════════════════════════════════════════════════╗
-          ║  ORBIT — lagged, icon mode only                                 ║
-          ║  Structure:                                                      ║
-          ║    orbitRef  → positioned by RAF (follows ring lag)             ║
-          ║      tiltDiv → perspective + rotateX to make orbit feel 3D     ║
-          ║        spinDiv → animation: cursor-orbit + random delay         ║
-          ║          dot → tiny glowing bead                                ║
-          ╚══════════════════════════════════════════════════════════════════╝ */}
+      {/* ORBIT */}
       <div
         ref={orbitRef}
         className="fixed top-0 left-0 pointer-events-none"
@@ -499,11 +376,9 @@ const CustomCursor: React.FC = () => {
           marginTop: "-26px",
           opacity: isIcon ? 1 : 0,
           transition: "opacity 0.3s ease",
-          // Perspective context so child rotateX creates a true 3-D tilt
           perspective: "140px",
         }}
       >
-        {/* Tilt plane — makes orbit look like a tilted ellipse in 3-D */}
         <div
           style={{
             position: "absolute",
@@ -515,7 +390,6 @@ const CustomCursor: React.FC = () => {
             transformStyle: "preserve-3d",
           }}
         >
-          {/* Spinning arm */}
           <div
             style={{
               position: "absolute",
@@ -529,7 +403,6 @@ const CustomCursor: React.FC = () => {
               animationDelay: orbitDelay,
             }}
           >
-            {/* Glowing bead at the arm tip (slides out from center to orbit edge) */}
             <div
               style={{
                 position: "absolute",
@@ -551,68 +424,7 @@ const CustomCursor: React.FC = () => {
         </div>
       </div>
 
-      {/* ╔══════════════════════════════════════════════════════════════════╗
-          ║  CROSSHAIR — instant, canvas mode                               ║
-          ╚══════════════════════════════════════════════════════════════════╝ */}
-      {/* Horizontal arm */}
-      <div
-        ref={crosshairHRef}
-        className="fixed top-0 left-0 pointer-events-none"
-        style={{
-          width: "36px",
-          height: "1.5px",
-          marginLeft: "-18px",
-          marginTop: "-0.75px",
-          background: isCanvas
-            ? "linear-gradient(90deg, transparent, rgba(191,174,147,0.75) 30%, rgba(191,174,147,1) 50%, rgba(191,174,147,0.75) 70%, transparent)"
-            : "transparent",
-          opacity: isCanvas ? 1 : 0,
-          transition: "opacity 0.25s ease",
-          willChange: "transform",
-          zIndex: 9999999,
-        }}
-      />
-      {/* Vertical arm */}
-      <div
-        ref={crosshairVRef}
-        className="fixed top-0 left-0 pointer-events-none"
-        style={{
-          width: "1.5px",
-          height: "36px",
-          marginLeft: "-0.75px",
-          marginTop: "-18px",
-          background: isCanvas
-            ? "linear-gradient(180deg, transparent, rgba(191,174,147,0.75) 30%, rgba(191,174,147,1) 50%, rgba(191,174,147,0.75) 70%, transparent)"
-            : "transparent",
-          opacity: isCanvas ? 1 : 0,
-          transition: "opacity 0.25s ease",
-          willChange: "transform",
-          zIndex: 9999999,
-        }}
-      />
-      {/* Slowly-rotating scope ring */}
-      <div
-        ref={crosshairRingRef}
-        className="fixed top-0 left-0 pointer-events-none rounded-full"
-        style={{
-          zIndex: 9999997,
-          width: "44px",
-          height: "44px",
-          border: "1px solid rgba(191,174,147,0.35)",
-          boxShadow:
-            "0 0 14px 3px rgba(191,174,147,0.12), " +
-            "inset 0 0 8px rgba(191,174,147,0.07)",
-          opacity: isCanvas ? 1 : 0,
-          transition: "opacity 0.25s ease",
-          animation: isCanvas
-            ? "cursor-crosshair-spin 9s linear infinite"
-            : "none",
-        }}
-      />
-
-      {/* ╔══════════════════════════════════════════════════════════════════╗
-          ║  TOOLTIP                                                         ║
-          ╚══════════════════════════════════════════════════════════════════╝ */}
+      {/* TOOLTIP */}
       {tooltipRect && (
         <div
           className="fixed pointer-events-none z-9999999"
