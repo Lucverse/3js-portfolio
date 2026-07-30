@@ -623,11 +623,11 @@ export const rawData = {
   siteMetadata: {
     siteUrl: "https://www.lucverse.com",
     siteName: "Lucverse Portfolio",
-    title: "Ujjawal Singh | Full Stack Developer & Tech Leader",
+    title: "Ujjawal Singh | Senior Full-Stack Engineer (Enterprise SaaS & AI)",
     description:
-      "Explore the portfolio of Ujjawal Singh - Full Stack Developer and Tech Leader. Specializing in high-performance web systems, interactive 3D WebGL experiences, and scalable cloud solutions.",
+      "Explore the portfolio of Ujjawal Singh, Senior Full-Stack Engineer building enterprise multi-tenant SaaS platforms, AI systems, and 3D WebGL web apps.",
     ogDescription:
-      "Building high-performance web systems and developer tools. Explore projects, terminal configurations, and WebGL experiences.",
+      "Senior Full-Stack Engineer specializing in enterprise SaaS, AI systems, and 3D WebGL experiences. View projects, architecture breakdowns, and terminal CLI.",
     ogImage: "/meta-data-image.png",
     favicon: "/pageicon.svg",
     themeColor: "#0f0f10",
