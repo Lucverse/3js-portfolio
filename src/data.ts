@@ -628,7 +628,7 @@ export const rawData = {
       "Portfolio of Ujjawal Singh, Senior Full-Stack Engineer specializing in enterprise SaaS, AI platforms, and 3D WebGL applications.",
     ogDescription:
       "Senior Full-Stack Engineer building enterprise SaaS, AI platforms, & 3D WebGL web apps. View projects & architecture.",
-    ogImage: "/meta-data-image.png",
+    ogImage: "/meta-data-image.webp",
     favicon: "/pageicon.svg",
     themeColor: "#0f0f10",
   },
