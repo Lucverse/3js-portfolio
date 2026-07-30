@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
@@ -15,6 +15,18 @@ const Earth = () => {
 };
 
 const EarthCanvas = () => {
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    // Defer WebGL compilation slightly so DOM text elements paint instantly first
+    const timer = setTimeout(() => setShouldRender(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!shouldRender) {
+    return <div className="w-full h-full min-h-62.5" />;
+  }
+
   return (
     <div className="w-full h-full">
       <Canvas

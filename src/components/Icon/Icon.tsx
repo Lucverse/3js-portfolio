@@ -46,7 +46,7 @@ const Icon: React.FC<IconProps> = ({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={alt}
-          className="inline-block"
+          className="inline-flex items-center justify-center p-1.5 min-w-11 min-h-11"
           data-cursor="icon"
         >
           {imgElement}
