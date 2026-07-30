@@ -37,7 +37,7 @@ const TabSwitcher: React.FC<TabSwitcherProps> = ({ activeTab, onChange }) => {
           className={`px-6 sm:px-8 py-2 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 cursor-pointer ${
             activeTab === "experience"
               ? "bg-bg-dark text-primary shadow-md scale-[1.02]"
-              : "text-bg-dark/60 hover:text-bg-dark/95"
+              : "text-bg-dark/85 hover:text-bg-dark"
           }`}
         >
           Professional
@@ -47,7 +47,7 @@ const TabSwitcher: React.FC<TabSwitcherProps> = ({ activeTab, onChange }) => {
           className={`px-6 sm:px-8 py-2 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 cursor-pointer ${
             activeTab === "education"
               ? "bg-bg-dark text-primary shadow-md scale-[1.02]"
-              : "text-bg-dark/60 hover:text-bg-dark/95"
+              : "text-bg-dark/85 hover:text-bg-dark"
           }`}
         >
           Education
@@ -74,7 +74,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-0.5">
         <Text
-          as="h4"
+          as="h3"
           size="lg"
           weight="bold"
           color="none"

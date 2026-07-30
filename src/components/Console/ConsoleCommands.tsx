@@ -246,10 +246,8 @@ const ConsoleCommands: React.FC = () => {
       "color: #bfae93; font-size: 2rem; font-weight: bold;",
     );
     console.log(
-      "%cTip: Type %chelp%c or use the %c>_%c terminal widget on the page.",
-      "color: #acacac; font-size: 13px;",
-      "color: #d1c5ad; font-weight: bold;",
-      "color: #acacac;",
+      "%cType %chelp%c to get started.",
+      "color: #acacac; font-size: 14px;",
       "color: #d1c5ad; font-weight: bold;",
       "color: #acacac;",
     );
