@@ -24,7 +24,7 @@ This is my personal portfolio website featuring:
 
 ## Project Structure
 
-```
+```text
 3js-portfolio/
 ├── public/           # Static assets, resume, planet textures
 ├── src/
@@ -48,9 +48,11 @@ This is my personal portfolio website featuring:
 │   │   ├── Terminal/ # Command line bash shell emulator
 │   │   └── Timeline/ # Grid timeline and modal cards for projects
 │   ├── hooks/        # Custom react hooks (event listeners, scroll lock, reveal)
-│   ├── lib/          # Constants, coordinates, and math utilities
+│   ├── lib/          # Constants, utilities, DB/fallback data, and loaders
+│   │   └── data.ts    # Canonical typed fallback portfolio dataset
 │   ├── types/        # TypeScript interfaces
-│   └── data.ts       # Profile details local database (TS format)
+│   ├── models/       # Mongoose models for CMS entities
+│   └── scripts/      # Seeding and migration scripts
 ├── tsconfig.json     # TypeScript configuration with path aliases
 ├── next.config.ts    # Next.js compiler settings & transpile packages
 └── postcss.config.mjs # PostCSS configuration for TailwindCSS v4

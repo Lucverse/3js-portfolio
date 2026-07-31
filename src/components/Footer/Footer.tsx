@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import type { SocialLink } from "../../types/portfolio";
 import Icon from "@components/Icon/Icon";

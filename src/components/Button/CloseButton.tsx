@@ -20,6 +20,7 @@ const CloseButton: React.FC<CloseButtonProps> = ({
       type="button"
       onClick={onClick}
       aria-label={ariaLabel}
+      data-cursor="button"
       className={[
         "shrink-0 flex items-center justify-center w-9 h-9 rounded-xl",
         "text-[1.1rem] cursor-pointer transition-all duration-200",
