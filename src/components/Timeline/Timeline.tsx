@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import type { Project } from "@/types/portfolio";
 import TimelineGrid from "./TimelineGrid";
@@ -32,7 +34,7 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
 
   const showLess = () => {
     setListedProjects(projects.slice(0, PROJECTS_PAGE_SIZE));
-    const el = document.getElementById("projects");
+    const el = document.getElementById("work");
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -42,7 +44,7 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
     <div className="flex flex-col gap-4 items-center w-full">
       <div
         className="timeline-main overflow-hidden rounded-custom bg-linear-to-b from-primary/7 to-transparent backdrop-blur-[0.5px] max-md:p-2 w-full"
-        id="projects"
+        id="work"
       >
         {listedProjects.map((project, index) => (
           <TimelineGrid

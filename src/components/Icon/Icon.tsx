@@ -20,6 +20,9 @@ const Icon: React.FC<IconProps> = ({
   size = "w-7 md:w-8",
   disableHover = false,
 }) => {
+  const normalizedSrc = src?.trim();
+  if (!normalizedSrc) return null;
+
   const hoverClasses = disableHover
     ? ""
     : "hover:grayscale-0 hover:opacity-100";
@@ -29,7 +32,7 @@ const Icon: React.FC<IconProps> = ({
 
   const imgElement = (
     <img
-      src={src}
+      src={normalizedSrc}
       alt={alt}
       width={24}
       height={24}

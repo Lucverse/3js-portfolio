@@ -1,4 +1,6 @@
-import { useState, useCallback } from "react";
+"use client";
+
+import { useState, useCallback, useRef } from "react";
 import {
   NAV_LINKS,
   SCROLL_HIDE_THRESHOLD,
@@ -13,30 +15,30 @@ interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = () => {
   const [showNavbar, setShowNavbar] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollYRef = useRef(0);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("home");
-  const isAutoScrolling = { current: false };
+  const [activeSection, setActiveSection] = useState<string>(NAV_LINKS[0].id);
+  const isAutoScrollingRef = useRef(false);
 
   useBodyScrollLock(menuOpen);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isAutoScrolling.current) return;
+      if (isAutoScrollingRef.current) return;
       const currentScrollY = window.scrollY;
       if (
-        currentScrollY > lastScrollY &&
+        currentScrollY > lastScrollYRef.current &&
         currentScrollY > SCROLL_HIDE_THRESHOLD
       ) {
         setShowNavbar(false);
       } else {
         setShowNavbar(true);
       }
-      setLastScrollY(currentScrollY);
+      lastScrollYRef.current = currentScrollY;
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   // Active section scroll-spy
   useEffect(() => {
@@ -68,11 +70,12 @@ const Navbar: React.FC<NavbarProps> = () => {
     scrollToSection(
       section,
       () => {
-        isAutoScrolling.current = true;
+        isAutoScrollingRef.current = true;
       },
       () => {
-        isAutoScrolling.current = false;
+        isAutoScrollingRef.current = false;
       },
+      "center",
       AUTO_SCROLL_RESET_MS,
     );
   };
@@ -97,6 +100,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             className="hidden max-md:block text-[1.3rem] bg-none border-none text-primary cursor-pointer leading-none"
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
+            data-cursor="button"
           >
             ☰
           </button>
@@ -125,6 +129,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             className="absolute top-6 right-8 text-[2rem] bg-[rgba(191,174,147,0.08)] border border-[rgba(191,174,147,0.2)] text-primary cursor-pointer z-10000 flex items-center justify-center rounded-lg w-10 h-10 transition-all duration-300 ease hover:rotate-90 hover:bg-[rgba(191,174,147,0.15)]"
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
+            data-cursor="button"
           >
             ✕
           </button>

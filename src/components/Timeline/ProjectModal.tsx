@@ -54,10 +54,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             <CloseButton onClick={handleClose} ariaLabel="Close modal" />
           </div>
 
-          <div
-            className="w-full h-px"
-            style={{ background: "rgba(191,174,147,0.1)" }}
-          />
+          <div className="w-full h-px bg-primary/10" />
 
           {project.detailedDescription?.desc && (
             <Text

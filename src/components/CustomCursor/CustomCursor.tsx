@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useState, useCallback } from "react";
 
 // Supported cursor modes
@@ -78,11 +80,11 @@ const CustomCursor: React.FC = () => {
 
       const target = e.target as HTMLElement | null;
       if (target) {
-        const inProjects = target.closest("#projects");
+        const inProjects = target.closest("#work");
         const inModal = target.closest("[role='dialog']");
         setInProjectsGrid(!!(inProjects && !inModal));
 
-        const inAbout = target.closest("#about");
+        const inAbout = target.closest("#journey");
         setInLightBg(!!(inAbout && !inModal));
       }
     };
@@ -91,11 +93,11 @@ const CustomCursor: React.FC = () => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      const inProjects = target.closest("#projects");
+      const inProjects = target.closest("#work");
       const inModal = target.closest("[role='dialog']");
       setInProjectsGrid(!!(inProjects && !inModal));
 
-      const inAbout = target.closest("#about");
+      const inAbout = target.closest("#journey");
       setInLightBg(!!(inAbout && !inModal));
 
       const newMode = resolveMode(target);
@@ -260,7 +262,7 @@ const CustomCursor: React.FC = () => {
   const isButton = mode === "button" && !inProjectsGrid;
   const isIcon = mode === "icon" && !inProjectsGrid;
   const isNav = mode === "nav" && !inProjectsGrid;
-  const isCard = mode === "card" && !inProjectsGrid;
+  const isCard = mode === "card" && !inProjectsGrid && !inLightBg;
 
   return (
     <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-9999999">
@@ -399,7 +401,10 @@ const CustomCursor: React.FC = () => {
               height: "52px",
               marginLeft: "-26px",
               marginTop: "-26px",
-              animation: isIcon ? "cursor-orbit 1.5s linear infinite" : "none",
+              animationName: isIcon ? "cursor-orbit" : "none",
+              animationDuration: "1.5s",
+              animationTimingFunction: "linear",
+              animationIterationCount: "infinite",
               animationDelay: orbitDelay,
             }}
           >

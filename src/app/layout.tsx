@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
-import rawData from "../data";
+import { getPortfolioData } from "@/lib/getPortfolioData";
+import StarsCanvasClient from "@/components/Canvas/StarsCanvasClient";
+import CustomCursor from "@/components/CustomCursor/CustomCursor";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -10,64 +12,76 @@ const outfit = Outfit({
   variable: "--font-base",
 });
 
-const siteMeta = rawData.siteMetadata;
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await getPortfolioData();
+  const siteMeta = data.siteMetadata;
 
-export const metadata: Metadata = {
-  title: siteMeta.title,
-  description: siteMeta.description,
-  alternates: {
-    canonical: `${siteMeta.siteUrl}/`,
-  },
-  icons: {
-    icon: siteMeta.favicon,
-  },
-  openGraph: {
+  return {
+    metadataBase: new URL(siteMeta.siteUrl),
     title: siteMeta.title,
-    description: siteMeta.ogDescription,
-    url: siteMeta.siteUrl,
-    siteName: siteMeta.siteName,
-    images: [
-      {
-        url: siteMeta.ogImage,
-        width: 732,
-        height: 732,
-        alt: `${rawData.name} Portfolio Preview`,
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteMeta.title,
-    description: siteMeta.ogDescription,
-    images: [siteMeta.ogImage],
-  },
-};
+    description: siteMeta.description,
+    alternates: {
+      canonical: `${siteMeta.siteUrl}/`,
+    },
+    icons: {
+      icon: siteMeta.favicon,
+    },
+    openGraph: {
+      title: siteMeta.title,
+      description: siteMeta.ogDescription,
+      url: siteMeta.siteUrl,
+      siteName: siteMeta.siteName,
+      images: [
+        {
+          url: siteMeta.ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${data.name} Portfolio Preview`,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: siteMeta.title,
+      description: siteMeta.ogDescription,
+      images: [siteMeta.ogImage],
+    },
+  };
+}
 
-export const viewport: Viewport = {
-  themeColor: siteMeta.themeColor,
-  width: "device-width",
-  initialScale: 1,
-};
+export async function generateViewport(): Promise<Viewport> {
+  const data = await getPortfolioData();
+  const siteMeta = data.siteMetadata;
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: rawData.name,
-  url: siteMeta.siteUrl,
-  jobTitle: rawData.title.join(" & "),
-  description: siteMeta.description,
-  sameAs: rawData.socialLinks
-    .map((s) => s.url)
-    .filter((url) => !url.startsWith("mailto:")),
-};
+  return {
+    themeColor: siteMeta.themeColor,
+    width: "device-width",
+    initialScale: 1,
+  };
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const data = await getPortfolioData();
+  const siteMeta = data.siteMetadata;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: data.name,
+    url: siteMeta.siteUrl,
+    jobTitle: data.title.join(" & "),
+    description: siteMeta.description,
+    sameAs: data.socialLinks
+      .map((s) => s.url)
+      .filter((url) => !url.startsWith("mailto:")),
+  };
+
   return (
     <html lang="en" className={outfit.variable}>
       <head>
@@ -76,11 +90,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased bg-bg-dark text-secondary">
         <noscript>You need to enable JavaScript to run this app.</noscript>
+        <CustomCursor />
+        <div className="fixed top-0 left-0 w-full h-dvh -z-1">
+          <StarsCanvasClient />
+        </div>
         {children}
       </body>
     </html>
   );
 }
-
