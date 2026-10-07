@@ -25,7 +25,7 @@ const Icon: React.FC<IconProps> = ({
 
   const hoverClasses = disableHover
     ? ""
-    : "hover:grayscale-0 hover:opacity-100";
+    : "hover:grayscale-0 hover:opacity-100 hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(191,174,147,0.5)]";
 
   const baseClasses =
     `${size} aspect-square transition-all duration-300 ease-out grayscale-20 opacity-85 ${hoverClasses}`.trim();

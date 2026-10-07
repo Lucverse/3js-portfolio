@@ -18,9 +18,9 @@ const Socials: React.FC<SocialsProps> = ({ socialLinks }) => {
 
   return (
     <div
-      className={`self-stretch flex flex-row items-center animate-slide-up w-full ${
+      className={`self-stretch flex flex-col sm:flex-row items-center animate-slide-up w-full ${
         hasSocialLinks
-          ? "flex-wrap justify-center md:justify-end gap-6 md:gap-8"
+          ? "justify-center md:justify-end gap-4 sm:gap-6 md:gap-8"
           : "justify-center md:justify-end"
       }`}
     >
@@ -34,7 +34,7 @@ const Socials: React.FC<SocialsProps> = ({ socialLinks }) => {
         className={buttonClassName}
       />
       {hasSocialLinks && (
-        <div className="flex justify-end items-center gap-6 md:gap-8">
+        <div className="flex justify-center md:justify-end items-center gap-4 sm:gap-6 md:gap-8">
           {validSocialLinks.map((link, index) => (
             <Icon
               key={index}
