@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import type { ExperienceItem, EducationItem } from "@/types/portfolio";
 import useScrollReveal from "@hooks/useScrollReveal";
@@ -200,7 +202,7 @@ const Journey: React.FC<JourneyProps> = ({ experienceData, educationData }) => {
       </div>
 
       <section
-        id="about"
+        id="journey"
         className="
           relative
           z-10

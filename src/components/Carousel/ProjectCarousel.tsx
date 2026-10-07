@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useCallback } from "react";
 import type { KeyPoint } from "@/types/portfolio";
 import { KEYPOINT_INTERVAL_MS, KEYPOINT_FADE_MS } from "@lib/constants";

@@ -14,6 +14,9 @@
   --animate-scroll-dot: scroll-dot 1.5s infinite ease-in-out;
   --animate-shimmer: shimmer 2s linear infinite;
   --animate-scale-up: scaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  
+  --journey-layer-speed: 1;
+  --journey-layer-vertical-distance: 3;
 
   --font-base: "Outfit", sans-serif;
   --radius-custom: calc(5px + 2vw);
@@ -54,20 +57,23 @@
     color: var(--color-primary);
   }
 
-  body::-webkit-scrollbar {
-    width: 8px;
+  /* Global scrollbar — applies to body AND all overflow-scroll containers (modals, textareas, etc.) */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
   }
-  body::-webkit-scrollbar-track {
+  /* ::-webkit-scrollbar-track {
     background: var(--color-bg-dark);
-  }
-  body::-webkit-scrollbar-thumb {
+  } */
+  ::-webkit-scrollbar-thumb {
     background: linear-gradient(
       180deg,
       var(--color-primary),
       var(--color-primary-hover)
     );
+    border-radius: 3px;
   }
-  body::-webkit-scrollbar-thumb:hover {
+  ::-webkit-scrollbar-thumb:hover {
     background: var(--color-primary);
   }
 
@@ -234,63 +240,98 @@
   @keyframes float-layer-slow-0 {
     0%,
     100% {
-      transform: translateY(0) scale(1);
+      transform: translateY(
+          calc(-2px * var(--journey-layer-vertical-distance))
+        )
+        scale(1);
     }
     50% {
-      transform: translateY(-2px) scale(1.001);
+      transform: translateY(
+          calc(2px * var(--journey-layer-vertical-distance))
+        )
+        scale(1.001);
     }
   }
   @keyframes float-layer-slow-1 {
     0%,
     100% {
-      transform: translateY(0) scale(1);
+      transform: translateY(
+          calc(-5px * var(--journey-layer-vertical-distance))
+        )
+        scale(1);
     }
     50% {
-      transform: translateY(-5px) scale(1.002);
+      transform: translateY(
+          calc(5px * var(--journey-layer-vertical-distance))
+        )
+        scale(1.002);
     }
   }
   @keyframes float-layer-slow-2 {
     0%,
     100% {
-      transform: translateY(0) scale(1);
+      transform: translateY(
+          calc(-8px * var(--journey-layer-vertical-distance))
+        )
+        scale(1);
     }
     50% {
-      transform: translateY(-8px) scale(1.003);
+      transform: translateY(
+          calc(8px * var(--journey-layer-vertical-distance))
+        )
+        scale(1.003);
     }
   }
   @keyframes float-layer-slow-3 {
     0%,
     100% {
-      transform: translateY(0) scale(1);
+      transform: translateY(
+          calc(-11px * var(--journey-layer-vertical-distance))
+        )
+        scale(1);
     }
     50% {
-      transform: translateY(-11px) scale(1.004);
+      transform: translateY(
+          calc(11px * var(--journey-layer-vertical-distance))
+        )
+        scale(1.004);
     }
   }
   @keyframes float-layer-slow-4 {
     0%,
     100% {
-      transform: translateY(0) scale(1);
+      transform: translateY(
+          calc(-14px * var(--journey-layer-vertical-distance))
+        )
+        scale(1);
     }
     50% {
-      transform: translateY(-14px) scale(1.005);
+      transform: translateY(
+          calc(14px * var(--journey-layer-vertical-distance))
+        )
+        scale(1.005);
     }
   }
 
   .about-layer-0 {
-    animation: float-layer-slow-0 8s ease-in-out infinite;
+    animation: float-layer-slow-0 calc(8s / var(--journey-layer-speed))
+      ease-in-out infinite;
   }
   .about-layer-1 {
-    animation: float-layer-slow-1 10s ease-in-out infinite;
+    animation: float-layer-slow-1 calc(10s / var(--journey-layer-speed))
+      ease-in-out infinite;
   }
   .about-layer-2 {
-    animation: float-layer-slow-2 12s ease-in-out infinite;
+    animation: float-layer-slow-2 calc(12s / var(--journey-layer-speed))
+      ease-in-out infinite;
   }
   .about-layer-3 {
-    animation: float-layer-slow-3 14s ease-in-out infinite;
+    animation: float-layer-slow-3 calc(14s / var(--journey-layer-speed))
+      ease-in-out infinite;
   }
   .about-layer-4 {
-    animation: float-layer-slow-4 16s ease-in-out infinite;
+    animation: float-layer-slow-4 calc(16s / var(--journey-layer-speed))
+      ease-in-out infinite;
   }
 
   /* Pulsing Ambient Glow behind About Section */

@@ -1,4 +1,6 @@
-import { useEffect, useRef, MutableRefObject } from 'react';
+"use client";
+
+import { useEffect, useRef, MutableRefObject } from "react";
 
 interface ScrollRevealOptions {
   threshold?: number;
@@ -11,7 +13,7 @@ interface ScrollRevealOptions {
  */
 function useScrollReveal<T extends HTMLElement>(
   options: ScrollRevealOptions = {},
-  deps: React.DependencyList = []
+  deps: React.DependencyList = [],
 ): MutableRefObject<(T | null)[]> {
   const { threshold = 0.1 } = options;
   const itemsRef = useRef<(T | null)[]>([]);
@@ -22,18 +24,18 @@ function useScrollReveal<T extends HTMLElement>(
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement;
-            if (!el.classList.contains('in-view')) {
+            if (!el.classList.contains("in-view")) {
               // Stagger each item by 120ms relative to its sibling index
               const allElements = itemsRef.current.filter(Boolean);
               const index = allElements.indexOf(el as T);
               el.style.transitionDelay = `${index * 0.12}s`;
-              el.classList.add('in-view');
+              el.classList.add("in-view");
             }
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold }
+      { threshold },
     );
 
     itemsRef.current.forEach((el) => {

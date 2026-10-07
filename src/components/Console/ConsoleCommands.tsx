@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
-import rawData from "@/data";
-import type { PortfolioData } from "@/types/portfolio";
-import { VALID_CONSOLE_COMMANDS } from "@/lib/constants";
+"use client";
 
-const data = rawData as PortfolioData;
+import React, { useEffect } from "react";
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 
 const ConsoleCommands: React.FC = () => {
+  const { data } = usePortfolioData();
+
   useEffect(() => {
+    if (!data) return;
+
     const { projects, experienceData, educationData, socialLinks, ...basic } =
       data;
     const age = new Date().getFullYear() - (basic as any).birthYear;
@@ -251,7 +253,7 @@ const ConsoleCommands: React.FC = () => {
       "color: #d1c5ad; font-weight: bold;",
       "color: #acacac;",
     );
-  }, []);
+  }, [data]);
 
   return null;
 };

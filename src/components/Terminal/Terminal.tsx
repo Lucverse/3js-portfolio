@@ -1,19 +1,20 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import Tooltip from "../Tooltip/Tooltip";
+import Tooltip from "@components/Tooltip/Tooltip";
 import useKeyDown from "@hooks/useKeyDown";
-import rawData from "../../data";
-import type { PortfolioData } from "../../types/portfolio";
+import { usePortfolioData } from "@hooks/usePortfolioData";
+
 import {
   TerminalLineType,
   TerminalCommand,
   INITIAL_TERMINAL_LINES,
-} from "../../lib/constants";
-import type { TerminalLine } from "../../lib/constants";
-
-const data = rawData as PortfolioData;
+} from "@/lib/constants";
+import type { TerminalLine } from "@/lib/constants";
 
 const Terminal: React.FC = () => {
+  const { data } = usePortfolioData();
   const [isOpen, setIsOpen] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMaximized, setIsMaximized] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [lines, setLines] = useState<TerminalLine[]>(INITIAL_TERMINAL_LINES);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
@@ -31,6 +32,13 @@ const Terminal: React.FC = () => {
       localStorage.setItem("terminal-tip-closed", "true");
     }
   }, [isOpen, showTip]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setIsMinimized(false);
+      setIsMaximized(false);
+    }
+  }, [isOpen]);
 
   // Auto-scroll to bottom on new output
   useEffect(() => {
@@ -56,8 +64,18 @@ const Terminal: React.FC = () => {
   useKeyDown("`", handleToggle, true, { ctrl: true });
   useKeyDown("Escape", handleEscape, isOpen);
 
-  const { projects, experienceData, educationData, socialLinks, ...basic } =
-    data;
+  const projects = data?.projects ?? [];
+  const experienceData = data?.experienceData ?? [];
+  const educationData = data?.educationData ?? [];
+  const socialLinks = data?.socialLinks ?? [];
+  const basic = {
+    name: data?.name ?? "",
+    title: data?.title ?? [],
+    phone: data?.phone ?? "",
+    email: data?.email ?? "",
+    address: data?.address,
+    birthYear: data?.birthYear,
+  };
   const age = new Date().getFullYear() - (basic as any).birthYear;
 
   const processCommand = (input: string) => {
@@ -321,12 +339,15 @@ const Terminal: React.FC = () => {
     <>
       <Tooltip content="Terminal (Ctrl+`)" direction="right">
         <button
-          className={`fixed bottom-8 left-8 max-[600px]:hidden z-10001 bg-[rgba(15,15,16,0.92)] border border-[rgba(191,174,147,0.45)] text-primary font-mono text-[1rem] font-bold w-10 h-10 flex items-center justify-center rounded-[10px] cursor-pointer transition-all duration-250 ease-out backdrop-blur-md select-none hover:bg-[rgba(191,174,147,0.12)] hover:border-primary hover:shadow-[0_0_18px_rgba(191,174,147,0.25),0_4px_16px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 ${
+          className={`fixed bottom-8 left-8 max-[600px]:left-4 z-10001 bg-[rgba(15,15,16,0.92)] border border-[rgba(191,174,147,0.45)] text-primary font-mono text-[1rem] font-bold w-10 h-10 flex items-center justify-center rounded-[10px] cursor-pointer transition-all duration-250 ease-out backdrop-blur-md select-none hover:bg-[rgba(191,174,147,0.12)] hover:border-primary hover:shadow-[0_0_18px_rgba(191,174,147,0.25),0_4px_16px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 ${
             isOpen
               ? "border-[rgba(191,174,147,0.7)] bg-[rgba(191,174,147,0.1)]"
               : ""
           }`}
-          onClick={() => setIsOpen((prev) => !prev)}
+          onClick={() => {
+            setIsOpen((prev) => !prev);
+            setIsMinimized(false);
+          }}
           aria-label={isOpen ? "Close terminal" : "Open terminal"}
         >
           {isOpen ? "✕" : ">_"}
@@ -334,7 +355,7 @@ const Terminal: React.FC = () => {
       </Tooltip>
 
       {showTip && !isOpen && (
-        <div className="fixed bottom-8.5 left-19.5 z-10000 bg-[rgba(15,15,16,0.95)] border border-[rgba(191,174,147,0.35)] text-secondary px-3 py-1.5 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] font-base text-[0.8rem] tracking-[0.3px] flex items-center gap-2.5 animate-bounce-horizontal terminal-prompt-bubble max-[600px]:hidden select-none">
+        <div className="fixed bottom-8.5 left-19.5 max-[600px]:left-16 max-[600px]:right-4 z-10000 bg-[rgba(15,15,16,0.95)] border border-[rgba(191,174,147,0.35)] text-secondary px-3 py-1.5 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] font-base text-[0.8rem] tracking-[0.3px] flex items-center gap-2.5 animate-bounce-horizontal terminal-prompt-bubble select-none">
           <span>Click here for interactive terminal!</span>
           <button
             onClick={(e) => {
@@ -351,9 +372,13 @@ const Terminal: React.FC = () => {
       )}
 
       {/* Terminal panel */}
-      {isOpen && (
+      {isOpen && !isMinimized && (
         <div
-          className="fixed bottom-22 left-8 max-[600px]:left-4 max-[600px]:right-4 max-[600px]:bottom-20 max-[600px]:w-auto max-[600px]:h-80 w-[min(520px,calc(100vw-4rem))] h-95 z-10000 bg-[rgba(10,10,11,0.97)] border border-[rgba(191,174,147,0.35)] rounded-[14px] flex flex-col overflow-hidden backdrop-blur-xl shadow-[0_24px_64px_rgba(0,0,0,0.85),0_0_0_1px_rgba(191,174,147,0.08),0_0_48px_rgba(191,174,147,0.06)] animate-slide-up before:content-[''] before:absolute before:inset-0 before:bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(0,0,0,0.04)_2px,rgba(0,0,0,0.04)_4px)] before:pointer-events-none before:z-1 before:rounded-[14px]"
+          className={`fixed z-10000 bg-[rgba(10,10,11,0.97)] border border-[rgba(191,174,147,0.35)] rounded-[14px] flex flex-col overflow-hidden backdrop-blur-xl shadow-[0_24px_64px_rgba(0,0,0,0.85),0_0_0_1px_rgba(191,174,147,0.08),0_0_48px_rgba(191,174,147,0.06)] animate-slide-up before:content-[''] before:absolute before:inset-0 before:bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(0,0,0,0.04)_2px,rgba(0,0,0,0.04)_4px)] before:pointer-events-none before:z-1 before:rounded-[14px] ${
+            isMaximized
+              ? "top-4 left-4 right-4 bottom-4"
+              : "bottom-22 left-8 max-[600px]:left-4 max-[600px]:right-4 max-[600px]:bottom-20 max-[600px]:w-auto max-[600px]:h-80 w-[min(520px,calc(100vw-4rem))] h-95"
+          }`}
           role="dialog"
           aria-label="Portfolio terminal"
         >
@@ -367,10 +392,12 @@ const Terminal: React.FC = () => {
               />
               <span
                 className="w-3 h-3 rounded-full cursor-pointer transition-all duration-200 ease-out hover:brightness-130 hover:scale-110 bg-[#ffbd2e]"
+                onClick={() => setIsMinimized(true)}
                 title="Minimise"
               />
               <span
                 className="w-3 h-3 rounded-full cursor-pointer transition-all duration-200 ease-out hover:brightness-130 hover:scale-110 bg-[#27c93f]"
+                onClick={() => setIsMaximized((prev) => !prev)}
                 title="Maximise"
               />
             </div>
@@ -430,6 +457,17 @@ const Terminal: React.FC = () => {
             />
           </form>
         </div>
+      )}
+
+      {isOpen && isMinimized && (
+        <button
+          type="button"
+          onClick={() => setIsMinimized(false)}
+          className="fixed bottom-22 left-8 max-[600px]:left-4 z-10000 px-4 py-2 rounded-xl bg-[rgba(10,10,11,0.97)] border border-[rgba(191,174,147,0.35)] text-secondary text-xs font-mono"
+          aria-label="Restore terminal"
+        >
+          Restore Terminal
+        </button>
       )}
     </>
   );

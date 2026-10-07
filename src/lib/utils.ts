@@ -87,12 +87,13 @@ export function scrollToSection(
   id: string,
   onBefore?: () => void,
   onAfter?: () => void,
+  block: ScrollLogicalPosition = "center",
   resetDelayMs = 700,
 ): void {
   const el = document.getElementById(id);
   if (!el) return;
   onBefore?.();
-  el.scrollIntoView({ behavior: "smooth" });
+  el.scrollIntoView({ behavior: "smooth", block });
   if (onAfter) setTimeout(onAfter, resetDelayMs);
 }
 

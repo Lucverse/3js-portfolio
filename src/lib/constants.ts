@@ -23,9 +23,9 @@ export const Z = {
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 export const NAV_LINKS = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
+  { id: "intro", label: "Intro" },
+  { id: "journey", label: "Journey" },
+  { id: "work", label: "Work" },
 ] as const;
 
 // ─── Scroll behaviour ─────────────────────────────────────────────────────────
@@ -76,15 +76,3 @@ export const INITIAL_TERMINAL_LINES: TerminalLine[] = [
   },
   { type: TerminalLineType.Info, content: "" },
 ];
-
-// ─── Console Commands Configuration ───────────────────────────────────────────
-export const VALID_CONSOLE_COMMANDS: Record<string, string> = {
-  about: "about",
-  experience: "experience",
-  education: "education",
-  projects: "projects",
-  getproject: "getProject",
-  socials: "socials",
-  techstack: "techStack",
-  help: "help",
-} as const;
