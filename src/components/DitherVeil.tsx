@@ -82,7 +82,7 @@ const wanderAt = (t: number, w: number, h: number): [number, number] => [
 ];
 
 const measureEdge = (context: CanvasRenderingContext2D, image: HTMLImageElement): { matte: Rgb; plain: boolean } => {
-  const size = 32;
+  const size = 20;
   context.canvas.width = size;
   context.canvas.height = size;
   context.drawImage(image, 0, 0, size, size);

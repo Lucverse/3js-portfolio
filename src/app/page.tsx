@@ -9,6 +9,7 @@ import Journey from "@components/Journey/Journey";
 import Navbar from "@components/Navbar/Navbar";
 import ConsoleCommands from "@components/Console/ConsoleCommands";
 import DitherVeilClient from "@components/DitherVeilClient";
+import WalleCanvasClient from "@components/Canvas/WalleCanvasClient";
 import SectionErrorBoundary from "@components/ErrorBoundary/SectionErrorBoundary";
 
 // ============================================================================
@@ -132,7 +133,7 @@ export default async function Page() {
           </div>
         )}
         <div
-          className={`rounded-custom border border-primary shadow-[0_0_30px_rgba(191,174,147,0.1),inset_0_0_80px_rgba(191,174,147,0.03)] overflow-hidden grid grid-cols-1 md:grid-cols-2 bg-transparent backdrop-blur-[0.5px] max-md:flex max-md:flex-col-reverse max-md:justify-center max-md:items-center ${
+          className={`rounded-custom border border-primary shadow-[0_0_30px_rgba(191,174,147,0.1),inset_0_0_80px_rgba(191,174,147,0.03)] overflow-hidden grid grid-cols-1 md:grid-cols-2 bg-[rgba(15,15,16,0.35)] max-md:flex max-md:flex-col-reverse max-md:justify-center max-md:items-center ${
             heroOnly
               ? "h-full min-h-0 gap-4 max-md:gap-2 max-md:h-full max-md:min-h-0"
               : "min-h-[80dvh] max-md:min-h-[75dvh] max-md:h-auto max-md:py-10 max-md:pb-12"
@@ -157,31 +158,9 @@ export default async function Page() {
                 : "gap-4 md:gap-8 max-md:h-87.5 sm:max-md:h-95 max-[375px]:h-75 md:h-full md:min-h-115"
             }`}
           >
-            <SectionErrorBoundary sectionName="Dither Veil">
-              <div className="relative w-full h-full max-w-85 sm:max-w-95 max-[375px]:max-w-72.5 md:max-w-none flex items-center justify-center overflow-hidden">
-                <DitherVeilClient
-                  src={DITHER_SRC}
-                  fit={DITHER_FIT}
-                  pattern={DITHER_PATTERN}
-                  palette={DITHER_PALETTE}
-                  inkColor={DITHER_INK}
-                  paperColor={DITHER_PAPER}
-                  rimColor={DITHER_RIM_COLOR}
-                  mobilePixelSize={DITHER_MOBILE_PIXEL_SIZE}
-                  desktopPixelMultiplier={DITHER_DESKTOP_PIXEL_MULTIPLIER}
-                  levels={DITHER_LEVELS}
-                  contrast={DITHER_CONTRAST}
-                  brightness={DITHER_BRIGHTNESS}
-                  revealRadius={DITHER_REVEAL_RADIUS}
-                  softness={DITHER_SOFTNESS}
-                  linger={DITHER_LINGER}
-                  rim={DITHER_RIM}
-                  reverse={DITHER_REVERSE}
-                  wander={DITHER_WANDER}
-                  clickBurst={DITHER_CLICK_BURST}
-                  transparentBg={DITHER_TRANSPARENT_BG}
-                  className="w-full h-full"
-                />
+            <SectionErrorBoundary sectionName="WALL-E 3D">
+              <div className="relative w-full h-full flex items-center justify-center overflow-hidden min-h-[360px] md:min-h-[480px]">
+                <WalleCanvasClient />
               </div>
             </SectionErrorBoundary>
           </div>

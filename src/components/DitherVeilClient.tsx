@@ -23,7 +23,7 @@ export interface DitherVeilClientProps extends DitherVeilProps {
 
 export default function DitherVeilClient({
   mobilePixelSize,
-  desktopPixelMultiplier = 3,
+  desktopPixelMultiplier = 0.5,
   desktopPixelSize,
   pixelSize,
   ...rest
